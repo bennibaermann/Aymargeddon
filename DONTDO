@@ -1,0 +1,113 @@
+Hier stehen Ideen, die bei der Entwicklung von Aymargeddon aufgekommen
+sind und gegen die wir uns entschiedne haben, weil sie das Spiel zu
+kompliziert machen würden.
+
+Trotzdem sind einige davon Wert, aufgehoben zu werden, weil sie
+vielleicht mal für ein zukünftiges auf Aymargeddon basierendes Spiel
+brauchbar sind.
+
+Propheten
+---------
+
+Propheten sind Erdlingseinheiten, die:
+	  
+  - übers Wasser gehen können 
+  - aus einem Priester erzeugt werden, wenn sie einen Bergtempel errichten
+    und dabei ganz alleine sind im Feld.
+    => Es gibt nur maximal zwei (drei) Pro Gott pro Spiel.
+  - Kampfstärke -2
+  - MOVE_MNT: Sie können den eigenen Berg mit den meisten Priestern
+    (ab 3 * FORTUNE) zu sich hin bewegen. Die Priester bleiben zurück.
+    Der Tempel bleibt erhalten
+
+Spione
+------
+
+Spione sind Erdlingseinheiten, die 
+
+       - Archen klauen können
+       - sich unsichtbar auf fremdem Territorium aufhalten können
+       - keine Kämpfe auslösen
+       - Schnelligkeit und Kampfkraft wie Krieger
+       - feindliche Spione mit gewisser Wahrscheinlichkeit aufdecken können 
+         wenn sie ein Feld betreten => löst Kampf aus.
+       - nur ihr direktes Feld sehen, nicht die Nachbarfelder
+       - den Widerstand in besetzten Heimatstädten organisieren:	
+       	  - die produzierten Krieger alle zu Spionen umwandeln bevor sie
+	    kämpfen.
+       - von Erdlingen aus einem oder mehreren
+	  Helden und/oder Kriegern erzeugt werden
+	  - wenn aus Helden: sterben immer noch für einen Gott
+	  - wenn aus Kriegern: aus mehreren, sonst zu billig
+       - die DIE_ORDER des Gegners überschreiben mit der eigenen
+        (Assasinenfertigkeit)
+
+       - Problem: darf niemals send_message_to_field() benutzen
+       - Problem: Sichtrechte. Spioninfos sollten nicht an Alliierte 
+       	 weitergegeben werden.
+
+weitere Ideen:
+--------------
+
+- Strassen: nur auf Stadt und Land (beschleunigen Bewegung _in_ das
+Feld rein), Kosten: sehr lange Bauzeit für einen (oder mehrere)
+Krieger. Anzahl Krieger, die bauen beschleunigt die Bauzeit anteilig.
+
+- ebenso für Burgen: gibt Verteidigungsbonus +2.
+
+- Artefakte: siehe altes Ragnaroek (erstnochmal da nachlesen)
+
+- Anführer: Geben Bonus pro Kämpfer wie Avatare aber bis max. +10.
+Erdlingseinheit. Kann nur aus einem Held und nur in der Heimatstadt
+ausgebildet werden. Ausbildung dauert sehr lange. Max. 1 Anführer pro
+Feld wirksam. Anführer haben keine Bindung mehr zu einem Gott und
+sterben immer als letztes. Geschwindigkeit ist die eines Kriegers.
+
+- zwei Sorten Avatare. Die einen blockieren, die anderen helfen. (Idee
+von Nicki) oder unterschiedilch starke Avatare die bestimmte
+Fähigkeiten erst mit ihrer Stärke kriegen oder auch wieder verlieren.
+Implementierung wäre durch Ausnahme in unify_mobiles() (nur noch
+Individuen) und Verwendung von COUNT für die Stärke möglich.
+
+- Hurrican: Zerstört Tempel (auch Bergtempel!), versenkt Archen,
+verhindert Bewegung. Bewegt sich selbst zufällig. Wird wie Seuchen
+durch Priester "geheilt" ansonsten wütet er ewig weiter. Archen in
+Nachbarfeldern eines Hurricans bewegen sich mit 1ZE.
+
+
+zusätzliche Ebenen
+------------------
+
+Man könnte zusätzlich zu den Ebenen Gott/Erdling noch weitere
+einführen, das macht natürlich die Balance enorm schwierig. Eine neue
+Ebene muss auf alle anderen angewiesen sein und umgekehrt. Jede Ebene
+erhöht die Anzahl der Sieger.
+
+Beispiel:
+
+Ebene Volk (Erdling wird umbenannt in Herrscher)
+
+- hat Bauern, Handwerker und Händler
+
+- Völker können koexistieren im selben Feld 
+
+- Volksreligiosität verbreitet sich direkt in Reaktion auf
+Götteraktionen (positive und negative) und ähnlich wie Seuchen.
+Gläubiges Volk gibt Mana, egal wo. 
+
+- Erdlinge brauchen Korn, das Bauern produzieren und Händler
+transportieren sowie Dinge, die Handwerker produzieren und Händler
+transportieren.
+
+- Händler bewegen sich so schnell wie Krieger. Bauern gar nicht
+(ausser durch Vermehrung). 
+
+- Gewonnen hat, wer am Schluss am meisten Volk hat.
+
+- Volk vermehrt sich im Frieden und verringert sich bei Krieg und
+Seuche. Bei Flut wandern sie in Nachbarfelder.
+
+- Bauern auf Ebenen produzieren Korn. Bauern in Städten können zu
+Händlern werden. Händler auf Landfeldern zu Bauern.
+
+- ... so oder so ähnlich

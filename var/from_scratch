@@ -1,0 +1,8 @@
+mysqldump -u aymargeddon -p`cat ../+secrets` -c --add-drop-table RAGNAROEK LOCALIZE \
+          > LOCALIZE.sql
+mysqldump -u aymargeddon -p`cat ../+secrets` -c --add-drop-table RAGNAROEK PLAYER \
+          > ./+PLAYER.sql	  
+	  
+./do_sql < RAGNAROEK.sql
+./do_sql < LOCALIZE.sql
+./do_sql < ./+PLAYER.sql

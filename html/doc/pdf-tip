@@ -1,0 +1,75 @@
+From Martin.Spott@uni-duisburg.de Tue Jul  6 17:06:05 1999
+From: Martin Spott <Martin.Spott@uni-duisburg.de>
+Newsgroups: de.comp.os.unix.apps,de.comp.text.tex
+Subject: Re: tex -> pdf
+Date: 24 Jun 1999 18:59:57 GMT
+Organization: home
+Lines: 24
+Message-ID: <7ktv7d$p59$1@foehn.quickstep.cologne.de>
+References: <7kskei$6hb$1@narses.hrz.tu-chemnitz.de> <3771ECC7.C1F5FDA2@starship.python.net>
+NNTP-Posting-Host: foehn.quickstep.cologne.de
+X-Trace: foehn.quickstep.cologne.de 930250797 25769 192.168.48.2 (24 Jun 1999 18:59:57 GMT)
+X-Complaints-To: usenet@foehn.quickstep.cologne.de
+NNTP-Posting-Date: 24 Jun 1999 18:59:57 GMT
+X-Newsreader: TIN [UNIX 1.3 unoff BETA 970705; sun4m SunOS 5.5.1]
+Path: nntp.server.uni-frankfurt.de!grapool30.rz.uni-frankfurt.de!News.Uni-Marburg.DE!news-fra1.dfn.de!news-kar1.dfn.de!akk.uni-karlsruhe.de!news.cologne.de!quickstep.cologne.de!not-for-mail
+Xref: nntp.server.uni-frankfurt.de de.comp.os.unix.apps:2328 de.comp.text.tex:41798
+
+In de.comp.os.unix.apps Berthold H?llmann <bhoel@starship.python.net> wrote:
+
+> 7. latex ; dvipdf ?
+
+Ist das dasselbe wie das 'dvipdfm', welches ich hier rumfliegen habe ?
+
+Beim Weg ueber 'dvips' respektive ueber DVI im Allgemeinen ist vor allem
+darauf Acht zu geben, dass ausschliesslich Type1-Fonts im TeX-Dokument
+verwendet werden. Wie genau das geht, habe ich nicht mehr im Kopf, es gibt
+aber wohl irgeneinen Switch im 'dvips' und die dazugehoerigen TeX-Fonts im
+Type1-Format. Beruecksichtigt man das nicht, dann sieht das PDF-Dokument vor
+allem auf dem Bildschirm ausgesprochen haesslich aus und der Aufbau einer
+Seite im Acrobat Reader dauert ungefaehr die fuenffache Zeit vom dem, was es
+mit Type1-Fonts gebraucht haette, weil dann Bitmap-Fonts in das Dokument
+eingebaut werden. Die eignen sich vielleicht zu allem moeglichen, aber mit
+Sicherheit nicht fuer eine skalierbare Darstellung auf verschiedenen
+Ausgabemedien.
+
+Derleit haessliche Dokumente kursieren leider zuhauf ....
+
+Martin.
+-- 
+ Unix _IS_ user friendly - it's just selective about who its friends are !
+--------------------------------------------------------------------------
+
+
+From Martin.Spott@uni-duisburg.de Tue Jul  6 17:06:14 1999
+From: Martin Spott <Martin.Spott@uni-duisburg.de>
+Newsgroups: de.comp.os.unix.apps,de.comp.text.tex
+Subject: Re: tex -> pdf
+Date: 24 Jun 1999 20:04:25 GMT
+Organization: home
+Lines: 13
+Message-ID: <7ku309$q35$1@foehn.quickstep.cologne.de>
+References: <7kskei$6hb$1@narses.hrz.tu-chemnitz.de> <3771ECC7.C1F5FDA2@starship.python.net> <7ktv7d$p59$1@foehn.quickstep.cologne.de>
+NNTP-Posting-Host: foehn.quickstep.cologne.de
+X-Trace: foehn.quickstep.cologne.de 930254665 26725 192.168.48.2 (24 Jun 1999 20:04:25 GMT)
+X-Complaints-To: usenet@foehn.quickstep.cologne.de
+NNTP-Posting-Date: 24 Jun 1999 20:04:25 GMT
+X-Newsreader: TIN [UNIX 1.3 unoff BETA 970705; sun4m SunOS 5.5.1]
+Path: nntp.server.uni-frankfurt.de!grapool30.rz.uni-frankfurt.de!News.Uni-Marburg.DE!news-fra1.dfn.de!fu-berlin.de!news.cologne.de!quickstep.cologne.de!not-for-mail
+Xref: nntp.server.uni-frankfurt.de de.comp.os.unix.apps:2329 de.comp.text.tex:41800
+
+In de.comp.os.unix.apps Martin Spott <Martin.Spott@uni-duisburg.de> wrote:
+
+> darauf Acht zu geben, dass ausschliesslich Type1-Fonts im TeX-Dokument
+> verwendet werden. Wie genau das geht, habe ich nicht mehr im Kopf, es gibt
+> aber wohl irgeneinen Switch im 'dvips' und die dazugehoerigen TeX-Fonts im
+> Type1-Format. [...]
+
+.... oder jedenfalls die CM-Fonts,
+
+Martin.
+-- 
+ Unix _IS_ user friendly - it's just selective about who its friends are !
+--------------------------------------------------------------------------
+
+

@@ -1,0 +1,823 @@
+#LyX 1.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 221
+\textclass article
+\language english
+\inputencoding auto
+\fontscheme default
+\graphics default
+\paperfontsize default
+\spacing single 
+\papersize Default
+\paperpackage a4
+\use_geometry 0
+\use_amsmath 0
+\use_natbib 0
+\use_numerical_citations 0
+\paperorientation portrait
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\defskip medskip
+\quotes_language english
+\quotes_times 2
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+
+\layout Title
+
+Technisches zu 
+\begin_inset Quotes eld
+\end_inset 
+
+Die letzten Tage von Aymargeddon
+\begin_inset Quotes erd
+\end_inset 
+
+
+\layout Author
+
+Aymargeddon Development Team
+\layout Date
+
+9.10.2003
+\layout Standard
+
+
+\emph on 
+Warnung: Die Information in diesem Dokument ist zu nicht unerheblichen Teilen
+ veraltet.
+\layout Section
+
+Generelles Design
+\layout Standard
+
+Das Spiel besteht aus folgenden Komponenten:
+\layout Enumerate
+
+Eine Relationale Datenbank
+\layout Enumerate
+
+Ein Dämonprozess im Server
+\layout Enumerate
+
+Serverseitige Scripten zur Benutzerinteraktion
+\layout Enumerate
+
+Ein Weltengenerator
+\layout Enumerate
+
+FROGS
+\layout Enumerate
+
+Ein Programm, dass die Integrität der Datenbank überprüft
+\layout Enumerate
+
+Eine Bibliothek für gemeinsame Funktionalität
+\layout Standard
+
+Die Aufgaben dieser Komponenten stellen sich wie folgt dar:
+\layout Section
+
+Datenbank
+\layout Standard
+
+In dieser Datenbank wird der Zustand aller Spielwelten gespeichert.
+ Außerdem alle Spielerdaten, alle Spieleraktionen und alle Nachrichten an
+ Spieler.
+ Sie sorgt mittels ihrer Transaktionen dafür, dass auch bei konkurierendem
+ Zugriff die Datenintegrität immer erhalten bleibt.
+\layout Standard
+
+Wir verwenden MySQL zur Implementierung und PhpMyAdmin zur Administrierung
+ der Datenbank.
+\layout Standard
+
+Felder, die in vielen Tabellen vorkommen und immer wieder das selbe bedeuten:
+\layout Description
+
+GAME Das ist die Id des Spiels.
+ Dadurch können alle Spiele in der selben Datenbank verwaltet werden.
+ Es kann maximal max(unsigned smallint) Spiele gleichzeitig geben.
+\layout Description
+
+LOCATION Feldkoordinaten auf dem Hexraster-Torus.
+ Ein String der Form <x>_<y>.
+ Die maximale Größe der Welt ist max(unsigned smallint) für die Y-Koordinate
+ und max(unsingend smallint)*2 für die X-Koordinate.
+\layout Description
+
+PLAYER,OWNER,...
+ Spieler-Ids.
+ Die Spieler-Ids bezeichnen den Spieler 
+\emph on 
+unabhängig 
+\emph default 
+von seiner Rolle.
+ Sie gilt spielübergreifend.
+ Die maximale Anzahl Spieler ist auf max(signed smallint) beschränkt.
+\layout Subsection
+
+Bewegung und Kämpfe
+\layout Standard
+
+Einheiten, die sich bewegen, bleiben im Feld stehen, werden aber auf nicht
+ available gesetzt.
+ Am Ende des Befehls werden sie in das neue Feld gesetzt.
+ Sie werden nur wieder aktiv, nachdem alle denkbaren Kämpfe ausgeführt wurden.
+\layout Standard
+
+Kämpfe werden als Quasi-Befehl wieder in die Befehlsqueu geschrieben.
+ Erst nach Ablauf dieses Quasi-Befehls wird ausgewertet, welche Einheiten
+ auf welcher Seite am Kampf teilnehmen.
+\layout Standard
+
+Einheiten, die sich zurückziehen, werden ganz normal bewegt.
+\layout Subsection
+
+Tabelle MAP
+\layout Standard
+
+Das ist die zentrale Karte.
+ Für jedes Feld in jedem Spiel gibt es genau einen Eintrag.
+\layout Description
+
+HOME Eigentümer der Heimatstadt.
+ Das Feld ist -1, wenn es eine Heimatstadt ist, aber noch niemand spielt.
+\layout Description
+
+OCCUPANT Besitzer des Feldes
+\layout Description
+
+TERRAIN kann sein eins aus: WATER, CITY, MOUNTAIN, ISLE, PLAIN
+\layout Description
+
+PLAGUE ist das Feld verseucht? Kann eine aus einer Liste von Seuchen sein
+\layout Description
+
+ATTACKER Hier steht der leitende Erdling eines Angriffs drinnen so lange
+ gekämpft wird.
+ 0 sonst.
+ Man kann hier also auch ablesen, ob das Feld umkämpft ist.
+\layout Description
+
+LAST_PRODUCE Zu dieser Zeit wurde zu letzt ein Krieger (bei Städten) bzw.
+ ein Priester (bei Tempeln) produziert.
+ Der Dämon entscheidet anhand dieser Daten, wann neue Einheiten produziert
+ werden.
+\layout Description
+
+FLUXLINE Hier stehen die Richtungen, in die sich Avatare momentan kostenlos
+ bewegen können.
+ Die benachbarten Richtungen kosten 1 MP, alle anderen 2MP.
+ Dieses Feld wird bei einer Änderung der IdS für die gesamte Karte neu berechnet.
+\layout Description
+
+TEMPLE Steht auf 'Y', wenn dort ein Tempel gebaut wurde, auf 'N' sonst.
+\layout Subsection
+
+Tabelle MOBILE
+\layout Standard
+
+In dieser Tabelle werden alle beweglichen Objekte abgespeichert.
+ Das sind also zunächst: Krieger, Helden, Priester, Avatare und Archen.
+ Dabei gibt es nur einen Eintrag für gleichartige Einheiten im selben Feld
+ im selben Spiel.
+\layout Standard
+
+Manche Felder werden nur für manche Objekttypen benutzt.
+ Hier wird also ein bisschen Speicherplatz geopfert um die Struktur möglichst
+ einfach zu halten.
+\layout Description
+
+ID Eine eindeutige ID.
+\layout Description
+
+TYPE Ist einer aus WARRIOR, HERO, PRIEST, AVATAR, ARK
+\layout Description
+
+OWNER Der Spieler, der die Einheit steuert
+\layout Description
+
+ADORING Der Gott, den der Priester anbetet
+\layout Description
+
+COUNT Anzahl
+\layout Description
+
+AVAILABLE Wird auf 0 gesetzt, wenn die Einheit beschäftigt ist (sich also
+ z.B.
+ bewegt)
+\layout Description
+
+STATUS Eines aus HELP, BLOCK, PEACE.
+ Avatarstatus.
+\layout Subsection
+
+Tabelle COMMAND 
+\layout Standard
+
+In diese Tabelle tragen die Scripten die Aktionen der Spieler ein und der
+ Dämon führt diese dann aus.
+ Zusätzlich kommen hier auch noch die Quasi-Befehle des Dämons selber rein.
+ Das ist alles, wo er sich für später dran errinnern will.
+ Zur Zeit wird dieser Mechanismus nur für Kämpfe benötigt.
+\layout Description
+
+TIME Die Zeit zu der das Kommando eingetragen wurde
+\layout Description
+
+ACK Hier wird vermerkt, dass der Dämon das Kommando zur Kenntnis genommen
+ hat, aber noch nicht ausgeführt.
+ Das ist nötig weil bei vielen Kommandos schon am Anfang Nachrichten generiert
+ werden müssen, lange bevor sie ausgeführt werden.
+ Z.B.
+ erhalten die Eigentümer eines Feldes, in das man sich bewegt, eine Nachricht,
+ schon wenn man sich auf den Weg macht.
+\layout Description
+
+DONE Hier werden abgearbeitete Befehle vermerkt
+\layout Standard
+
+Alle drei Felder sind Timestamps und müssen immer GMT enthalten!
+\layout Subsection
+
+Tabelle MESSAGE
+\layout Standard
+
+In diese Tabelle trägt der Dämon Nachrichten an die Spieler ein und die
+ Scripten zeigen diese dann an.
+ Nachrichten an Alle Spieler müssen für jeden Spieler einzeln eingetragen
+ werden.
+ Wenn man es anders machen wollte, müsste man wiederum für jeden Spieler
+ vermerken, welche Nachrichten er nicht mehr sehen will, was fast auf das
+ selbe rauskommt.
+ 
+\layout Description
+
+TIME Der Zeitpunkt, an dem die Nachricht generiert wurde
+\layout Description
+
+FROM Der Absender.
+ 0 bedeutet, dass es eine automatisch generierte Nachricht des Dämon ist.
+\layout Description
+
+TO Der Empfänger
+\layout Description
+
+TYPE Message, Error, Warning, ...
+\layout Description
+
+MSG Die eigentliche Meldung.
+ Bzw.
+ ein Tag, dass erst noch lokalisiert werden muss (Siehe Tabelle LOCALIZE)
+\layout Description
+
+ARG1...4 Die Argumente für die Lokalisierung.
+\layout Subsection
+
+Tabelle GAME 
+\layout Standard
+
+Hier stehen allgemein Infos das Spiel betreffend.
+ Pro Spiel gibt es nur einen Eintrag.
+\layout Description
+
+SIZE Die Größe des Spiels.
+ Höhe und halbe Breite des Spielfeldes.
+ Maximale Anzahl Erdlinge.
+\layout Description
+
+FORTUNE Der Glücksfaktor
+\layout Description
+
+LAST_TEMPLE Die LOCATION des letzten fertig gestellten Tempels.
+\layout Description
+
+TEMPLE_SIZE Größe des nächsten Tempels.
+\layout Subsection
+
+Tabelle PLAYER 
+\layout Standard
+
+Hier wird spielunabhängig gespeichert, was es alles über einen Spieler zu
+ wissen gibt.
+ Pro Spieler ein Eintrag.
+\layout Subsection
+
+Tabelle ALLIANCE 
+\layout Standard
+
+Hier wird beschrieben welche Freunde und Feinde man hat.
+ Pro Spieler-Spieler-Relation in jedem Spiel höchstens ein Eintrag.
+ Status kann sein 
+\begin_inset Quotes eld
+\end_inset 
+
+FRIEND
+\begin_inset Quotes erd
+\end_inset 
+
+, 
+\begin_inset Quotes eld
+\end_inset 
+
+FOE
+\begin_inset Quotes erd
+\end_inset 
+
+ oder 
+\begin_inset Quotes eld
+\end_inset 
+
+NEUTRAL
+\begin_inset Quotes erd
+\end_inset 
+
+.
+ Wenn kein Eintrag vorhanden ist, wird neutraler Status angenommen.
+ 
+\layout Standard
+
+Man beachte dass Spieler A, Spieler B als Freund ansehen kann, wärend umgekehrt
+ Spieler B Spieler A als Feind betrachtet!
+\layout Subsection
+
+Tabelle GOD 
+\layout Standard
+
+Hier werden Daten für die Götter gespeichert.
+ Pro Gott und Spiel ein Eintrag.
+\layout Description
+
+DEATH_AVATAR Die Anzahl der für diesen Gott in diesem Spiel gestorbenen
+ Avatare
+\layout Description
+
+DEATH_HERO dsgl.
+ für Helden
+\layout Description
+
+ARRIVAL Hier entstehen neue Avatare.
+ Dieser Ort wird nach jedem Tempelbau diesen Gottes neu berechnet.
+\layout Subsection
+
+Tabelle LOCALIZE 
+\layout Standard
+
+Mit Hilfe dieser Tabelle kann die Darstellung in verschiedenen Sprachen
+ erfolgen.
+\layout Description
+
+TAG Der Eintrag mit dem man wiederkennt, um welche Message es sich handelt
+\layout Description
+
+LANG Die Sprache des Eintrags.
+ Zur Zeit werden nur 
+\begin_inset Quotes eld
+\end_inset 
+
+DE
+\begin_inset Quotes erd
+\end_inset 
+
+ und 
+\begin_inset Quotes eld
+\end_inset 
+
+EN
+\begin_inset Quotes erd
+\end_inset 
+
+ unterstützt.
+\layout Description
+
+TEXT Der Text der Nachricht in den einzelnen Sprachen.
+ Dabei wird mittels 
+\begin_inset Quotes eld
+\end_inset 
+
+%n
+\begin_inset Quotes erd
+\end_inset 
+
+ das n.te Argument eingefügt.
+ 
+\begin_inset Quotes eld
+\end_inset 
+
+%%
+\begin_inset Quotes erd
+\end_inset 
+
+ gibt ein Prozentzeichen aus.
+ 
+\layout Subsection
+
+Tabelle ROLE 
+\layout Standard
+
+Hier wird die Rolle eines Spielers in einem Spiel beschrieben.
+ Pro Mitspieler in jedem Spiel ein Eintrag.
+\layout Section
+
+Dämon
+\layout Standard
+
+Dieses Programm liest Spieleraktionen aus der Datenbank, berechnet die sich
+ daraus ergebenden Ereignisse und schreibt Nachrichten an die Spieler zurück
+ in die Datenbank.
+\layout Standard
+
+Wir verwenden Perl 5.8 zur Implementierung des Servers.
+\layout Section
+
+Scripten
+\layout Standard
+
+Sie lesen den Zustand der Welt und die Nachrichten aus der Datenbank, halten
+ Session-Informationen vor und bereiten dies alles in HTML zur Darstellung
+ mittels eines üblichen Web-Browsers auf.
+ Schließlich schreiben sie die Aktionen des Benutzers in die Datenbank und
+ verändern den Aktivitätsstatus von beweglichen Einheiten.
+\layout Standard
+
+Wir verwenden EmbPerl auf Apache zur Implementation.
+ Siehe: http://perl.apache.org/embperl/.
+ EmbPerl scheint genauso einfach und schnell zu sein wie PHP und hat für
+ uns den zusätzlichen Vorteil, dass wir gemeinsame Bibliotheken mit den
+ anderen Komponenten des Servers benutzen können.
+\layout Subsection
+
+Seiten
+\layout Standard
+
+Folgende Seitenlayouts werden benötigt.
+ Auf allen Seiten findet man ein Hauptmenu.
+ Auf Login und Home gibt es  auch noch ein Aymaegeddon-Banner
+\layout Description
+
+Login Hier gibt es neben News einen kurzen Einleitungstext sowie eine Möglichkei
+t sich zu registrieren und mal in einem Fakespiel zu schnuppern.
+\layout Description
+
+Home Liste aller Spiele, pro Spiel: Liste aller Nachrichten, aller Ereignisse,
+ Statistik
+\layout Description
+
+Karte Aktuelles Feld, Beschreibung, Befehle
+\layout Description
+
+Spieler Beschreibung des Spielers
+\layout Description
+
+Rolle Beschreibung der Rolle
+\layout Standard
+
+Feldnamen/-koordinaten sind überall immer zur Karte mit dem Feld als aktuellem
+ Feld verlinkt.
+ Rollennamen sind zu der entsprechenden Rollenseite verlinkt.
+\layout Subsection
+
+Karte
+\layout Standard
+
+Zentrale Komponente der Darstellung ist eine Karte des Hex-Torus.
+ Dazu werden 3 Tabellenzellen pro Feld verwendet, nämlich so:
+\layout Standard
+\added_space_bottom 0.3cm 
+<BILD FEHLT>
+\layout Standard
+
+Diese Karte ist scrollbar.
+ Ein Feld ist immer als aktuelles Feld umrandet.
+\layout Subsection
+
+Farbdarstellung
+\layout Standard
+
+Wasserfelder blau, Landfelder, Archen und Inseln in Erdfarben.
+ Dabei gibt es 5 Farbtöne für eigene, befreundete, neutrale, feindliche
+ sowie unbesiedelte Felder.
+ Tempel und Avatare werden in 5 verschiedenen Götterfarben (eher grell)
+ dargestellt, wieder je eine für eigene, befreundete, feindliche sowie neutrale
+ Götter.
+ Die 
+\begin_inset Quotes eld
+\end_inset 
+
+eigene
+\begin_inset Quotes erd
+\end_inset 
+
+ Farbe kann auf andere Erdlinge/Götter verändert werden.
+ 
+\layout Subsection
+
+Icons
+\layout Standard
+
+Folgende Icons werden benötigt.
+\layout Standard
+
+Zentriert:
+\layout Itemize
+
+IdS
+\layout Itemize
+
+Eigentum auf Wasser (Schiff)
+\layout Itemize
+
+Städte
+\layout Itemize
+
+Tempel
+\layout Itemize
+
+Heimatstädte
+\layout Itemize
+
+Inseln
+\layout Itemize
+
+Berge
+\layout Standard
+
+Nicht zentriert:
+\layout Itemize
+
+Avatare (oben bis zu vier)
+\layout Itemize
+
+Archen (unten, nur eine)
+\layout Itemize
+
+Kampf (unten)
+\layout Itemize
+
+Avatarkampf (oben)
+\layout Section
+
+Weltengenerator
+\layout Standard
+
+Dieses Programm wird einmal zu Beginn eines neuen Spiels aufgerufen um eine
+ neue Welt in der Datenbank zu generieren.
+ Der Generator verteilt die verschiedenen Geländetypen: Wasser, Manapol,
+ Insel, Berg, Stadt, Heimatstadt, Land.
+ Er erhält die Anzahl der Erdlinge als Parameter und ermittelt alle anderen
+ Werte daraus.
+ 
+\layout Standard
+
+Die Game-ID kann automatisch als die erste Freie in der DB ermittelt werden.
+ Dieses Programm sollte als erstes entwickelt werden, damit man eine sinnvolle
+ Testumgebung für die anderen Teile des Systems hat.
+\layout Standard
+
+Wir verwenden Perl 5.8 zur Implementation.
+\layout Section
+
+FROGS
+\layout Standard
+
+FROGS steht für 
+\series bold 
+F
+\series default 
+ramework for 
+\series bold 
+R
+\series default 
+ealtime 
+\series bold 
+O
+\series default 
+nline 
+\series bold 
+G
+\series default 
+ames of 
+\series bold 
+S
+\series default 
+trategy.
+ Dort werden alle Funktionalitäten versammelt, die nicht nur von Aymargeddon,
+ sondern auch von anderen Browser-MMOGs verwendet werden können.
+ Das sind im einzelnen:
+\layout Itemize
+
+Nachrichtenverwaltung
+\layout Itemize
+
+Befehlsverwaltung
+\layout Itemize
+
+Spielerverwaltung
+\layout Itemize
+
+Spielverwaltung
+\layout Itemize
+
+Rollenverwaltung
+\layout Itemize
+
+Verschiedene Standardkarten (hier erstmal nur Hextorus)
+\layout Itemize
+
+Bewegliche Einheiten
+\layout Itemize
+
+Lokalisierung
+\layout Itemize
+
+Sessionhandling
+\layout Itemize
+
+Bestenlisten
+\layout Itemize
+
+Datenbank
+\layout Standard
+
+FROGS basiert dabei auf der Annahme, dass bestimmte Felder in bestimmten
+ Tabellen vorhanden sein müssen.
+ Außerdem werden die konkreten Funktionalitäten über Hooks in das Framework
+ eingehängt.
+ So wird z.B.
+ für jeden Befehl ein Name festgelegt mit drei Hooks:
+\layout Description
+
+test Diese Funktion tested, ob der Befehl überhaupt ausführbar ist.
+\layout Description
+
+ack Diese Funktion wird ausgeführt, wenn der Befehl zum ersten mal vom Dämon
+ zur Kenntnis genommen wird.
+\layout Description
+
+do Diese Funktion führt schließlich den Befehl aus.
+ Dazu sind am Anfang noch weitere tests nötig.
+\layout Standard
+
+Ziel für Frogs ist, dass man relativ einfach neue Browserspiele bauen kann.
+ Es wird auch ein Satz von Standardseiten in EmbPerl mitgeliefert mit denen
+ Funktionen wie Einloggen, Spielverwaltung, Bestenlisten etc.
+ schon vorhanden sind.
+\layout Standard
+
+Hier noch eine Liste von FROGS-Modulen und was sie tun sollen:
+\layout Description
+
+Map.pm Dies ist eine Basisklasse für alle denkbaren Topologien.
+ Jedes Modul einer abgeleiteten Klasse sollte auch eine Klasse Location
+ zur Verfügung stellen.
+ Außerdem müssen abgeleitete Klassen einige Funktionen mitbringen, damit
+ die in Map vorhandenen Funktionen funktionieren.
+\layout Description
+
+HexTorus.pm Dies ist die von Aymargeddon verwendete Topologie.
+ Kann aber auch von anderen Spielen verwendet werden.
+ Abgeleitet von Map.pm.
+ Stellt auch die Klasse Location zur Verfügung.
+\layout Description
+
+Checker.pm Hier werden die verallgemeinerbaren Funktionen des Checkers zur
+ Verfügung gestellt.
+\layout Description
+
+Scheduler.pm Hier wird die Befehlsqueu durchgegangen und die oben definierten
+ Funktionen werden aufgerufen.
+\layout Description
+
+Localize.pm Hier wird die Lokalisierung ausgeführt.
+\layout Description
+
+DataBase.pm Hier werden Basisdatenbankfunktionalitäten zur Verfügung gestellt
+\layout Description
+
+...
+ weitere Module noch unklar
+\layout Standard
+
+Auch FROGS wird in Perl 5.8 bzw.
+ EmbPerl implementiert.
+\layout Section
+
+Checker
+\layout Standard
+
+Dieses Programm überprüft, ob die Daten in der Datenbank noch konsistent
+ sind.
+ Dabei werden die Checks zu algorithmisch ähnlichen Gruppen zusammengefasst
+ und durch allgemein Funktionen ausgeführt.
+ Bisher sind folgende Funktionen identifiziert worden:
+\layout Enumerate
+
+Jeder Eintrag in Tabelle X muß auch in Tabelle Y existieren.
+ 
+\layout Enumerate
+
+N Einträge in der selben Tabelle müssen eine logische Beziehung erfüllen
+\layout Standard
+
+Diese allgemeinen konfigurierbaren Check-Funktionen sollten auch Teil von
+ FROGS werden.
+\layout Standard
+
+Der Checker überprüft im einzelnen (Zahlen beziehen sich auf obige Funktionslist
+e):
+\layout Itemize
+
+Jede Spielnummer muß in der Tabelle GAME zu finden sein (1).
+\layout Itemize
+
+sämtliche Spieler-IDs müssen in ROLE zum selben Spiel passen (1).
+\layout Itemize
+
+sämtliche Spieler-IDs müssen in PLAYER vorhanden sein (1).
+\layout Itemize
+
+Location muß immer in MAP vorhanden sein.
+\layout Itemize
+
+Location muß immer die kanonische Form haben (2).
+\layout Itemize
+
+HOME nur gesetzt in MAP, wenn TERRAIN = CITY (desgl.
+ für GOD_HOME und MOUNTAIN) (2).
+\layout Itemize
+
+Keine Zwei Erdlinge im selben Feld, außer es ist Kampf.
+\layout Itemize
+
+Alle Einheiten in COMMANDS müssen inaktiv sein.
+\layout Itemize
+
+Nur Priester ADORING in MOBILE (2).
+\layout Itemize
+
+AVAIABLE immer kleiner oder gleich COUNT in MOBILE (2)
+\layout Itemize
+
+Während eines Kampfes nur aktive Erdlinge eines Spielers im selben Feld.
+\layout Itemize
+
+Keine blockenden Avatare von zwei feindlichen Spielern im selben Feld ohne
+ Kampf .
+\layout Itemize
+
+Jedes Tag in MESSAGE sollte in LOCALIZE vorhanden sein.
+ Mindestens in einer Sprache.
+ Warnung, wenn nicht in jeder Sprache.
+\layout Itemize
+
+Die Anzahl der Argumente in MESSAGES sollte mit den nicht doppelten %-Zeichen
+ in LOCALIZE übereinstimmen (für jede Sprache).
+ 
+\layout Itemize
+
+CREATE <= EXEC <= ACK <= DONE in COMMAND
+\layout Standard
+
+Dieses Programm sollte möglichst früh entwickelt werden, da es vor allem
+ im Entwicklungsprozess benötigt wird.
+\layout Standard
+
+Wir verwenden Perl 5.8 zur Implementation.
+\layout Section
+
+Bibliothek
+\layout Standard
+
+Hier werden alle Funktionalitäten versammelt, die von mindestens zwei der
+ Komponenten (Scripten, Generator, Dämon, Check) verwendet werden.
+ 
+\layout Standard
+
+Dabei bleiben in dieser Bibliothek nur Sachen, die nicht noch allgemeiner
+ sind und somit in den FROGS-Teil gehören.
+ Momentan ist noch unklar, ob da überhaupt was übrig bleibt.
+\layout Standard
+
+Wir verwenden Perl 5.8 zur Implementation.
+\layout Section
+
+
+\lang german
+Copyright
+\layout Standard
+
+
+\lang german
+(c) 2003 Aymargeddon Development Team
+\layout Standard
+
+
+\lang german
+Permission is granted to copy, distribute and/or modify this document under
+ the terms of the GNU Free Documentation License, Version 1.1 or any later
+ version published by the Free Software Foundation; with no Invariant Sections,
+ with no Front-Cover Texts, and with no Back-Cover Texts.
+ A copy of the license is available at http://www.aymargeddon.de.
+\the_end

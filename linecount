@@ -1,0 +1,26 @@
+#!/bin/sh
+
+echo "Lines of Code:"
+
+echo "Embedded Perl:" 
+cat html/*.epl | wc -l
+
+echo "FROGS:"
+cat src/FROGS/*.pm src/FROGS/*.pl | wc -l
+
+echo "other Perl:"
+cat src/*.pl src/*.pm | wc -l
+
+echo "SQL:"
+cat var/RAGNAROEK.sql var/LOCALIZE.sql | wc -l
+
+echo "scripts:"
+cat var/delete_game linecount var/do_sql var/extract_structure_and_localize var/backup var/from_scratch \
+    agrep push doc/push_rules src/FROGS/speed_scheduler src/FROGS/start_scheduler | wc -l
+
+echo "------------------"
+echo "total:"
+cat var/delete_game html/*.epl src/FROGS/*.pm src/FROGS/*.pl src/*.pl src/*.pm \
+   linecount var/do_sql var/extract_structure_and_localize var/backup var/from_scratch \
+    agrep push doc/push_rules src/FROGS/speed_scheduler src/FROGS/start_scheduler \
+    var/RAGNAROEK.sql var/LOCALIZE.sql | wc -l

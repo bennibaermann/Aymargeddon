@@ -1,0 +1,182 @@
+[- use FROGS::Config qw($conf); -]
+<html>
+<head><link rel="stylesheet" type="text/css" href="aymargeddon.css">
+<title>Aymargeddon</title></head>
+[-
+ $| = 1;
+  $udat{-current} = 'player.epl';
+	
+  use Aymargeddon;
+ use Data::Dumper;
+  $db = DataBase->new();
+  $id = 0;
+  if($udat{-id}){
+    $id = $udat{-id};
+  }else{
+    $id = $db->authenticate($fdat{'login'},$fdat{'passwd'},
+			    $fdat{'passwd2'},$fdat{'passwd3'});
+  }
+ if($udat{-lang}){
+   $db->set_language($udat{-lang});
+   #set language in Database in PLAYER.LANGUAGE
+   $db->update_hash('PLAYER',"PLAYER=$id",{'LANGUAGE' => $udat{-lang}});
+   $db->commit();
+ }else{
+  # set language according to PLAYER.LANGUAGE
+  # read_player() returns the first DB line in ARRAY format
+  ($udat{-lang}) = $db->read_player($id,'LANGUAGE');
+ }
+
+  $escmode = 0;
+
+ # TODO: klappt nich :-(
+ # $out = '<body style="font-size:10pt" bgcolor="'.$conf->{-COLOR}->{-EMPTY}.'">';
+ $out = '<body style="line-height:12pt;font-size:10pt">';
+-]
+[+$out+]
+
+[$ if $id $] [# logged in - show game list, messages, etc. pp. #]
+
+  [-
+    $udat{-id} = $id;
+
+    # switch game-id
+    $udat{-game} = $fdat{'game'} if exists $fdat{'game'};
+    $aym = Aymargeddon->new($udat{-game},$id,$db) if exists $udat{-game};
+
+    if(exists $fdat{'game'}){
+      $udat{-loc} = $aym->startfield();
+      $udat{-loc} =~ /^(\d+)\_(\d+)$/;
+      my ($x,$y) = ($1, $2);
+      my $size = $aym->get_size();
+      $udat{-xoff} = $x -$size;
+      $udat{-yoff} = $y;
+    }
+
+
+
+    # register for selected role in game
+    if($fdat{'role'} and $fdat{'charname'}){
+      my $return = $aym->new_role($fdat{'role'},
+				  $fdat{'charname'},
+				  $fdat{'gender'});
+      #	     $fdat{'description'});
+      unless($return){
+	print OUT "<strong>Error: cant register role.</strong><p>";
+      }
+    }
+
+   # delete all messages if wanted.
+   # TODO: write timestamp in link and delete only to this time
+   if($fdat{delete_all_messages} == 1){
+     $aym->delete_all_messages($fdat{time});
+     $db->commit();
+   }
+
+    Execute("menu.epl");
+
+    $own_games = $db->games_of_player($id);
+    $open_games = $db->open_games("HOME=-1");
+
+    %such = ();
+    for my $og (@$own_games){
+      $such{$og->[0]} = 1;
+    }
+
+    @real_open_games = ();
+    for $og (@$open_games){
+      push @real_open_games, $og unless exists $such{$og->[0]};
+    }
+
+    ($rn) = $db->read_player($id, 'REALNAME') unless exists $udat{-game};
+  -]
+
+  [$ if not exists $udat{-game} $]
+  <hr>
+  [+ $db->loc('PLAYER_WELCOME').' Aymargeddon '.$rn +]!<p>
+  [$ endif $]
+
+  <hr>
+  <table width=100% border=0><colgroup><col width="200"><col></colgroup>
+  <tr><td valign="top" bgcolor="#b8a266">
+  <p>[+ $db->loc('PLAYER_OWN_GAMES') +]<p>
+  [$ foreach $og (@$own_games) $]
+    [- $og = $og->[0]; ($og_name) = $db->read_game($og,'NAME'); -]
+    <a href="player.epl?game=[+$og+]">[+$og_name+]</a><p>
+  [$ endforeach $]
+  [$ if $#{@$own_games} < 0 $]
+    [+ $db->loc('PLAYER_GAMES_NONE') +]<p>
+  [$ endif $]
+  <hr>
+  <p>[+ $db->loc('PLAYER_OPENGAMES') +]:<p>
+  [$ foreach $og (@real_open_games) $]
+    [- $og=$og->[0]; ($og_name) = $db->read_game($og,'NAME'); -]
+    <a href="player.epl?game=[+$og+]">[+$og_name+]</a><p>
+  [$ endforeach $]
+  [$ if $#{@real_open_games} < 0 $]
+    [+ $db->loc('PLAYER_GAMES_NONE') +]<p>
+  [$ endif $]
+  <hr></td>
+  <td valign="top" bgcolor="#fcffd9">
+  [$ if not exists $udat{-game} $]
+
+    [+ $db->loc('PLAYER_CHOOSE_GAME') +]
+
+  [$ elsif exists $fdat{'cmd'} $]
+   [- Execute('command_frames.epl') -]
+  [$ elsif $such{$udat{-game}} $]
+   <center>
+
+    [# [-
+      ($gn) = $db->read_game($udat{-game},'NAME');
+      my @list = $aym->charname($udat{-id});
+      $cn = $list[0];
+    -]
+    [+ $db->loc('PLAYER_WELCOME') +] <strong>[+ $gn +]</strong>, [+ $cn +].<p>
+    <hr> #]
+
+
+    [-
+      $messages = $aym->read_messages();
+     $now = $db->now();
+     -]
+    <strong>[+ $db->loc('PLAYER_MESSAGES_HEADING') +]</strong><p>
+    <a href="player.epl?delete_all_messages=1&time=[+$now+]">
+   [+ $db->loc('PLAYER_DELETE_MESSAGES')+]</a><p>
+    [$ foreach $msg (@$messages) $]
+      [+ $aym->show_message($msg->[0]) +]<br>
+    [$ endforeach $]
+    [$ if $#{@$messages} < 0 $]
+      [+ $db->loc('PLAYER_NO_MESSAGE') +]
+    [$ endif $]
+     <p>
+[# we dont show events in a global list any more
+     <strong>[+ $db->loc('PLAYER_EVENTS') +]</strong><p>
+    [-
+      $events = $aym->role_events();
+     -]
+    [$ foreach $e (@$events) $]
+      [+ $aym->show_event($e->{'ID'}) +]<p>
+    [$ endforeach $]
+    [$ if $#{@$events} < 0 $]
+      [+ $db->loc('PLAYER_NO_EVENTS') +]<p>
+    [$ endif $]
+#]
+     <strong>[+ $db->loc('PLAYER_STATISTIC') +]</strong><p>
+     [+ $aym->show_statistic() +]
+    <p><a href="mapframe.epl">[+ $db->loc('PLAYER_TO_MAP') +]</a>
+   </center>
+  [$ else $]
+    [- Execute('role_select.epl'); -]
+  [$ endif $]
+  </td></tr></table>
+[$ else $] [# wrong login #]
+
+  [- Execute("menu.epl"); -]
+  <p><p>[+ $db->loc('LOGIN_FAILED') +]<p>
+  [- print OUT $db->loc('ERROR_NO_LOGIN'); -]
+
+[$ endif $]
+</body></html>
+
+

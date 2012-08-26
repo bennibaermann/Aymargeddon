@@ -1,0 +1,18 @@
+In RAGNAROEK.sql, is the export from the testing-database,
+generated with the script extract_structure_and_localize
+
+In LOCALIZE.sql the same but only for table LOCALIZE.
+
+The script backup generates a backup in ./+RAGNAROEK_BACKUP.sql
+
+The script from_scratch generates a complete empty database but with
+the old PLAYER and LOCALIZE tables.
+
+The script do_sql executes his first command with mysql
+
+in my.cnf is my configuration file for mysql to work with
+InnoDB tabletype. make shure InnoDB tabletype works for you. mysql
+sets default tabletype to MyISAM if it does not work without
+complaining! But FROGS and Aymargeddon wont work without the
+transaction-capability from InnoDB
+

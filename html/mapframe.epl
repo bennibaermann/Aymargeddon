@@ -1,0 +1,20 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Frameset//EN"
+   "http://www.w3.org/TR/html4/frameset.dtd">
+<html>
+  <head>
+    <title>Aymargeddon</title>
+  </head>
+
+  [- $udat{-current} = 'mapframe.epl'; -]
+
+  <frameset rows="34,*">
+    <frame src="menu_frames.epl" name="menu" /> 
+    <frameset cols="*,200">
+      <frame src="map.epl" name="map" />
+      <frame src="field.epl?x=0,y=0" name="field" />
+    </frameset>
+    <noframes>
+      keine frames
+    </noframes>
+  </frameset>
+</html>

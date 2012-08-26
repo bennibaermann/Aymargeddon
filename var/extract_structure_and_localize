@@ -1,0 +1,4 @@
+mysqldump -u aymargeddon -p`cat ../+secrets` -d --add-drop-table \
+	  RAGNAROEK > RAGNAROEK.sql
+mysqldump -u aymargeddon -p`cat ../+secrets` -c --add-drop-table RAGNAROEK LOCALIZE \
+	  > LOCALIZE.sql

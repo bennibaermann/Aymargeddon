@@ -1,0 +1,149 @@
+#################
+Datenbankzugriffe
+#################
+
+Alles, was einen SQL-Befehl beinhaltet sollte in
+DataBase.pm. zusätzlich vielleicht auch noch sehr eng damit
+zusammenhängende Funktionen. Alles abstraktere sollte in extramodule.
+
+Generelle Frage:
+================
+
+embperl sollte nur die aktionen überhaupt zur verfügung stellen, die
+möglich sind (soweit zu diesem zeitpunkt bekannt).
+
+soll man darauf vertrauen, dass die embperlseite bestimmte sachen
+schon abgetestet hat? oder muss man die alle nochmal auf serverseite
+testen? Antwort: wohl ja, da sich zwischen eintragen in die
+befehlsqueu und ausführung des befehls der spielstand verändert haben
+kann. ausnahmen sind unten eingeklammert.
+
+Hier jetzt mal eine möglichst vollständige Liste aller
+Datenbankzugriffe, als Grundlage für Designüberlegungen.
+
+Von Serverseite:
+================
+
+- lies alle aktuellen befehle 
+- schreibe message
+
+Alles, was trotz zeitverzögerung schon vorher von embperlseite
+abgeklärt hätte werden können ist eingeklammert.
+
+einzelne befehle:
+--------------------
+- passwort ändern (nicht in befehlsqueu sondern sofort?)
+	- authentifizieren
+	- schreiben in PLAYER
+
+- registrieren (nicht in befehlsqueu sondern sofort?)
+	- schreiben in PLAYER
+
+- abmelden (nicht in befehlsqueu sondern sofort?)
+	- authentifizieren
+	- löschen in PLAYER
+
+- status ändern
+	- test ob spieler vorhanden
+	- schreiben in ALLIANCE
+	
+- anmelden in einzelnen spielen (nicht in befehlsqueu sondern sofort?)
+	- test ob spieler schon in spiel vorhanden
+	- schreiben in ROLE
+
+- abmelden aus spielen (nicht in befehlsqueu sondern sofort?)
+	- löschen aus ROLE
+--------------------
+- erdlingsbewegen:
+	- (test ob manapol)
+	- test ob arche auf wasser
+	- test ob kampf
+	- test wer kämpft
+	- schreiben in MOBILE
+	- schreiben in MAP
+	- schreiben in COMMAND
+
+- tempel bauen:
+	- test ob tempelfeld des gottes (kann sich ändern wg. überschwemmung)
+	- test ob richtiger priester da
+
+- sterbereihenfolge:
+	- (testen ob reihenfolge gültig)
+	- schreiben in EARTHLING [ACHTUNG: neue Tabelle!]
+
+- gott für tote helden festlegen:
+	- testen ob gott gültig
+	- schreiben in EARTHLING
+--------------------
+- bei allen gottbefehlen: testen ob manna reicht
+
+- avatar erschaffen:
+	- ort ermitteln aus MAP und MOBILE
+	- schreiben in MOBILE
+
+- held weihen
+	- testen ob held noch vorhanden (und aktiv?)
+	- schreiben in MOBILE
+
+- priester erleuchten
+	- testen ob krieger noch vorhanden (und aktiv?)
+	- testen ob sichtrecht
+	- schreiben in MOBILE
+
+- avatare bewegen
+	- ähnlich wie erdlingsbewegen nur zusätzliche tests
+	- avatarstatus beachten (evntl. verändern)
+
+- verseuchen
+	- noch unklar, weil seuchen noch unklar
+
+- sintfluten
+	- test ob benachbartes wasserfeld
+	- liest und schreibt aus MAP
+
+- avatarstatus ändern
+	- testen ob avatar da.
+
+- tempel zerstören
+	- ...
+
+- glücksfaktor verändern
+	- ...
+
+- arche bauen
+	- ...
+
+Von Clientseite:
+================
+
+- authentifizieren
+- liste aller spiele
+- liste aller spiele mit freien positionen (mit rolle)
+- liste aller spieler
+- liste aller rollen pro spiel
+- infos ueber einen spieler 
+- infos ueber eine rolle eines spielers in einem spiel
+
+- karte lesen (sichtregeln beachten!)
+- infos ueber ein feld lesen (auch aus MOBILE) (sichtregeln beachten!)
+
+- liste der möglichen befehle in einem feld ermitteln
+	(vielfältige tests, viele davon stehen oben bei den serverbefehlen)
+
+- liste aller nachrichten 
+- liste aller nachrichten ein feld betreffend
+
+Von create.pl:
+==============
+
+- lies das erste leere spiel aus GAME
+- schreibe in MAP
+
+Von checker.pl: 
+===============
+
+- sehr spezielle einzelne zugriffe (Check.pm selbst definiert keine
+Struktur)
+
+
+

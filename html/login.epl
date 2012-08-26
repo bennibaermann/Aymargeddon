@@ -1,0 +1,75 @@
+<html>
+<head></head>
+<body>
+[-
+  $udat{-current} = 'login.epl';
+
+  use FROGS::DataBase;
+  $db = DataBase->new();
+  $db->set_language($udat{-lang}) if exists $udat{-lang};
+
+  if(exists $udat{-id}){  # we are logged in, so log out (deleting user-data)
+    delete $udat{-id};
+    delete $udat{-game};
+  }
+
+  Execute("menu.epl");
+
+  $escmode = 0;
+-]
+<hr>
+
+[$ if $fdat{'mode'} eq 'register' $] [# register form #]
+
+  [+ $db->loc('LOGIN_REG_FORM_HEAD') +]<p>
+  <form method="get" action="login.epl">
+    [+ $db->loc('LOGIN_USERNAME') +]: <input type="text" name="newlogin" size="20" maxlength="20"><p>
+    [+ $db->loc('LOGIN_REALNAME') +]: <input type="text" name="realname" size="30" maxlength="30"><p>
+    [+ $db->loc('LOGIN_EMAIL') +]: <input type="text" name="email" size="40" maxlength="40"><p>
+    <input type="submit" value="[+ $db->loc('FORM_OK_BUTTON') +]">
+  </form>
+
+[$ elsif defined $fdat{'newlogin'} $] [# validate data from register form #]
+
+  [- $new_passwd = $db->new_account($fdat{'newlogin'},
+				    $fdat{'realname'},
+				    $fdat{'email'},
+				    $udat{-lang}); -]
+  [$ if $new_passwd $]
+
+    [+ $db->loc('LOGIN_REG_OK_HEAD',$lang) +]<p>
+    [+ $db->loc('LOGIN_USERNAME') +]: [+ $fdat{'newlogin'} +]<p>
+    [+ $db->loc('LOGIN_REALNAME') +]: [+ $fdat{'realname'} +]<p>
+    [+ $db->loc('LOGIN_EMAIL') +]: [+ $fdat{'email'} +]<p>
+    [+ $db->loc('LOGIN_REG_OK_TAIL') +]
+
+  [$ else $]
+
+    [+ $db->loc('LOGIN_REG_ERROR') +]<p>
+		
+  [$ endif $]
+
+  <p><a href="login.epl">[+ $db->loc('LOGIN_REG_RETURN') +]</a>
+
+[$ else $] [# ask for login-data or register #]
+
+  [+ $db->loc('LOGIN_WELCOME') +]<p>
+  <form method="get" action="player.epl">
+    [+ $db->loc('LOGIN_USERNAME') +]: <input type="text" name="login"
+	    size="20" maxlength="20">
+    [+ $db->loc('LOGIN_PASSWORD') +]: <input type="password" name="passwd"
+	    size="20" maxlength="20">
+    <p>
+    [+ $db->loc('CHANGE_PASSWORD') +]:
+	    <input name="passwd2" type="password" size="20" maxlength="20">
+	    <input name="passwd3" type="password" size="20" maxlength="20">
+    <p>
+    <input type="submit" value="[+ $db->loc('FORM_OK_BUTTON') +]">
+  </form>
+  [+ $db->loc('LOGIN_REG_MSG') +]
+  <a href="login.epl?mode=register">[+$db->loc('LOGIN_REG_LINK')+]</a>.
+
+[$ endif $]
+
+</body>
+</html>

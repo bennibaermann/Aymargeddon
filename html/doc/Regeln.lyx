@@ -1,0 +1,2397 @@
+#LyX 1.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 221
+\textclass article
+\language german
+\inputencoding latin1
+\fontscheme default
+\graphics default
+\paperfontsize 11
+\spacing single 
+\papersize a4paper
+\paperpackage a4
+\use_geometry 0
+\use_amsmath 0
+\use_natbib 0
+\use_numerical_citations 0
+\paperorientation portrait
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\defskip bigskip
+\quotes_language polish
+\quotes_times 2
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+
+\layout Title
+
+Die letzten Tage von Aymargeddon
+\layout Author
+
+Aymargeddon Development Team
+\layout Date
+
+17.
+ April 2005
+\layout Standard
+
+
+\begin_inset ERT
+status Collapsed
+
+\layout Standard
+
+\backslash 
+tableofcontents
+\backslash 
+newpage
+\end_inset 
+
+
+\layout Section
+
+Einleitung
+\layout Quotation
+
+
+\emph on 
+
+\begin_inset Quotes pld
+\end_inset 
+
+Es ist nicht leicht, ein Gott zu sein
+\begin_inset Quotes prd
+\end_inset 
+
+ (Titel eines Buches der Brüder Strugatzkij)
+\layout Standard
+
+Während in den himmlischen Sphären der entscheidende Kampf zwischen Gut
+ und Böse ausgefochten wird, kämpfen auf Erden Elfen gegen Zwerge, Menschen
+ gegen Halblinge und jeder gegen jeden.
+ Soweit das Fantasy-Klischee.
+ Doch jetzt kommen wir zum Spiel:
+\layout Standard
+
+
+\series bold 
+\shape smallcaps 
+Die letzten Tage von Aymargeddon
+\series default 
+\shape default 
+ wird von mindestens acht Spielern gespielt.
+ Höchstens ein Drittel der Spieler übernimmt die Aufgabe eines Gottes.
+ Die restlichen zwei Drittel spielen jeweils ein Volk auf der Erde.
+ Am Ende gibt es zwei Sieger: den himmlischen Sieger, der zwischen den Göttern
+ ermittelt wird, und den Sieger der Erdlinge, den die restlichen Spieler
+ zwischen sich ausmachen.
+\layout Standard
+
+
+\series bold 
+Himmlischer Sieger 
+\series default 
+ist der Gott, der am Ende in der 
+\series bold 
+letzten Schlacht
+\series default 
+ auf der 
+\series bold 
+Insel des Schicksals
+\series default 
+, der 
+\series bold 
+Aymargeddon,
+\series default 
+ am meisten Kräfte auf sich vereinigen kann.
+ Der Ort der letzten Schlacht wird einer von mehreren 
+\series bold 
+Manapolen
+\series default 
+ sein - abgelegene Inseln, auf denen die magischen Kraftlinien zusammenlaufen.
+ In der letzten Schlacht kämpfen die 
+\series bold 
+Avatare
+\series default 
+ der Götter, aber auch die Geister verstorbener 
+\series bold 
+Helden
+\series default 
+ der Erdlinge.
+ 
+\layout Standard
+
+Der 
+\series bold 
+Sieger der Erdlinge
+\series default 
+ ist der Spieler, der am Ende die meisten 
+\series bold 
+Städte
+\series default 
+ sein eigen nennt.
+ 
+\layout Standard
+
+Zweite Plätze gibt es weder bei den Göttern noch bei den Erdlingen.
+ Es geht immer um den Kampf ums Ganze, um Alles oder Nichts.
+\layout Standard
+
+Die Interaktion zwischen den beiden Ebenen wird durch 
+\series bold 
+Priester
+\series default 
+ und 
+\series bold 
+Götteraktionen
+\series default 
+ möglich.
+\layout Standard
+
+Das 
+\series bold 
+Spiel endet,
+\series medium 
+ sobald alle 
+\series bold 
+heiligen Berge 
+\series default 
+und
+\series bold 
+ gesegneten Inseln mit Tempeln
+\series default 
+ bebaut 
+\series medium 
+sind
+\series default 
+.
+ 
+\series medium 
+Die Tempel bauen die Erdlinge, Götter können sie nur zerstören.
+ 
+\layout Standard
+
+Je mehr Priester an einem Tempel 
+\series bold 
+beten
+\series default 
+, um so mehr 
+\series bold 
+Mana
+\series default 
+ erhält der jeweilige Gott und um so mehr Aktionen kann er machen.
+\layout Standard
+
+
+\series bold 
+Beide Ebenen 
+\series medium 
+sind aufeinander angewiesen, da Götter ohne den guten Willen der Erdlinge
+ kein
+\series default 
+ Mana und somit keinerlei Macht
+\series medium 
+ haben und die Erdlinge die Unterstützung der Götter in ihren irdischen
+ Dingen dringend brauchen.
+ Durch diese enge Verzahnung der beiden Spielebenen ist man immer zu 
+\series bold 
+Verhandlungen
+\series medium 
+ gezwungen.
+\layout Standard
+
+Der 
+\series bold 
+Glücksfaktor
+\series default 
+ wird von den Spielern selbst bestimmt.
+ Kämpfe werden durch einen Zufallswert mitbestimmt.
+ Den Maximalwert des Zufalls (3 - 12) müssen die Götter bestimmen (auch
+ diese Aktion kostet sie natürlich Mana).
+ 
+\layout Standard
+
+Am 
+\series bold 
+Schluss
+\series medium 
+ ist es vor allem nötig
+\series default 
+,
+\series medium 
+ einen Partner zu haben, der stark genug ist
+\series default 
+,
+\series medium 
+ um auch an einem Spielende interessiert zu sein
+\series default 
+ oder schwach genug, um sich mit einem hinteren Platz zufrieden zu geben
+\series medium 
+.
+ So werden treue Verbündete, mit denen man das ganze Spiel gemeinsam bestritten
+ hat, oft noch einmal kurz vor Schlu
+\series default 
+ss
+\series medium 
+ fallengelassen.
+\layout Standard
+
+Die 
+\series bold 
+Erdlinge 
+\series medium 
+spielen 
+\series default 
+mit 
+\series bold 
+Kriegern
+\series default 
+, Helden (von Göttern erzeugt) und Priestern.
+ Üblicherweise werden nur die ersten Priester von Göttern erleuchtet, danach
+ machen die Tempel diese Arbeit.
+ Sie können Tempel bauen, Städte erobern und Archen steuern.
+\layout Standard
+
+Die 
+\series bold 
+Götter 
+\series medium 
+spielen
+\series default 
+ mit ihren Avataren, können aber auch Tempel zerstören, Archen erschaffen,
+ Felder überfluten, Seuchen herbeirufen, Priester und Helden erzeugen und
+ den Glücks
+\begin_inset ERT
+status Collapsed
+
+\layout Standard
+
+\backslash 
+-
+\end_inset 
+
+fak
+\begin_inset ERT
+status Collapsed
+
+\layout Standard
+
+\backslash 
+-
+\end_inset 
+
+tor verändern.
+ Doch das alles kostet sie Mana.
+\layout Standard
+
+Die Welt ist in viele kleine sechseckige Spielfelder unterteilt.
+ Die Größe des Spielfeldes wird durch die angestrebte Spieleranzahl bestimmt.
+ 
+\layout Standard
+
+Gespielt wird über einen üblichen Web-Browser.
+ Es gibt keine Spielrunden, sondern jeder Befehl braucht eine gewisse Zeit,
+ bis er ausgeführt wird.
+ Die Spielgeschwindigkeit kann dabei variieren.
+\layout Standard
+
+An dieser Stelle möchten wir einmal ganz laut und deutlich allen Testspielern
+ des Brettspieles und der Pbem-Version danken, ohne die auch diese Online-Versio
+n nicht möglich geworden wäre!
+\layout Section*
+
+
+\family sans 
+\series medium 
+\size large 
+\emph on 
+WARNUNG: 
+\layout Standard
+
+
+\family sans 
+\emph on 
+Sowohl die verschiedenen beteiligten Programme als auch diese Regeln sind
+ noch in einem Test-Stadium.
+ Wir bitten also insbesondere alle Testspieler, uns darauf hinzuweisen,
+ wenn es Unterschiede zwischen diesem Dokument und dem realen Verhalten
+ des Spiels gibt.
+ Außerdem bitten wir Euch, Euch in die Ragnarök-Mailingliste einzutragen
+ (
+\begin_inset Quotes pld
+\end_inset 
+
+subscribe ragnaroek
+\begin_inset Quotes prd
+\end_inset 
+
+ nach majordomo@cs.uni-frankfurt.de schicken).
+ Helft mit, dass Aymargeddon besser wird! Wer will, kann auch gerne selbst
+ programmieren helfen.
+ Der Quellcode steht in einem tla-Archiv auf www.aymargeddon.de zur Verfügung.
+\layout Section
+
+Die Welt
+\layout Quotation
+
+
+\emph on 
+
+\begin_inset Quotes pld
+\end_inset 
+
+Wenn man eine Rolle lange genug spielte, vermischten sich langsam Fiktion
+ und Realität...
+ Rache war etwas für Götter.
+\begin_inset Quotes prd
+\end_inset 
+
+ (aus: 
+\begin_inset Quotes pld
+\end_inset 
+
+Ragnarök
+\begin_inset Quotes prd
+\end_inset 
+
+ von D.G.Compton und John Gribbin)
+\layout Standard
+
+Die Welt besteht aus Sechsecken und hat keinen Rand.
+ Man kann in jede Richtung laufen und kommt wieder zum Ausgangspunkt zurück
+ (Torus).
+ Hier ein Screenshot vom Hauptbildschirm, damit Ihr eine Vorstellung davon
+ bekommt, wie die Welt aussieht.
+\layout Standard
+\align center 
+<BILD FEHLT NOCH>
+\layout Standard
+
+In dieser Welt kann man sich in sechs verschiedene Richtungen bewegen, die
+ man sich folgendermaßen vorstellen kann:
+\layout Standard
+\added_space_top 0.3cm \added_space_bottom 0.3cm \align center 
+<BILD KAPUTT>
+\layout Standard
+\added_space_top 0.3cm \added_space_bottom 0.3cm \align center 
+
+\begin_inset Graphics
+	filename +ay_ein_hex.eps
+	display monochrome
+	width 50text%
+
+\end_inset 
+
+
+\layout Standard
+
+Jeder Erdling beginnt bei seiner Heimatstadt.
+ Diese ist schwerer zu erobern und produziert mehr Krieger als normale Städte.
+ Jeder Gott hat zwei heilige Berge, an denen nur er angebetet werden kann.
+\layout Standard
+
+Es dürfen immer nur Einheiten von einem Erdling in einem Feld stehen, das
+ somit einen eindeutigen Eigentümer hat.
+ Heimatstädte erinnern sich immer an ihre rechtmäßigen Herrscher.
+ Sie verteidigen sich auch ohne Krieger, und sie gehören einem wieder, sobald
+ die Besatzungsmacht abgezogen ist.
+\layout Standard
+
+Besondere Felder sind die Manapole, zu ihnen strebt das ganze Denken der
+ Götter ihrem Wesen nach.
+ Einer der Manapole ist immer die Insel des Schicksals.
+ Manapole sind immer komplett von Wasserfeldern ohne gesegnete Inseln umgeben.
+\layout Standard
+
+Außerdem gibt es noch Wasser und Inseln.
+ Inseln sind immer gesegnet, man kann dort also immer Tempel bauen, außer
+ es handelt sich um einen Manapol.
+ Über Wasser darf man sich als Erdling nur bewegen, wenn im Ausgangsfeld
+ eine Arche ist.
+ Avatare dürfen sich nur dann über Wasser bewegen, wenn ein Erdling gleichzeitig
+ die Arche steuert.
+ Die Archen bewegen sich mit den Erdlingen mit und haben ein unbegrenztes
+ Fassungsvermögen.
+ Die Götter sind also auf die Mithilfe der Erdlinge angewiesen, wenn sie
+ ihre Avatare in die letzte Schlacht, die auf der Insel des Schicksals stattfind
+et, schicken wollen.
+\layout Standard
+
+Welcher Manapol Aymargeddon ist, ändert sich im Laufe des Spiels.
+ Es ist immer der Manapol, der dem neuesten und schönsten Tempel am nächsten
+ ist.
+ Avatare bewegen sich leichter in Richtung Aymargeddon als von ihr weg.
+ Sie dürfen die Insel des Schicksals nicht verlassen, so lange sie Aymargeddon
+ ist.
+\layout Subsection*
+
+Topologie
+\layout Standard
+
+Felder haben immer zwei Koordinaten.
+ Das Spielfeld hat keinen Rand, wenn man sich in einer Richtung über den
+ vermeintlichen Rand bewegt, kommt man auf der gegenüberliegenden Seite
+ wieder raus.
+ Die folgende Karte mit den Koordinaten der Felder demonstriert das:
+\layout Standard
+\align center 
+<BILD FEHLT NOCH>
+\layout Standard
+
+Eine Welt ist immer doppelt so breit wie hoch.
+ Nur so kann man in allen Richtungen immer geradeaus laufen und kommt doch
+ immer wieder am Ausgangspunkt an.
+\layout Subsection*
+
+Produktion
+\layout Standard
+
+Alle Städte erzeugen automatisch in gewissen Zeitabständen Krieger.
+ Heimatstädte erzeugen doppelt so schnell Krieger, sie tun dies manchmal
+ auch, wenn sie das Feld von feindlichen Einheiten besetzt wird, dann kommt
+ es zu Aufständen der heimatlichen Bevölkerung in regelmäßigen Abständen.
+ Normale Städte erzeugen umso häufiger Krieger, je kürzer der Zeitpunkt
+ ihres letzten Besitzerwechsels her ist.
+ 
+\layout Standard
+
+Tempel erzeugen in gewissen Zeitabständen Priester.
+ Es werden keine Priester erzeugt, wenn nicht schon rechtgläubige Priester
+ dort sind.
+\layout Section
+
+Aktionen
+\layout Standard
+
+Jede Aktion eines Spielers wird sofort in eine Datenbank geschrieben.
+ Die Aktionen werden jedoch erst zu einem späteren Zeitpunkt ausgeführt.
+ Wie lange das dauert, hängt von der Aktion ab (siehe Abschnitt Timing).
+ Einheiten sind wärend dieser Zeit inaktiv.
+\layout Subsection*
+
+Aktionen für alle Spieler
+\layout Subsubsection*
+
+Status ändern
+\layout Standard
+
+Mit dieser Aktion kann man seine generelle Haltung anderen Spielern gegenüber
+ - seien sie Götter oder Erdlinge - ändern.
+ Man kann andere Spieler als Freund, als Feind oder neutral ansehen.
+ Man kann ihnen Sichtrechte gewähren oder sie verweigern.
+ 
+\layout Standard
+
+Das hat an einigen Stellen Auswirkungen, die dort dann näher beschrieben
+ sind.
+ Zu Spielbeginn ist man allen anderen Spielern gegenüber neutral eingestellt
+ und gewährt ihnen keine Sichtrechte.
+\layout Subsection*
+
+Aktionen der Erdlinge
+\layout Standard
+
+
+\series bold 
+Bewegen
+\layout Standard
+
+Dies bedeutet, dass man eine bestimmte Anzahl Krieger, Helden oder Priester
+ in ein Nachbarfeld bewegen will.
+ Dies kann zu Kampfhandlungen führen, wenn sich am Ende des Zuges noch Einheiten
+ anderer Erdlingsspieler auf dem Zielfeld aufhalten.
+ 
+\layout Standard
+
+Erdlinge können die Manapole nicht betreten.
+ Ihre toten Helden werden automatisch direkt nach einem Kampf zur Aymargeddon
+ transferiert.
+\layout Standard
+
+Helden bewegen sich doppelt so schnell wie Krieger und kämpfen doppelt so
+ gut.
+ 
+\layout Standard
+
+Wasser- und Inselfelder können nur betreten werden, wenn im Startfeld eine
+ Arche steht, die einen dorthin bringen kann.
+ 
+\layout Standard
+
+Archen bewegen sich immer automatisch mit Erdlingen mit außer bei der Bewegung
+ zwischen Landfeldern.
+ Wenn Erdlingseinheiten oder Avatare in einem Wasserfeld zurückbleiben,
+ aus dem sich eine Arche entfernt, ertrinken sie jämmerlich.
+ Ertrinkende Helden streiten nicht in der letzten Schlacht, ebensowenig
+ wie ertrinkende Avatare.
+ Auf Inselfeldern können sie jedoch überleben.
+\layout Standard
+
+Das Bewegen von einem Wasser- oder Inselfeld auf ein benachbartes Landfeld
+ ist immer möglich auch ohne Arche.
+ 
+\layout Standard
+
+Das Bewegen in das Feld eines Alliierten scheitert
+\begin_inset Foot
+collapsed true
+
+\layout Standard
+
+Böse Zungen nennen das die Olf-Bodo-Regel ;-)
+\end_inset 
+
+.
+ Ebenso scheitert die Bewegung, wenn im Zielfeld bereits ein Kampf stattfindet
+ an dem ich nicht beteiligt bin.
+ So wird gewährleistet, dass an einem Erdlingskampf immer nur zwei Spieler
+ beteiligt sein können.
+ Das Bewegen scheitert allerdings erst am Schluss der Bewegung.
+ Sie müssen sich dann wieder zurück bewegen.
+ 
+\layout Standard
+
+Man kann somit fast lückenlos Felder übergeben.
+ Daraus ergibt sich, dass man Alliierte nicht angreifen kann, so lange sie
+ Freunde sind.
+ 
+\layout Subsubsection*
+
+Tempel bauen
+\layout Standard
+
+Diese Aktion erzeugt auf einem Feld einen Tempel einer Gottheit.
+ Es ist nur möglich, Tempel zu erzeugen, wenn der Spieler mindestens einen
+ Priester der passenden Gottheit dort hat und das Feld ein heiliger Berg
+ oder eine gesegnete Insel ist.
+ Wenn es ein heiliger Berg ist, darf nur ein Tempel des Gottes gebaut werden,
+ dem der Berg gewidmet ist.
+ Auf jedem Feld kann es immer nur einen Tempel geben.
+\layout Standard
+
+Tempel zu bauen geht am Anfang des Spiels recht schnell, dauert aber um
+ so länger, je mehr Tempel schon gebaut sind.
+ Jeder Erdling will schließlich den schönsten Tempel der Welt haben, und
+ das dauert natürlich seine Zeit.
+ Wenn alle Tempel gebaut sind, endet das Spiel sofort.
+ 
+\layout Standard
+
+Der Manapol, der dem neuesten Tempel am nächsten ist, wird zur Insel des
+ Schicksals.
+ Wenn mehrere Manapole gleich weit entfernt sind, bleibt die aktuelle Aymargeddo
+n bestehen.
+ (noch nicht implementiert)
+\layout Subsubsection*
+
+Schlachtordnung festlegen
+\layout Standard
+
+Erdlinge können angeben in welcher Schlachtordnung ihre Armeen in den Krieg
+ ziehen.
+ Es wird eine Reihenfolge angegeben in der die Einheiten aufgestellt werden.
+ Mit der Reihenfolge kann jeder Erdling angeben, welche eigenen Einheiten
+ in vorderster Front stehen und somit zuerst sterben sollen.
+ So kann man zum Beispiel zuerst Krieger sterben lassen, dann Helden und
+ dann erst die Priester.
+\layout Standard
+
+Die Reihenfolge gilt immer für die ganze Welt.
+\layout Standard
+
+Die voreingestellte Reihenfolge ist: Krieger, Helden, Priester.
+ 
+\layout Standard
+
+Die Reihenfolge ist allerdings nicht absolut, sondern gibt nur die Wahrscheinlic
+hkeit des Todes an.
+\layout Standard
+
+Archen befinden sich immer in der letzten Reihe der Schlachtordnung.
+ Jede Arche, die 
+\begin_inset Quotes pld
+\end_inset 
+
+stirbt
+\begin_inset Quotes prd
+\end_inset 
+
+ wird mit einer gewissen Wahrscheinlichkeit versenkt und mit einer gewissen
+ Wahrscheinlichkeit vom Gegner erobert.
+\layout Subsection*
+
+Aktionen der Götter
+\layout Quotation
+
+
+\emph on 
+
+\begin_inset Quotes pld
+\end_inset 
+
+Wenn Dich das nächste Mal jemand fragt, ob Du ein Gott bist, sag ja.
+\begin_inset Quotes prd
+\end_inset 
+
+ (aus: Ghostbusters)
+\layout Standard
+
+Alle folgenden Aktionen kosten Mana.
+ Neues Mana erhält ein Gott, wenn seine Priester an den richtigen Tempeln
+ beten.
+ Alle zehn Zeiteinheiten gibt es pro Priester und Tempel einen Manapunkt
+ (MP).
+\layout Subsubsection*
+
+Avatar erschaffen
+\layout Standard
+
+Ein Avatare erscheint immer an dem eigenen Tempel an dem am meisten eigene
+ Priester beten.
+ Ein Avatar kostet 5 MP.
+ 
+\layout Subsubsection*
+
+Held weihen
+\layout Standard
+
+Ein Krieger kann nur an eigenen Tempeln zum Helden geweiht werden.
+ Das kostet 1 MP.
+\layout Description
+
+Priester
+\series medium 
+ 
+\series bold 
+erleuchten
+\layout Standard
+
+Einen Priester kann man nur aus einem Krieger erzeugen, wenn der Gott das
+ entsprechende Feld einsehen kann (siehe Sicht-Abschnitt).
+ Diese Aktion kostet 5 MP.
+ 
+\layout Subsubsection*
+
+Avatare bewegen
+\layout Standard
+
+Avatare dürfen sich auch auf die Insel des Schicksals begeben (allerdings
+ nicht mehr von ihr weg).
+ Das Bewegen eines Avatars geht deutlich schneller als das Bewegen der Erdlinge
+ (Eine Zeiteinheit).
+ Es kostet immer 1 MP pro Feld und Avatar.
+ Avatare reisen umsonst auf Schiffen mit.
+\layout Standard
+
+Avatare dürfen sich nicht auf Wasser- oder Inselfelder bewegen, ausser mit
+ einer Arche (von Erdlingen gesteuert).
+ Von Wasserfeldern aus, dürfen sie sich auch alleine auf Landfelder oder
+ Manapole bewegen.
+\layout Subsubsection*
+
+Verseuchen
+\layout Standard
+
+Ein Gott kann die Erde mit Seuchen überziehen.
+ Das hat unterschiedliche Auswirkungen je nach Art der Seuche.
+ Seuchen verbreiten sich mit einer gewissen Wahrscheinlichkeit auf Nachbarfelder
+ sowie bei Bewegungen von Erdlingseinheiten.
+ Die Anwesenheit von Priestern erhöht die Wahrscheinlichkeit, dass die Seuche
+ aufhört.
+ Die Kosten für Seuchen hängen von der Art der Seuche ab.
+ Zum Verseuchen benötigt man einen anwesenden Avatar und in dem Feld darf
+ gerade kein Götterkampf (s.u.) stattfinden.
+ 
+\layout Standard
+
+Verseucht sind immer ganze Felder, keine einzelnen Einheiten.
+ Städte stecken sich leichter an als Landfelder, Landfelder leichter als
+ Berge, Berge leichter als Inseln, Inseln leichter als Wasserfelder.
+\layout Standard
+
+Es gibt zur Zeit drei verschiedene Seuchen:
+\layout Standard
+
+
+\begin_inset  Tabular
+<lyxtabular version="3" rows="4" columns="3">
+<features>
+<column alignment="center" valignment="top" leftline="true" width="0">
+<column alignment="center" valignment="top" leftline="true" width="0">
+<column alignment="center" valignment="top" leftline="true" rightline="true" width="0">
+<row topline="true" bottomline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
+Seuche
+\end_inset 
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
+Effekt
+\end_inset 
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
+Mana
+\end_inset 
+</cell>
+</row>
+<row topline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
+Influenza
+\end_inset 
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
+Städte und Tempel produzieren nicht mehr
+\end_inset 
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
+10
+\end_inset 
+</cell>
+</row>
+<row topline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
+Pestilentia
+\end_inset 
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
+50% aller Leute sterben 
+\end_inset 
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
+20
+\end_inset 
+</cell>
+</row>
+<row topline="true" bottomline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
+Ebola
+\end_inset 
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
+100% aller Leute sterben
+\end_inset 
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
+40
+\end_inset 
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset 
+
+
+\layout Standard
+
+Wenn Leute sterben, so geschieht das nach den Regeln bei Erdlingskämpfen
+ (s.u.).
+\layout Standard
+
+Eine Seuche hat alle 20 Zeiteinheiten erneut ihren in der Tabelle beschriebenen
+ Effekt.
+\layout Subsubsection*
+
+Sintfluten
+\layout Standard
+
+Avatare können eine Ebene oder einen Berg überfluten, die an ein Wasser-
+ oder Inselfeld grenzen, wenn sie vor Ort sind und in dem Feld gerade kein
+ Götterkampf(s.u.) stattfindet.
+ Eine Sintflut kostet nur 2 MP, dauert aber 40 Zeiteinheiten.
+ Berge werden durch Überfluten zu Inseln.
+ Dadurch ändert sich ihre Exklusivität, und von nun an können auch andere
+ Götter an ihnen angebetet werden.
+ Städte und Inseln kann man nicht überfluten.
+\layout Standard
+
+Wenn zum Zeitpunkt des Flutens einer Ebene noch Einheiten im Feld sind,
+ benötigen sie eine Arche, um nicht unterzugehen.
+\layout Subsubsection*
+
+Avatarstatus ändern
+\layout Standard
+
+Jede Gruppe von Avataren eines Spielers in einem Feld hat einen Status.
+ Dieser kann 
+\series bold 
+\shape smallcaps 
+Helfe
+\series default 
+\shape default 
+, 
+\series bold 
+\shape smallcaps 
+Block
+\series default 
+\shape default 
+ oder 
+\series bold 
+\shape smallcaps 
+Ignorieren
+\series default 
+\shape default 
+ sein.
+ Mit 
+\series bold 
+\shape smallcaps 
+Helfe
+\series default 
+\shape default 
+ hilft man befreundeten Erdlingen, wenn es zu Kämpfen kommt.
+ Mit 
+\series bold 
+\shape smallcaps 
+Block
+\series default 
+\shape default 
+ schlägt man sich mit verfeindeten Avataren, wenn diese ins Feld kommen.
+ Man kann immer nur eines von beidem gleichzeitig tun.
+ 
+\layout Standard
+
+Sich bewegende Avatare nehmen ihren Status mit.
+ Wenn zwei Gruppen von Avataren des selben Spielers zusammentreffen, wird
+ immer automatisch 
+\series bold 
+\shape smallcaps 
+Block
+\series default 
+\shape default 
+ vor 
+\series bold 
+\shape smallcaps 
+Helfe
+\series default 
+\shape default 
+ vor 
+\series bold 
+\shape smallcaps 
+Frieden
+\series default 
+\shape default 
+ für die neue gemeinsame Gruppe gewählt.
+ 
+\layout Subsubsection*
+
+Tempel zerstören
+\layout Standard
+
+Götter können den Tempel eines anderen Gottes auf einer gesegneten Insel
+ zerstören.
+ Dort dürfen sich keine Priester eines anderen Gottes befinden, außerdem
+ braucht man einen eigenen Avatar in dem Feld und es darf dort kein Götterkampf
+ (s.u.) stattfinden.
+ Dieser Befehl kostet 5 MP.
+ Wenn nur noch ein Tempelfeld unbebaut ist, kann man keine Tempel mehr zerstören.
+ 
+\layout Standard
+
+Es gibt im Wesentlichen zwei Anwendungsfälle für diesen Befehl:
+\layout Enumerate
+
+Ein Gott will eine gesegnete Insel übernehmen, damit ein 
+\begin_inset ERT
+status Collapsed
+
+\layout Standard
+ver
+\backslash 
+-bün
+\backslash 
+-de
+\backslash 
+-ter
+\end_inset 
+
+ Erdling ihm dort einen Tempel errichtet.
+ Dafür muss der alte Tempel zerstört werden.
+ 
+\layout Enumerate
+
+Ein Gott will das drohende Spielende hinauszögern, weil er für später bessere
+ Siegchancen sieht.
+ Danach sollte man Erdlinge dazu überreden, das leere Baufeld auch zu verteidige
+n.
+ Wenn jedoch einmal der Baubefehl für den letzten Tempel gegeben ist, ist
+ es zu spät, das Ende der Welt noch aufzuhalten.
+\layout Subsubsection*
+
+Glücksfaktor verändern
+\layout Standard
+
+Mit diesem Befehl kann man angeben, ob man den globalen 
+\begin_inset ERT
+status Collapsed
+
+\layout Standard
+Glücks
+\backslash 
+-fak
+\backslash 
+-tor
+\end_inset 
+
+, der auf alle Kämpfe mit Ausnahme der letzten Schlacht angewandt wird,
+ erhöhen oder erniedrigen will.
+ Man gibt an, wie viele Manapunkte man investieren will.
+ Pro MP ändert sich der Glücksfaktor um einen Punkt auf einer Skala von
+ 3 bis 12.
+\layout Standard
+
+Der Glücksfaktor ist immer für alle Spieler gleich hoch, es gibt also nur
+ einen Glücksfaktor für alle Spieler.
+\layout Subsubsection*
+
+Arche bauen
+\layout Standard
+
+Ein Gott kann auf einem Feld, dass er sieht, eine Arche bauen.
+ Steuern kann er sie nicht.
+ Die Arche gehört dem derzeitigen Feldeigentümer.
+\layout Standard
+
+Eine Arche zu bauen kostet 5 MP und dauert 30 Zeiteinheiten.
+\layout Section
+
+Beten
+\layout Quotation
+
+
+\emph on 
+
+\begin_inset Quotes pld
+\end_inset 
+
+Wer Gott definiert, ist schon Atheist.
+\begin_inset Quotes prd
+\end_inset 
+
+ (Oswald Spengler)
+\layout Standard
+
+Die Götter erhalten alle 10 Zeiteinheiten einen MP pro Tempel und pro rechtgläub
+igem Priester an diesem Tempel ebenso ein MP.
+ Die Anzahl effektiv betender Priester pro Tempel ist allerdings auf den
+ aktuellen Glücksfaktor begrenzt.
+ An heiligen Bergen können doppelt so viele Priester effektiv beten.
+\layout Section
+
+Infos
+\layout Standard
+
+Folgende generelle Daten sind für alle Mitspieler jedezeit abrufbar.
+ Sie beziehen sich auf das ganze Spiel und nicht auf einzelne Felder.
+ 
+\layout Itemize
+
+Der aktuelle Glücksfaktor
+\layout Itemize
+
+Die Anzahl nicht gebauter Tempel
+\layout Itemize
+
+Die Stärke auf der Insel des Schicksals
+\layout Itemize
+
+Die Anzahl der Avatare auf den Manapolen (noch nicht implementiert)
+\layout Itemize
+
+Die Gesamtstärke jeden Erdlings (noch nicht implementiert)
+\layout Itemize
+
+Die Anzahl der lebenden Avatare jedes Gottes (noch nicht implementiert)
+\layout Itemize
+
+Die Anzahl der Priester jedes Gottes (noch nicht implementiert)
+\layout Itemize
+
+Die Anzahl Städte jedes Erdlings
+\layout Standard
+
+Dadurch kann man immer die Stärke eines anderen Spielers ungefähr einordnen
+ und sieht, wer auf dem Weg zum Sieg ist.
+\layout Standard
+
+Erdlinge sehen außerdem noch die Sterbereihenfolge ihrer Einheiten.
+ Götter sehen ihren aktuellen Manastand.
+\layout Subsection*
+
+Sichtrechte
+\layout Standard
+
+Sichtrecht hat man für folgende Felder:
+\layout Standard
+\added_space_top 0.3cm \added_space_bottom 0.3cm \align center 
+
+\begin_inset  Tabular
+<lyxtabular version="3" rows="3" columns="2">
+<features>
+<column alignment="center" valignment="top" leftline="true" width="0pt">
+<column alignment="center" valignment="top" leftline="true" rightline="true" width="0pt">
+<row topline="true" bottomline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
+Götter
+\end_inset 
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
+Erdlinge
+\end_inset 
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
+eigene Holys
+\end_inset 
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
+Heimatstädte
+\end_inset 
+</cell>
+</row>
+<row bottomline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
+anwesende Priester oder Avatare
+\end_inset 
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
+anwesende Priester, Krieger oder Helden
+\end_inset 
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset 
+
+
+\layout Standard
+
+Von Bergen aus sieht man zwei Felder weit, sonst nur eins.
+\layout Standard
+
+Andere Spieler können einem Sichtrechte gewähren.
+ Dies tun sie durch den Allianzstatus 
+\begin_inset Quotes pld
+\end_inset 
+
+Alliiert
+\begin_inset Quotes prd
+\end_inset 
+
+ oder 
+\begin_inset Quotes pld
+\end_inset 
+
+Verrat
+\begin_inset Quotes prd
+\end_inset 
+
+.
+ 
+\begin_inset Quotes pld
+\end_inset 
+
+Freund
+\begin_inset Quotes prd
+\end_inset 
+
+ gewährt keine Sichtrechte.
+\layout Standard
+
+Als anwesend zählen auch nicht-aktive Einheiten (die sich zum Beispiel gerade
+ in der Bewegung befinden).
+\layout Standard
+
+Wenn man Sichtrecht für ein Feld hat, kann man jederzeit die Infos zu diesem
+ Feld abrufen.
+\layout Section
+
+Kampf
+\layout Standard
+
+Götter können Erdlinge nicht direkt attackieren, sie können nur andere Erdlinge
+ bei diesen Angriffen unterstützen.
+ 
+\layout Standard
+
+Bei jedem Kampf außer der letzten Schlacht werden die Kampfstärken der beteiligt
+en Einheiten addiert und zusätzlich ein Zufallswert zwischen eins und dem
+ Glücksfaktor dazugezählt.
+ 
+\layout Standard
+
+Jeder Kampf dauert eine gewisse Zeitspanne.
+ Alle in dieser Zeitspanne hinzustoßenden Einheiten nehmen am Kampf teil
+ oder werden vom Kampf ausgeschlossen.
+ In letzterem Fall kehren sie einfach wieder um.
+\layout Subsection*
+
+Erdlingskampf
+\layout Standard
+
+Ein Erdlingskampf wird ausgelöst, wenn Einheiten eines neutralen oder verfeindet
+en Erdlings - im Folgenden Angreifer genannt - ein Feld betreten, dessen
+ Eigentümer im Folgenden Verteidiger genannt wird.
+ Alle Einheiten dieser beiden Parteien, die wärend der Kampfdauer zum Kampf
+ dazu stoßen, nehmen am Kampf teil.
+ Einheiten Dritter werden vom Kampf ausgeschlossen.
+ Eine Möglichkeit, sich aus einem einmal begonnenen Kampf herauszuhalten,
+ gibt es nicht.
+\layout Standard
+
+Die Kampfstärke beider Seiten ergibt sich aus der Summe der Kampfstärken
+ der beteiligten Einheiten.
+ Beide Seiten eines Kampfes addieren einen Zufallswert, der zwischen 1 und
+ dem aktuellen Glücksfaktor liegt, zu ihrer Kampfstärke.
+ 
+\layout Standard
+
+Dem bisherigen Eigentümer reicht ein Unentschieden zum Sieg.
+ 
+\layout Standard
+
+Eine Partei, die einen Kampf verliert, muss ihre Überlebenden zurückziehen.
+ Alle Einheiten ziehen sich einzeln zurück.
+ 
+\layout Standard
+
+Dazu wird nach dem Zufallsprinzip eines der Nachbarfelder ausgewählt, das
+ dem Verlierer gehört oder neutral ist und in dem zum Zeitpunkt des Rückzuges
+ kein Kampf stattfindet.
+ Ein Rückzug ist wie eine normale Bewegung und braucht Zeit.
+ Archen ziehen sich immer zuerst zurück.
+ Archen auf Küstenfeldern können sich nur auf Wasser oder Inselfelder zurückzieh
+en.
+ Andere Einheiten können sich nur auf Landfelder zurückziehen oder auf solche,
+ auf die sich bereits Archen zurückgezogen haben.
+\layout Standard
+
+Es kann passieren, dass das Feld bei Ankunft der Flüchtenden auch schon
+ einem anderen Spieler gehört, dann kommt es dort direkt wieder zum Kampf.
+ Flüchtende Einheiten können also von Feld zu Feld gejagt und dabei aufgerieben
+ werden.
+ Ein gut geplanter Angriff auf breiter Front kann diese Regel bewusst ausnutzen.
+\layout Standard
+
+Natürlich kann man beim Kämpfen auch zu schaden kommen: Der Verlierer verliert
+ die Hälfte der Kampfstärke des Gewinners (ohne Avatare und Flankierung)
+ an Leuten.
+ Der Gewinner verliert ein Viertel der Kampfstärke des Verlierers.
+ Der Gewinner behält mindestens eine Person (oder Arche), der Verlierer
+ verliert mindestens eine.
+ Die Schlachtordnung bestimmt wieviele Leute welcher Art anteilig sterben.
+\layout Standard
+
+Sollte ein Spieler nach einem verlorenen Kampf keinerlei Rückzugsmöglichkeiten
+ mehr haben, sterben alle seine Einheiten in diesem Feld.
+ 
+\layout Standard
+
+Doch jetzt endlich zu den Kampfstärken:
+\layout Standard
+\added_space_top 0.3cm \added_space_bottom 0.3cm \align center 
+
+\begin_inset  Tabular
+<lyxtabular version="3" rows="8" columns="2">
+<features>
+<column alignment="center" valignment="top" leftline="true" width="0pt">
+<column alignment="center" valignment="top" leftline="true" rightline="true" width="0pt">
+<row topline="true" bottomline="true">
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
+Einheit
+\end_inset 
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
+Modifikator
+\end_inset 
+</cell>
+</row>
+<row topline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
+Priester
+\end_inset 
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
++0
+\end_inset 
+</cell>
+</row>
+<row topline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
+Krieger
+\end_inset 
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
++1
+\end_inset 
+</cell>
+</row>
+<row topline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
+Held
+\end_inset 
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
++2
+\end_inset 
+</cell>
+</row>
+<row topline="true">
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
+Avatar
+\end_inset 
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
+bis zu +4
+\end_inset 
+</cell>
+</row>
+<row topline="true">
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
+Heimatstadt
+\end_inset 
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
++2
+\end_inset 
+</cell>
+</row>
+<row topline="true">
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
+Arche
+\end_inset 
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
++3
+\end_inset 
+</cell>
+</row>
+<row topline="true" bottomline="true">
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
+pro Flankierung
+\end_inset 
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
++1
+\end_inset 
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset 
+
+
+\layout Standard
+
+Dabei ist +0 nicht so sinnlos, wie es auf den ersten Blick aussieht: Sind
+ nur Prieser anwesend, können sie wenigstens auf ihr Würfelglück hoffen,
+ wenn sie angegriffen werden und tragen zur Avatarunterstützung bei, wenn
+ diese vorhanden ist.
+\layout Standard
+
+Avatare kämpfen natürlich nur mit, wenn sie im Status 
+\begin_inset Quotes pld
+\end_inset 
+
+Helfe
+\begin_inset Quotes prd
+\end_inset 
+
+ sind, und Mannapunkte übrig haben (2 MP pro Kampf unabhängig von der Anzahl
+ Avatare).
+ Sie geben maximal 4 Punkte Bonus.
+ Dabei wird pro kämpfendem Erdling ein Punkt verbraucht (egal ob Krieger,
+ Held oder Priester).
+ 
+\layout Standard
+
+Den Flankierungsbonus erhält man für jedes benachbarte Feld, das folgende
+ Bedingungen erfüllt:
+\layout Itemize
+
+Es muss einem selbst oder einem Spieler mit dem Status 
+\begin_inset Quotes pld
+\end_inset 
+
+Freund
+\begin_inset Quotes prd
+\end_inset 
+
+ oder 
+\begin_inset Quotes pld
+\end_inset 
+
+alliiert
+\begin_inset Quotes prd
+\end_inset 
+
+ gehören;
+\layout Itemize
+
+der Eigentümer des Feldes muss zum Zeitpunkt des Kampfes noch aktive Einheiten
+ dort stehen haben;
+\layout Itemize
+
+es darf nicht selbst umkämpft sein.
+ 
+\layout Itemize
+
+Es darf kein Wasserfeld sein.
+ Inseln flankieren aber ganz normal.
+\layout Standard
+
+Dadurch kann man Gebiete, die aus zusammenhängenden benachbarten Feldern
+ bestehen, besser verteidigen.
+\layout Subsection*
+
+Avatarkampf
+\layout Quotation
+
+
+\emph on 
+
+\begin_inset Quotes pld
+\end_inset 
+
+Jetzt hast Du, tapferer Soldat, jetzt hast Du, streitbarer Mann, einen Ort,
+ wo Du ohne Gefahr kämpfen kannst, wo der Sieg Ruhm und der Tod Gewinn ist.
+\begin_inset Quotes prd
+\end_inset 
+
+ (Bernhard von Clairveaux, 1146 n.u.Z., zum zweiten Kreuzzug aufrufend)
+\layout Standard
+
+Avatare haben immer einen von drei Zuständen.
+ Mit 
+\begin_inset Quotes pld
+\end_inset 
+
+Helfe
+\begin_inset Quotes prd
+\end_inset 
+
+ helfen sie Erdlingen, wie oben angesprochen.
+ Mit 
+\begin_inset Quotes pld
+\end_inset 
+
+Block
+\begin_inset Quotes prd
+\end_inset 
+
+ blockieren sie andere Avatare, um gegen sie zu kämpfen.
+ Ist ihr Zustand 
+\begin_inset Quotes pld
+\end_inset 
+
+Ignoriere
+\begin_inset Quotes prd
+\end_inset 
+
+, wollen sie mit niemandem Streit.
+ Die Avatare eines Gottes in einem Feld können nur den gleichen Zustand
+ haben.
+ 
+\layout Standard
+
+Nur der Status 
+\begin_inset Quotes pld
+\end_inset 
+
+Block
+\begin_inset Quotes prd
+\end_inset 
+
+ kann zu Avatarkämpfen führen.
+ Dies geschieht, wenn 
+\layout Itemize
+
+einer der beiden den anderen als Feind betrachtet und er oder der andere
+ 'Blockieren' eingestellt hat, oder
+\layout Itemize
+
+wenn zwei Götter aufeinander treffen, die einander beide 'Neutral' gegenübersteh
+en aber beide 'Blockiere' eingestellt haben.
+\layout Standard
+
+Zu Kämpfen kann es nur dann kommen, wenn Avatare in ein Feld ziehen oder
+ wenn der Avatarstatus auf blockieren geändert wird.
+ Für jeden schon anwesenden Gott wird einzeln ermittelt, ob es zu einem
+ Kampf mit dem Neuankömmling kommt.
+ Es kann dabei durchaus zu mehreren parallel verlaufenden Kämpfen kommen,
+ die auch im Folgenden einzeln abgewickelt werden.
+ Wenn ein Avatar in ein Feld kommt, in dem er schon vertreten ist, löst
+ das nie einen Kampf aus.
+\layout Standard
+
+Avatarkämpfe kosten 2 MP unabhängig von der Anzahl der beteiligten Avatare.
+ Wenn ein Gott nicht mehr genügend MP hat, darf der Gott noch auf sein Würfelglü
+ck hofen, aber seine Avatare kämpfen nicht mehr mit.
+\layout Standard
+
+Avatarkämpfe dauern länger als die Kämpfe der Erdlinge; und da Avatare sehr
+ schnell sein können, kann man eventuell auch noch aus einiger Entfernung
+ Kräfte hinzuziehen.
+ Man darf Avatare nicht aus einem umkämpften Feld wegziehen, auch wenn man
+ an keinem der Kämpfe beteiligt ist.
+ 
+\layout Standard
+
+Sollte im selben Feld bereits ein Erdlingskampf stattfinden, so wird der
+ Avatarkampf bis nach dem Erdlingskampf verschoben.
+ 
+\layout Standard
+
+Jeder Avatar zählt +4, und es wird ganz normal gewürfelt.
+ Der Verlierer verliert die Hälfte der Avatare des Gewinners und der Gewinner
+ verliert ein Viertel der Avatare des Verlierers.
+ Bei einem unentschieden gelten beide Seiten als Verlierer.
+ Die Seelen sterbender Avatare fahren in eventuell anwesende Krieger des
+ Feldeigentümers und machen diese zu Helden.
+ Alle Avatare des Verlierers die danach noch im Feld sind werden an den
+ Ort der Avatarerschaffung zurückteleportiert.
+\layout Standard
+
+Avatare, die in einem Götterkampf beschäftigt sind, dürfen keine Erdlinge
+ bei ihren Kämpfen unterstützen.
+\layout Subsection*
+
+Die letzte Schlacht
+\layout Standard
+
+In der letzten Schlacht wird nicht gewürfelt.
+ Es zählen nur die Kampfwerte:
+\layout Standard
+\added_space_top 0.3cm \added_space_bottom 0.3cm \align center 
+
+\begin_inset  Tabular
+<lyxtabular version="3" rows="3" columns="2">
+<features>
+<column alignment="center" valignment="top" leftline="true" width="0pt">
+<column alignment="center" valignment="top" leftline="true" rightline="true" width="0pt">
+<row topline="true" bottomline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
+Einheit
+\end_inset 
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
+Kampfwert
+\end_inset 
+</cell>
+</row>
+<row topline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
+Avatar
+\end_inset 
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
++7
+\end_inset 
+</cell>
+</row>
+<row topline="true" bottomline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
+Geist eines Helden
+\end_inset 
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
++1
+\end_inset 
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset 
+
+
+\layout Standard
+
+Für die Geister der Helden zählt der angebetete Gott.
+ Diese Helden kämpfen also immer noch für ihren Gott, auch wenn der Erdling
+ inzwischen längst vom Glauben abgefallen ist.
+\layout Section
+
+Timing
+\layout Standard
+
+Alle Aktionen dauern unterschiedlich lange.
+ Dabei gibt es in jedem Spiel eine einstellbare Spielgeschwindigkeit, mit
+ der die Werte unten multipliziert werden.
+ Die Zahlen in der Tabelle können also sowohl Minuten als auch Tage meinen,
+ je nachdem wie schnell man spielt.
+ Die Spielgeschwindigkeit kann sich auch während eines Spieles ändern.
+ Es kann zum Beispiel sinnvoll sein, das Spiel am Anfang langsamer laufen
+ zu lassen, bis eine angemessene Anzahl Mitspieler eingestiegen ist.
+ Jede Änderung der Spielgeschwindigkeit wird rechtzeitig vorher bekannt
+ gegeben und sollte nicht zu apprupt erfolgen.
+\layout Standard
+
+
+\begin_inset  Tabular
+<lyxtabular version="3" rows="17" columns="2">
+<features islongtable="true">
+<column alignment="center" valignment="top" leftline="true" width="0pt">
+<column alignment="center" valignment="top" leftline="true" rightline="true" width="0pt">
+<row topline="true" bottomline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
+Aktion
+\end_inset 
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
+Dauer
+\end_inset 
+</cell>
+</row>
+<row topline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
+Krieger bewegen
+\end_inset 
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
+10
+\end_inset 
+</cell>
+</row>
+<row topline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
+Priester bewegen
+\end_inset 
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
+12
+\end_inset 
+</cell>
+</row>
+<row topline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
+Held bewegen
+\end_inset 
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
+6
+\end_inset 
+</cell>
+</row>
+<row topline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
+Avatar bewegen
+\end_inset 
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
+1
+\end_inset 
+</cell>
+</row>
+<row topline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
+Erdlingskampf
+\end_inset 
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
+6
+\end_inset 
+</cell>
+</row>
+<row topline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
+Avatarkampf 
+\end_inset 
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
+10
+\end_inset 
+</cell>
+</row>
+<row topline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
+Tempel bauen 
+\end_inset 
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
+3, 6 , 9, ...
+\end_inset 
+</cell>
+</row>
+<row topline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
+Überfluten
+\end_inset 
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
+20
+\end_inset 
+</cell>
+</row>
+<row topline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
+Bewegen mit Arche
+\end_inset 
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
+5
+\end_inset 
+</cell>
+</row>
+<row topline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
+Krieger produzieren
+\end_inset 
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
+40 + N (20)
+\end_inset 
+</cell>
+</row>
+<row topline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
+Priester produzieren
+\end_inset 
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
+40
+\end_inset 
+</cell>
+</row>
+<row topline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
+Glücksfaktor verändern
+\end_inset 
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
+5
+\end_inset 
+</cell>
+</row>
+<row topline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
+Avatarstatus ändern
+\end_inset 
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
+1
+\end_inset 
+</cell>
+</row>
+<row topline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
+Arche bauen
+\end_inset 
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
+30
+\end_inset 
+</cell>
+</row>
+<row topline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
+Beten
+\end_inset 
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
+10
+\end_inset 
+</cell>
+</row>
+<row topline="true" bottomline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
+alle anderen Aktionen
+\end_inset 
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
+0
+\end_inset 
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset 
+
+
+\layout Standard
+
+
+\begin_inset ERT
+status Collapsed
+
+\layout Standard
+
+\backslash 
+medskip
+\end_inset 
+
+
+\layout Section
+
+Spielanfang
+\layout Standard
+
+Die Götter starten mit 33 Mana.
+ Sie sollten daher zusehen, dass sie möglichst bald Priester erzeugen, damit
+ diese Tempel bauen können, die wieder Priester produzieren und damit wieder
+ Mana.
+ Dafür ist eine Kooperation mit mindestens einem Erdling nötig.
+\layout Standard
+
+Die Erdlinge stehen am Anfang vor der Entscheidung, wo sie ihre ersten Krieger
+ hinschicken sollen.
+ Dies kann zum Beispiel auf ein Tempelfeld sein, weil man davon ausgeht,
+ dass der Krieger in einen Priester umgewandelt wird.
+ Außerdem ist es ratsam, sich früh mit seinen Nachbarn abzusprechen, wer
+ welchen Tempel baut.
+ Ansonsten kann es zu unliebsamen Überraschungen kommen, die einen gleich
+ die ersten Krieger verlieren lassen!
+\layout Standard
+
+Der Glücksfaktor ist am Anfang auf seinem Minimalwert von 3.
+\layout Standard
+
+Götter, die nachträglich einsteigen, erhalten etwas Bonusmana pro vergangener
+ Zeiteinheit.
+ Erdlinge, die neu einsteigen, profitieren davon, dass ihre Heimatstadt
+ schon die ganze Zeit Krieger produziert hat.
+\layout Section
+
+Spielende (nur teilweise implementiert)
+\layout Standard
+
+Das Spiel endet, sobald alle Tempel gebaut wurden.
+ Mit dem Baubefehl des letzten Tempels wird allen Spielern bekanntgegeben,
+ wie lange das Spiel noch dauert.
+ Dann gibt es kein Zurück mehr.
+\layout Standard
+
+Es gewinnt der Erdling, der die meisten Städte sein eigen nennt.
+ Dabei zählen besetzte feindliche Heimatstädte und verseuchte Städte mit.
+ Bei gleicher Anzahl Städte entscheidet die Gesamtkampfstärke des Erdlings.
+ Sollte die auch gleich sein, wird gewürfelt.
+ 
+\layout Standard
+
+Der Gott, der in der letzten Schlacht die meisten Kräfte auf sich vereint,
+ gewinnt.
+ Dabei muss kein Mana mehr ausgegeben werden und es wird auch nicht mehr
+ gewürfelt.
+ Sollte die letzte Schlacht unentschieden ausgehen, zählen die Anzahl lebender
+ Avatare.
+ Wenn diese auch gleich sind, die Anzahl der Tempel.
+ Wenn dann immer noch Gleichstand herrscht, zählt das übrige Mana.
+ Sollte wider erwarten selbst dieses gleich sein, wird am Ende doch noch
+ gewürfelt.
+\layout Standard
+
+Alle Spieler erhalten zum Abschluss eine Rangliste und den Ausgang der letzten
+ Schlacht.
+\layout Standard
+
+Mit jedem Spiel kann man Punkte für die ewige Bestenliste sammeln, allerdings
+ nur als Sieger.
+ Zweite Plätze zählen nicht.
+\layout Section
+
+FAQ
+\layout Subsection*
+
+Was bedeutet 
+\shape italic 
+Aymargeddon
+\shape default 
+?
+\layout Standard
+
+Der Name des Spiels leitet sich von 
+\shape italic 
+Armageddon
+\shape default 
+ her.
+ Das wiederum basiert auf dem hebräischen 
+\shape italic 
+Har
+\shape default 
+, was 
+\shape italic 
+Berg
+\shape default 
+ bedeutet, und der Ortschaft 
+\shape italic 
+Megeddon
+\shape default 
+, bei der laut der Sage die letzte Schlacht geschlagen werden wird.
+ Da in unserem Spiel die letzte Schlacht auf einer Insel stattfindet, haben
+ wir 
+\shape italic 
+Har
+\shape default 
+ durch 
+\shape italic 
+Ay
+\shape default 
+ ersetzt, was 
+\shape italic 
+Insel
+\shape default 
+ bedeutet.
+ 
+\layout Standard
+
+Das 
+\begin_inset Quotes pld
+\end_inset 
+
+r
+\begin_inset Quotes prd
+\end_inset 
+
+ gehört da nicht wirklich hin, nein.
+ Aber wir haben das erst entdeckt, als wir die Domain schon bestellt hatten
+ und es klingt eh besser so, oder? Ausserdem gibt 
+\begin_inset Quotes pld
+\end_inset 
+
+Aymageddon
+\begin_inset Quotes prd
+\end_inset 
+
+ unanständige Suchergebnisse bei Google.
+\layout Subsection*
+
+Heißt es 
+\shape italic 
+der
+\shape default 
+, 
+\shape italic 
+die
+\shape default 
+, oder 
+\shape italic 
+das
+\shape default 
+ Aymargeddon?
+\layout Standard
+
+Kommt darauf an.
+\layout Standard
+
+Wenn die Insel des Schicksals gemeint ist, heißt es 
+\shape italic 
+die
+\shape default 
+, wenn das Spiel gemeint ist, heißt es 
+\shape italic 
+das
+\shape default 
+ und wenn der Server gemeint ist, heiß es 
+\shape italic 
+der
+\shape default 
+ Aymargeddon.
+\layout Standard
+
+Das ist allerdings nur die Erdlingssicht.
+ Götter geben sich mit solch kleinlichen Geschlechterfragen nicht ab, wenn
+ es um Schicksalsfragen wie das Ende der Welt geht.
+\layout Subsection*
+
+Gibt es Vorläufer zu Aymargeddon?
+\layout Standard
+
+Das Spiel basiert auf einem - leider noch unveröffentlichten - Brettspiel
+ namens 
+\shape italic 
+Ragnarök
+\shape default 
+ beziehungsweise dem zugehörigen Play-by-E-Mail 
+\shape italic 
+Ragnarök als Pbem
+\shape default 
+.
+ Beide Spiele hat Benni Bärmann entwickelt.
+ Die grundlegenden Konzepte sind erhalten geblieben.
+ Aber natürlich erforderte der geänderte Zugrhythmus und die höhere Spieleranzah
+l einige Anpassungen.
+\layout Subsection*
+
+Wie viel Zeit braucht Aymargeddon?
+\layout Standard
+
+Das hängt von der Spielgeschwindigkeit ab.
+ 
+\layout Standard
+
+Bei niedriger Spielgeschwindigkeit braucht man sich nur gelegentlich einzuloggen
+, um zu gucken, was es Neues gibt.
+ Dafür kann sich ein Spiel dann auch schon mal ein paar Monate hinziehen.
+ 
+\layout Standard
+
+Bei hoher Spielgeschwindigkeit sitzt man mehr oder weniger die ganze Zeit
+ vorm Rechner, dafür ist es dann aber auch nach ein paar Stunden vorbei.
+\layout Standard
+
+Bei gleicher Spielgeschwindigkeit ist das Spiel als Gott tendenziell aufwendiger
+ als das als Erdling.
+ Als Erdling kann man fast sicher sein, nichts wichtiges zu verpassen, wenn
+ man sich so oft einloggt, wie ein Erdlingskampf dauert.
+\layout Subsection*
+
+Was brauche ich, um mitspielen zu können?
+\layout Standard
+
+Eigentlich nichts, außer einer funktionierenden E-Mail-Adresse und einem
+ üblichen Web-Browser.
+\layout Standard
+
+Was man natürlich auch noch braucht, sind Spaß am Spiel, Verhandlungsgeschick,
+ etwas Zeit und ein bisschen Glück.
+\layout Subsection*
+
+Wie sehen sinnvolle erste Züge als Erdling aus?
+\layout Standard
+
+Man sollte sich auf jeden Fall möglichst bald mit den Göttern absprechen,
+ deren heilige Orte man sieht, beziehungsweise auf die Suche nach solchen
+ Orten gehen.
+ Danach sollte man möglichst Tempel bauen für die Götter, damit diese schnell
+ Mana kriegen, mit dem sie einen dann (hoffentlich) unterstützen.
+\layout Standard
+
+Dabei ist es ratsam, auch die irdischen Nachbarn nicht zu vernachlässigen
+ und dafür zu sorgen, dass sie nicht in der Zwischenzeit alle strategisch
+ wichtigen Punkte unter sich aufteilen.
+\layout Standard
+
+Wenn man erste Städte erobert hat, muß man sich überlegen ob man sofort
+ weiterzieht oder erst abwartet, bis dort ein Krieger erzeugt wird.
+ Im ersten Fall kommt man schneller voran und kann vieleicht weitere Städte
+ vor den Nachbarn erreichen, im zweiten Fall produziert man schneller neue
+ Krieger.
+\layout Subsection*
+
+Wie sehen sinnvolle erste Züge als Gott aus?
+\layout Standard
+
+Ein Gott sollte am Anfang hauptsächlich durch Verhandlungen abklären, welche
+ Erdlinge ihm möglichst bald Tempel auf seinen exklusiven heiligen Bergen
+ errichten.
+ 
+\layout Standard
+
+Bald kann man dann schon Avatare und möglicherweise sogar Helden erzeugen
+ und kriegt neues Mana.
+ 
+\layout Standard
+
+Es kann sinnvoll sein, die wertvollen Tempel mit Avataren zu schützen, damit
+ nicht kleinliche Streitereien zwischen Erdlingen den wertvollen Manastrom
+ verringern.
+\layout Subsection*
+
+Können Erdlingsarmeen aneinander vorbeilaufen?
+\layout Standard
+
+Ja.
+ 
+\layout Subsection*
+
+Gibt es nicht zu unausgewogene Startpositionen?
+\layout Standard
+
+Gerade die Unausgewogenheit der Startpositionen zwingt zu Verhandlungen.
+ Deswegen werden die dafür relevanten Informationen (mit denen die Spieler
+ abschätzen können, wer führt) ja auch zur Verfügung gestellt.
+\layout Subsection*
+
+Was passiert, wenn jemand aufhört?
+\layout Standard
+
+Seine Einheiten bleiben einfach da stehen, wo sie sind, und rühren sich
+ nicht.
+ Krieger und Priester eines ausgestiegenen Erdlings werden aber noch weiterhin
+ erzeugt.
+ 
+\layout Standard
+
+Bei Göttern ist das lästiger als bei Erdlingen, da das Spielgleichgewicht
+ stärker beeinträchtigt wird.
+ Schön ist es natürlich in keinem Fall.
+ 
+\layout Standard
+
+Nichtaktive Spieler können jederzeit übernommen werden von Neueinsteigern.
+ 
+\layout Subsection*
+
+Was passiert, wenn ich eine Weile nicht ziehe?
+\layout Standard
+
+Wenn das lange dauert, geht der Server davon aus, dass Du nicht mehr spielen
+ willst, und gibt Deine Einheiten zur Übernahme frei.
+ (noch nicht implementiert)
+\layout Subsection*
+
+Soll ich einen Gott oder einen Erdling spielen?
+\layout Standard
+
+Die Götterrolle ist die anspruchsvollere.
+ Man muß mehr verhandeln und hat mehr Möglichkeiten.
+ Das ist Vor- und Nachteil zugleich.
+ Ganz ohne Verhandlung wird man Aymargeddon nicht gewinnen können, aber
+ Leute, die nicht allzusehr auf Verhandlungen aus sind, sollten lieber eine
+ Erdlingsrolle übernehmen.
+ Man sollte auch nur einen Gott spielen, wenn man häufig online ist, da
+ Götteraktionen im allgemeinen weniger Zeit brauchen.
+\layout Standard
+
+Beim Spielanfang kann man auch 
+\begin_inset Quotes pld
+\end_inset 
+
+egal
+\begin_inset Quotes prd
+\end_inset 
+
+ als gewünschte Rolle angeben.
+ Dann gibt einem der Server die Rolle, die dafür sorgt, dass das Zahlenverhältni
+s 1:2 von Göttern zu Erdlingen annähernd erreicht wird.
+ Es kann auch vorkommen, dass in einem Spiel gar keine Erdlinge beziehungsweise
+ Götter mehr zugelassen sind, weil zu weit vom idealen Verhältnis abgewichen
+ wurde.
+\layout Subsection*
+
+Gehören Städte, die ich einmal in Besitz genommen habe, mir auch noch, wenn
+ ich sie wieder verlasse?
+\layout Standard
+
+Nein.
+ Alle Städte, die keine Heimatstädte sind, werden neutral, sobald kein aktiver
+ Priester, Krieger oder Held mehr in ihnen steht.
+ Heimatstädte gehören dem Spieler, dessen Heimat sie sind, jedoch auch,
+ wenn keine Einheiten dort stehen.
+ Heimatstädte verteidigen sich auch, ohne dass in ihnen Einheiten stehen
+ müssen.
+\layout Subsection*
+
+Darf man mehrere Positionen im selben Spiel besetzen?
+\layout Standard
+
+Nein, aber man darf in mehreren Spielen gleichzeitig mitspielen.
+\layout Subsection*
+
+Warum sind Avatare wasserscheu?
+\layout Standard
+
+Ist ja eigentlich schon etwas komisch, wo sie doch ansonsten so mächtig
+ sind.
+ Die Erklärung ist ganz einfach: Auf ihrer Reise zur Erde mussten sie entweder
+ in einem furchtbaren Gewitter auf einer Bergspitze erscheinen oder sich
+ von einer Insel ans nahe, rettende Ufer quälen.
+ Nach dieser Erfahrung hat niemand mehr Lust auf Wasser! 
+\layout Section*
+
+Copyright
+\layout Standard
+
+(c) 2003, 2004, 2005 Aymargeddon Development Team
+\layout Standard
+
+Permission is granted to copy, distribute and/or modify this document under
+ the terms of the GNU Free Documentation License, Version 1.1 or any later
+ version published by the Free Software Foundation; with no Invariant Sections,
+ with no Front-Cover Texts, and with no Back-Cover Texts.
+ A copy of the license is available at http://www.aymargeddon.de.
+\the_end

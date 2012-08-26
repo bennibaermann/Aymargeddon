@@ -1,0 +1,222 @@
+<html>
+<head><link rel="stylesheet" type="text/css" href="aymargeddon.css">
+</head>
+<body>
+[$ if exists $fdat{'x'} and exists $fdat{'y'} $]
+  [- $udat{-loc} = $fdat{'x'}.'_'.$fdat{'y'}; -]
+[$ endif $]
+
+[$ if exists $udat{-id} and exists $udat{-game} and $udat{-loc} $]
+
+[-
+ use FROGS::HexTorus;
+ use Aymargeddon;
+
+ my $game = $udat{-game};
+ my $user = $udat{-id};
+ my $loc = $udat{-loc};
+
+ my $db = DataBase->new();
+ my $aym = Aymargeddon->new($game,$user,$db);
+ $db->set_language($udat{-lang});
+
+ # maybe you cant see this field (for hackers, which try to look direct
+ # in the field via url)
+ unless ($aym->sight_of_field($loc)){
+   print OUT "Mogeln gildet nich!\n";
+ } else {
+
+   my ($ter,$own,$occ,$temple,$plague) =
+     $aym->read_field('TERRAIN,HOME,OCCUPANT,TEMPLE,PLAGUE',$loc);
+
+   #####################
+   # general field info
+   #####################
+
+   $out .= $db->loc('FIELD_'.$ter).' '.Location::pretty($loc).' '.
+     $db->loc('PREP_IS_SG').' ';
+   if ($occ) {
+     $out .= $db->loc('OCCUPIED').' ';
+     if ($occ==$user) {
+       # it is our own field
+       $out .= $db->loc( ($aym->gender($occ) eq 'PLURAL') ? 
+			 'PPRO_DAT3_PL' : 'PPRO_DAT3_SG' );
+     } else {
+       # the field belongs to someone else
+       $out .= $db->loc('ART_DAT_PL').' ' if $aym->gender($occ) eq 'PLURAL';
+       $out .= $aym->charname($occ).' (<a href="command.epl?cmd=CH_STATUS&other='.
+	 $occ.'">'.$aym->relation_string($occ).
+	   '</a>, <a href="command.epl?cmd=SEND_MSG&other='.$occ.'">'.
+	      $db->loc('SEND_MESSAGE').'</a>)';
+     }
+   } else {
+     $out .= $db->loc('NOT_OCCUPIED');
+   }
+   $out .= ".\n";
+
+   if ($own > 0) {
+     # some fields have some specials
+     if ($ter eq 'CITY') {
+       $out .= $db->loc('HOMECITY');
+     } elsif ($temple eq 'Y') {
+       $out .= $db->loc('TEMPLE');
+     } elsif ($ter eq 'MOUNTAIN') {
+       $out .= $db->loc('HOMEHOLY');
+     }
+     if($ter ne 'ISLE' or $temple eq 'Y'){
+       $out .= ' '.$db->loc('PREP_OWN_SG').' ';
+       if ($own==$user) {
+	 $out .= $db->loc( ($aym->gender($own) eq 'PLURAL') ? 
+			   'PPRO_DAT3_PL' : 'PPRO_DAT3_SG' );
+       } elsif ($occ == $own) {
+	 my $gen = $aym->gender($own);
+	 $out .= $db->loc( ($gen eq 'PLURAL') ? 'PPRO_DAT_PL' : 
+			 (($gen eq 'MALE') ? 'PPRO_DAT_M' : 'PPRO_DAT_F') );
+       } else {
+	 $out .= $db->loc('ART_DAT_PL').' ' if $aym->gender($own) eq 'PLURAL';
+	 $out .= $aym->charname($own).' (<a href="command.epl?cmd=CH_STATUS&other='.
+	   $own.'">'.$aym->relation_string($own).
+	   '</a>, <a href="command.epl?cmd=SEND_MSG&other='.$own.'">'.
+	     $db->loc('SEND_MESSAGE').'</a>)';
+       }
+       $out .= '.';
+     }
+   }
+   $out .= $db->loc('PLAGUE_IN_FIELD',lc($plague)) if $plague;
+   $out .= "<p>\n";
+
+   ###################
+   # show the mobiles
+   ###################
+
+   $mob = $aym->mobiles_available($loc);
+   $mobcount = $#{@$mob}+1;
+
+   if ($mobcount) {
+     $out .= $db->loc('ADJ_HERE').' ';
+     $out .= $db->loc( ($mobcount == 1 and @{$mob->[0]}[4] == 1) ?
+		       'PREP_IS_SG' : 'PREP_IS_PL' );
+
+     $out .= ($mobcount > 1) ? ":\n<p>" : ' ';
+     foreach $i (0..$mobcount-1) {
+       my ($oid,$otype,$oown,$oado,$ocnt,$ostat,$omove) = @{$mob->[$i]};
+       # check for MOVE_WITH
+       next if $omove;
+       $out .= $aym->mobile_to_html( $loc,$own,$occ,$temple,$ter, @{$mob->[$i]});
+	
+       my $transports = 0;
+       foreach $j (0..$mobcount-1) {
+	 ($xid,$xtype,$xown,$xado,$xcnt,$xstat,$xmove) = @{$mob->[$j]};
+	 if ($xmove == $oid) {
+	   if (!$transports) {
+	     $out .= ', '.$db->loc('MSG_TRANSPORTS').":<ul>\n";
+	     $transports = 1;
+	   }
+	   $out .= '<li>'.
+	     $aym->mobile_to_html( $loc,$own,$occ,$temple,$ter, @{$mob->[$j]})."</li>\n";
+	 }
+       }
+       if ($transports) {
+	 $out .= '</ul>';
+       } else {
+	 $out .= ($i < $mobcount-1) ? ',' : '.';
+	 $out .= "\n<p>";
+       }
+     } # end foreach $mobcount
+   }
+
+   ##################################
+   # general commands for this field:
+   ##################################
+
+   if ($aym->is_earthling($user)) {
+     $out .= "\n<p><a href=\"command.epl?cmd=DIE_ORDER\">".
+       $db->loc('CMD_DIE_ORDER').'</a>';
+   }
+   if ($aym->is_god($user)) {
+     if ($aym->is_arrival($loc)) {
+       $out .= "\n<p><a href=\"command.epl?cmd=INCARNATE&loc=$loc\">".
+	 $db->loc('CMD_INCARNATE').'</a>';
+     }
+     if($aym->is_coast($loc)){
+       $out .= "\n<p><a href=\"command.epl?cmd=BUILD_ARK&loc=$loc\">".
+	 $db->loc('CMD_BUILD_ARK').'</a>';
+       if($ter ne 'CITY'){
+	 $out .= "\n<p><a href=\"command.epl?cmd=FLOOD&loc=$loc\">".
+	   $db->loc('CMD_FLOOD').'</a>';
+       }
+     }
+     $out .= "\n<p><a href=\"command.epl?cmd=PLAGUE&loc=$loc\">".
+       $db->loc('CMD_PLAGUE').'</a>';
+     $out .= "\n<p><a href=\"command.epl?cmd=CH_LUCK\">".$db->loc('CMD_CH_LUCK').'</a>';
+   }
+
+   #############################
+   # show events for this field
+   #############################
+
+   $events = $aym->field_events($loc);
+   #use Data::Dumper;
+   #print OUT Dumper $events;
+   $out .= "\n<p><strong>".$db->loc('PLAYER_EVENTS')."</strong><p>\n" if %$events;
+   for my $ev ( keys %$events) {
+     $out .= $aym->show_event($ev, 0) .'<p>';
+   }
+
+   ############################
+   # show unavailable units
+   ############################
+
+   # mobile info:
+   #$mob = $aym->mobiles_available($loc,-1);
+   #$mobcount = $#{@$mob}+1;
+
+   #if ($mobcount) {
+   #  $out .= '<p>';		
+   #  $out .= '<strong> '.$db->loc('UNAVAILABLE_UNITS').":</strong><p>";
+   #  foreach $i (0..$mobcount-1) {
+   #    ($oid,$otype,$oown,$oado,$ocnt,$ostat) = @{$mob->[$i]};
+   #    $out .= $ocnt.' ';
+   #    if ($oown == $user) {
+   #	 $out .= $db->loc('PREP_OWN_PL').' '.$aym->mobile_string($otype,2);
+   #	 if ($otype eq 'PRIEST' or $otype eq 'PROPHET') {
+   #	   $out .= $db->loc('ADJ_ADORING').' '.$aym->charname($oado);
+   #	 } elsif ($otype eq 'HERO') {
+   #	   $out .= $db->loc('ADJ_ADORING');
+   #	   $out .= $aym->charname($oado).'</a>';
+   #	 } elsif ($otype eq 'AVATAR') {
+   #	   $out .= $aym->mobile_string($ostat,1);
+   #	 }
+   #    } else {
+   #	 $out .= $aym->mobile_string($otype, $ocnt);
+   #	 if ($otype ne 'ARK') {
+   #	   $out .= ' '.$db->loc('PREP_OWN_SG').' ';
+   #	   $out .= $db->loc('ART_DAT_PL').' ' if $aym->gender($oown) eq 'PLURAL';
+   #	   $out .= $aym->charname($oown);
+   #	 }
+   #	 if ($otype eq 'PRIEST' or $otype eq 'PROPHET'or $otype eq 'HERO') {
+   #	   $out .= $db->loc('ADJ_ADORING').' ';
+   #	   if ($oado == $user) {
+   #	     $out .= $db->loc( ($aym->gender($user) eq 'PLURAL') ?
+   #			       'PPRO_DAT3_PL' : 'PPRO_DAT3_SG');
+   # 	   } else {
+   #	     $out .= $aym->charname($oado);
+   #	   }
+   #	 }
+   #    }
+   #    $out .= ($i < $mobcount-1) ? ',' : '.';
+   #    $out .= "\n<p>";
+   #  } # end foreach $mobcount
+   #}
+
+   print OUT $out;
+ } # unless sight
+ -]
+
+[$ else $]
+
+  To view an Aymargeddon field, you must first <a href="login.epl" target="_top">login</a>,
+  because we need to know which game to display and for whom.
+
+[$ endif $]
+</body></html>

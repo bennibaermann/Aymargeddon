@@ -1,0 +1,13 @@
+# usage: delete_game <game-number> | ./do_sql
+
+echo "delete from GAME where GAME = $1;"
+echo "delete from MOBILE where GAME = $1;"
+echo "delete from COMMAND where GAME = $1;"
+echo "delete from MAP where GAME = $1;"
+echo "delete from ROLE where GAME = $1;"
+echo "delete from MESSAGE where GAME = $1;"
+echo "delete from EVENT where GAME = $1;"
+echo "delete from ALLIANCE where GAME = $1;"
+echo "delete from GOD where GAME = $1;"
+echo "delete from EARTHLING where GAME = $1;"
+

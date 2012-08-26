@@ -1,0 +1,17 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Frameset//EN"
+   "http://www.w3.org/TR/html4/frameset.dtd">
+<html>
+  <head>
+    <title>Frameset for the rules</title>
+  </head>
+
+  [- $udat{-current} = 'ruleframe.epl'; -]
+
+  <frameset rows="34,*">
+    <frame src="menu_frames.epl" name="menu" /> 
+    <frame src="/wiki/index.php/Regeln" name="rules" />
+    <noframes>
+      keine frames
+    </noframes>
+  </frameset>
+</html>

@@ -1,0 +1,5 @@
+#!/bin/sh
+
+# copy aymargeddon documentation to the webserver. 
+scp -r doc/*.html doc/*.pdf aymargeddon.de:public_html/aymargeddon/
+

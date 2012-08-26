@@ -1,0 +1,3 @@
+mysqldump -u aymargeddon -p`cat ../+secrets` -c --add-drop-table \
+	  RAGNAROEK > ./+RAGNAROEK_BACKUP.sql
+

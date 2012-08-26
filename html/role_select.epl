@@ -1,0 +1,52 @@
+[$ if exists $udat{-id} and exists $udat{-game} $]
+
+[-
+  use Aymargeddon;
+  $db = DataBase->new();
+  $aym = Aymargeddon->new($udat{-game},$udat{-id},$db);
+  $db->set_language($udat{-lang});
+
+  # open for earthlings?
+  $open_earthling = $aym->is_open('CITY');
+  # open for gods?
+  $open_god = $aym->is_open('MOUNTAIN');
+
+  # open for observers?
+  ($open_observer) = $db->read_player($udat{-id},'SECURITY');
+  $open_observer = 0 if $open_observer eq 'USER';
+  
+  ($gn) = $db->read_game($udat{-game},'NAME');
+
+-]
+
+<form method="get" action="player.epl">
+
+  [+ $db->loc('PLAYER_CREATE_CHAR').' '.$gn +]:<p>
+
+  [+ $db->loc('NOM_CHARNAME') +]: <input type="text" name="charname" size="20" maxlength="20"><p>
+
+  [+ $db->loc('NOM_ROLE') +]:
+  [$ if $open_earthling $]
+    <input type="radio" name="role" value="EARTHLING">[+ $db->loc('ROLE_EARTHLING') +]
+  [$ endif $]
+  [$ if $open_god $]
+    <input type="radio" name="role" value="GOD">[+ $db->loc('ROLE_GOD') +]
+  [$ endif $]
+  [$ if $open_observer $]
+    <input type="radio" name="role" value="OBSERVER">[+ $db->loc('ROLE_OBSERVER') +]
+  [$ endif $]
+  <p>
+
+  [+ $db->loc('NOM_GENDER') +]: <input type="radio" name="gender" value="MALE">[+ $db->loc('GEN_MALE') +]
+  <input type="radio" name="gender" value="FEMALE">[+ $db->loc('GEN_FEMALE') +]
+  <input type="radio" name="gender" value="PLURAL" checked>[+ $db->loc('GEN_PLURAL') +]<p>
+[#  [+ $db->loc('NOM_DESCRIPTION') +]: <input type="text" name="description"><p> #]
+  <input type="submit" value="[+ $db->loc('FORM_OK_BUTTON') +]">
+
+</form>
+
+[$ else $]
+
+  [- print OUT $db->loc('ERROR_NO_LOGIN'); -]
+
+[$ endif $]

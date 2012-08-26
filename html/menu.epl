@@ -1,0 +1,39 @@
+[-
+ use FROGS::Game;
+ use Aymargeddon;
+ use FROGS::DataBase;
+
+ # my ($aym,$gamename);
+ $db = DataBase->new();
+ $db->set_language($udat{-lang});
+ if($udat{-game} and $udat{-id}){
+   $aym = Aymargeddon->new($udat{-game},$udat{-id},$db);
+   $game = $aym;
+   $db->set_language($udat{-lang});
+   ($gamename) = $db->read_game($udat{-game},'NAME');
+ }
+
+-]
+<table width=100% border=0><tr>
+<td align="left">
+<a href="index.epl" target="_top">[+ $db->loc('PAGE_START') +]</a> |
+<a href="ruleframe.epl" target="_top">[+ $db->loc('PAGE_RULES') +]</a> |
+<a href="reference.epl" target="_top">[+ $db->loc('PAGE_REFERENCE') +]</a> |
+[$ if $udat{-id} $]
+   <a href="player.epl" target="_top">[+ $db->loc('PAGE_PLAYER') +]</a> |
+   [$ if $udat{-game} and ($udat{-id}==-1 or $game->read_role($udat{-id},'NICKNAME')) $]
+    <a href="mapframe.epl" target="_top">[+ $db->loc('PAGE_MAP') +]</a> |
+   [$ endif $]
+   <a href="login.epl" target="_top">[+ $db->loc('PAGE_LOGOUT') +]</a> |
+[$ else $]
+   <a href="login.epl" target="_top">[+ $db->loc('PAGE_LOGIN') +]</a> |
+[$ endif $]
+<a href="language.epl" target="_top">[+ $db->loc('PAGE_LANGUAGE') +]</a>
+</td><td align="right">
+[$ if(defined $aym) $]
+[# TODO: this does not work during character-generation #]
+ <strong>[+ $gamename +]</strong>, [+ $aym->role_string($udat{-id}) +],
+  [+ $aym->charname($udat{-id}) +]<p>
+[$ endif $]
+</td>
+</tr></table>

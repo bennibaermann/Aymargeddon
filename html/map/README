@@ -1,0 +1,79 @@
+Die Dateinamen sind so Computer-lesbar wie moeglich:
+
+Alle die mit B anfangen sind "Backslashes", die mit S
+"Slashes", die mit C "Center" und die mit I "Icons".
+bei den / und \ Bildern stehen die folgenden beiden
+Buchstaben fuer
+
+B Schwarz
+P Pol
+W Wasser
+U Unbesetzt
+N Neutral
+O Eigene
+F Freunde
+E Feinde
+
+(der erste Buchstabe gibt die "obere" der zweite die "untere" Farbe an).
+
+Bei den Center-Bildern steht der zweite Buchstabe fuer den
+Erdling der drin ist (wie oben), der dritte Buchstabe ist
+L Land, Manapol oder Berg ohne Tempel
+C Stadt bzw. Heimatstadt
+W Wasser bzw. Insel ohne Tempel
+I Insel mit Tempel
+M Berg mit Tempel
+
+der Letzte Buchstabe ist der Owner (B steht bei Heimatstaedten fuer
+NICHT-HEIMATSTADT also Stadt und U steht bei Bergen fuer NICHT-HEILIG
+also Plain). Der auserwaehlte Pol hat ein A als letzten Buchstaben.
+
+Bei den Icons steht das zweite Zeichen fuer
+
+0 es sind eigene und feindliche Avatare anwesend
+  (und vielleicht noch befreundete und/oder neutrale)
+1 es sind eigene und neutrale Avatare anwesend
+  (und vielleicht noch befreundete)
+2 es sind eigene und befreundete Avatare anwesend
+3 es sind nur eigene Avatare anwesend
+4 es sind befreundete und feindliche Avatare anwesend
+  (und vielleicht noch neutrale)
+5 es sind befreundete und neutrale Avatare anwesend
+6 es sind nur befreundete Avatare anwesend
+7 es sind feindliche und neutrale Avatare anwesend
+8 es sind nur feindliche Avatare anwesend
+9 es sind nur neutrale Avatare anwesend
+A es sind Archen im Feld
+E es findet gerade ein Erdlingskampf statt
+G es findet gerade ein Avatar-Kampf statt
+U leeres Icon (wir in allen vier Ecken als Fuellsel benoetigt)
+
+So, jetzt das komplette Set - ein paar Namen haben sich noch
+geaendert, weil mir ein Fehler unterlaufen war. Wirf das alte
+Verzeichnis also besser vorher weg.
+
+Fuer die Karte ohne Spieler werden nur 31 von den 214 Bildchen
+gebraucht, naemlich:
+
+CPLU	Manapol
+CPLA    Aymargeddon
+CUWU	Wasser
+CUWN	Insel
+CULU	Ebene
+CULN	Berg
+CUCU	Heimatstadt
+CUCB	Stadt
+
+BBP, BPB, SBP, SPB  Manapol am Rand
+BWP, BPW, SWP, SPW  zwischen Manapol und Wasser
+BBW, BWB, SBW, SWB  Wasser am Rand
+BWW,      SWW       zwischen Wasserfeldern
+BWU, BUW, SWU, SWW  zwischen Land und Wasser
+BBU, BUB, SBU, SUB  Land am Rand
+BUU,      SUU       zwischen Landfeldern
+
+Drei von den Bildchen sollten bei konsistenten Daten eigentlich
+nie benoetigt werden, naemlich COLO, COMO und COIO (die selbe
+ID kann nie an einen Gott und einen Erdling gleichzeitig vergeben
+sein). Zu Testzwecken sind sie dennoch vorhanden.
+

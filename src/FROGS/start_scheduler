@@ -1,0 +1,2 @@
+killall scheduler.pl
+nohup /home/benni/aymargeddon/current/src/FROGS/scheduler.pl >> /home/benni/aymargeddon/current/src/FROGS/++out 2>&1 &

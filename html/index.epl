@@ -1,0 +1,26 @@
+<html>
+<head>
+  <title>Aymargeddon</title>
+</head>
+<body>
+[-
+
+ use FROGS::Config;
+
+  $udat{-current} = 'index.epl';
+  Execute("menu.epl");
+
+ $udat{-lang} = $::conf->{-DEFAULT_LANGUAGE} unless exists $udat{-lang};
+
+ if($udat{-lang} eq 'EN'){
+   Execute("welcome_english.html");
+ }elsif($udat{-lang} eq 'DE'){
+   Execute("welcome_german.html");
+ }else{
+   Execute("welcome_english.html");
+ }
+-]
+
+</body>
+</html>
+

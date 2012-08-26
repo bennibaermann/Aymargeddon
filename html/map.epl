@@ -1,0 +1,249 @@
+<html><head>
+  <title>Aymargeddon Map</title>
+</head><body>
+
+[$ if exists $udat{-id} and exists $udat{-game} $]
+
+[-
+
+ # TODO: center relocation
+ # TODO: bug/feature setting y did not work with local variables
+
+ use FROGS::DataBase;
+ use Aymargeddon;
+ use DBI;
+ my $game = $udat{-game};
+ my $user = $udat{-id};
+
+ # look at MAP
+ my $db = Aymargeddon->new($game,$user);
+ my $dat = $db->get_map();
+
+ # create $map
+ # map[x][y][0] = background-color
+ # map[x][y][1] = occupant-color
+ # map[x][y][2] = type
+ # map[x][y][3] = owner-color
+ # map[x][y][4] = avatar-case
+ # map[x][y][5] = god-fight 
+ # map[x][y][6] = earthling-fight /foreign earthling units approaching /plague
+ # map[x][y][7] = arc present
+
+ $xmax = 0; $ymax = 0;
+ for my $row (@$dat){
+   my ($loc,$ter,$own,$occ,$temple,$plague) = @$row;
+
+   $loc =~ /^(\d+)_(\d+)$/;
+   ($x,$y) = ($1,$2);
+   $xmax = $x if $x > $xmax;
+   $ymax = $y if $y > $ymax;
+
+   if(!$db->sight($loc)){
+     $map[$x][$y][0] = 'B';
+     $map[$x][$y][1] = 'B';
+     $map[$x][$y][2] = '';
+     $map[$x][$y][3] = '';
+     $map[$x][$y][4] = 'X';
+     next;
+   }
+
+   if($ter eq 'POLE' or $ter eq 'AYMARGEDDON'){
+     $map[$x][$y][1] = 'P';
+   }elsif($occ==$user){
+     $map[$x][$y][1] = 'O';
+   }elsif($db->get_relation($occ) eq 'FRIEND' or $db->get_relation($occ) eq 'ALLIED'){
+     $map[$x][$y][1] = 'F';
+   }elsif($db->get_relation($occ) eq 'FOE' or $db->get_relation($occ) eq 'BETRAY'){
+     $map[$x][$y][1] = 'E';
+   }elsif($occ){
+     $map[$x][$y][1] = 'N';
+   }else{
+     $map[$x][$y][1] = 'U';
+   }
+
+   $map[$x][$y][0] = ($ter eq 'WATER' or $ter eq 'ISLE')
+	 	   ? 'W' : $map[$x][$y][1];
+
+   if($temple eq 'Y'){
+     $map[$x][$y][2] = ($ter eq 'ISLE')?'I':'M';
+   }elsif($ter eq 'CITY'){
+     $map[$x][$y][2] = 'C';
+   }elsif($ter eq 'ISLE' or $ter eq 'WATER'){
+     $map[$x][$y][2] = 'W';
+   }else{
+     $map[$x][$y][2] = 'L';
+   }
+
+   $map[$x][$y][3] = 'U';
+
+   if($ter eq 'AYMARGEDDON'){
+     $map[$x][$y][3] = 'A';
+   }elsif($ter eq 'MOUNTAIN' or $ter eq 'ISLE' or $ter eq 'CITY'){
+     if($map[$x][$y][2] eq 'W'){
+       $map[$x][$y][3] = 'N'; # Isles without temple are always neutral
+     }elsif(!$own){
+       $map[$x][$y][3] = 'B'; # Cities without owner are non-homecities
+     }elsif($own eq $user){
+       $map[$x][$y][3] = 'O';
+     }elsif($db->get_relation($own) eq 'FRIEND' or $db->get_relation($own) eq 'ALLIED'){
+       $map[$x][$y][3] = 'F';
+     }elsif($db->get_relation($own) eq 'FOE' or $db->get_relation($own) eq 'BETRAY'){
+       $map[$x][$y][3] = 'E';
+     }elsif($own){
+       $map[$x][$y][3] = 'N';
+     }
+   }
+
+   $map[$x][$y][5] = $db->god_fight($loc) ? 'G':'U';
+   $map[$x][$y][6] = $db->earthling_fight($loc) ? 'E': 'U';
+   $map[$x][$y][7] = (($ter ne 'WATER' or !$occ) and $db->arc_present($loc)) ? 'A':'U';
+   my $fea = $db->foreign_earthling_approaching($loc,$occ) ? 'F':'U';
+   $map[$x][$y][6] = $map[$x][$y][6] eq 'E' ? 'E' : $fea;
+   if($map[$x][$y][6] eq 'U' and $plague){
+       $map[$x][$y][6] = 'P';
+   }
+
+   $avatars = $db->avatar_present($loc);
+   ($own_avatar,$friend_avatar,$neutral_avatar,$enemy_avatar) = (0,0,0,0);
+   for my $a (@$avatars){
+     $a = $a->[0];
+     if($a == $user){
+       $own_avatar = 1;
+     }
+     elsif($db->get_relation($a) eq 'FOE' or $db->get_relation($a) eq 'BETRAY'){
+       $enemy_avatar = 1;
+     }
+     elsif($db->get_relation($a) eq 'FRIEND' or $db->get_relation($a) eq 'ALLIED'){
+       $friend_avatar = 1;
+     }
+     else{
+       $neutral_avatar = 1;
+     }
+   }
+
+   if($own_avatar){
+     if($enemy_avatar){
+       $map[$x][$y][4] = '0';
+     }elsif($neutral_avatar){
+       $map[$x][$y][4] = '1';
+     }elsif($friend_avatar){
+       $map[$x][$y][4] = '2';
+     }else{
+       $map[$x][$y][4] = '3';
+     }
+   }elsif($friend_avatar){
+     if($enemy_avatar){
+       $map[$x][$y][4] = '4';
+     }elsif($neutral_avatar){
+       $map[$x][$y][4] = '5';
+     }else{
+       $map[$x][$y][4] = '6';
+     }
+   }elsif($enemy_avatar){
+     if($neutral_avatar){
+       $map[$x][$y][4] = '7';
+     }else{
+       $map[$x][$y][4] = '8';
+     }
+   }elsif($neutral_avatar){
+     $map[$x][$y][4] = '9';
+   }else{
+      $map[$x][$y][4] = ($map[$x][$y][5] eq 'U' and $map[$x][$y][6] eq 'U' and $map[$x][$y][7] eq 'U')
+                      ? 'X' : 'U'; # don't use overlay icons if all are empy (to save space)
+   }
+
+ }
+
+ $xmax++;$ymax++;
+
+ $xoff = $udat{-xoff};
+ $yoff = $udat{-yoff};
+
+-]
+
+  <table border="0" cellspacing="0" cellpadding="0">
+  [$ foreach $yy (0..($ymax-1)) $]
+    <tr><td><img src="map/SB[+ $map[$xoff][($yy+$yoff)%$ymax][0] +].png"></td>
+    [$ foreach $xx (0..($xmax-1)) $]
+      [- $x = ($xx +$xoff) % $xmax; -]
+      [$ if not $xx % 2 $] 
+        [- $y = ($yy +$yoff -($xx / 2)) % $ymax; -]
+        [$ if $map[$x][$y][4] eq 'X' $]
+          [$ if $map[$x][$y][1] eq 'B' $]
+            <th rowspan="2"><img src="map/CB.png"></th>
+	  [$ else $]
+            <th rowspan="2"><a href="field.epl?x=[+$x+]&y=[+$y+]" target="field"><img border="0" src="map/C[+ $map[$x][$y][1].$map[$x][$y][2].$map[$x][$y][3] +].png"></a></th>
+          [$ endif $]
+	[$ else $]
+	  <th rowspan="2" background="map/C[+ $map[$x][$y][1].$map[$x][$y][2].$map[$x][$y][3] +].png"><table cellpadding="0" cellspacing="0" border="0">
+	  <tr><td><a href="field.epl?x=[+$x+]&y=[+$y+]" target="field"><img border="0" src="map/I[+ $map[$x][$y][4] +].png"></a></td><td><a href="field.epl?x=[+$x+]&y=[+$y+]" target="field"><img border="0" src="map/I[+ $map[$x][$y][5] +].png"></a></td></tr>
+          <tr><td><a href="field.epl?x=[+$x+]&y=[+$y+]" target="field"><img border="0" src="map/I[+ $map[$x][$y][6] +].png"></a></td><td><a href="field.epl?x=[+$x+]&y=[+$y+]" target="field"><img border="0" src="map/I[+ $map[$x][$y][7] +].png"></a></td></tr></table></th>
+	[$ endif $]
+        [$ if not $yy $]
+          <td><img src="map/BB[+$map[$x][$y][0]+].png"></td>
+        [$ else $]
+          <td><img src="map/B[+$map[($x+1)%$xmax][($y-1)%$ymax][0].$map[$x][$y][0]+].png"></td>
+        [$ endif $]
+      [$ else $]
+        [$ if not $yy $]
+          <td><img src="map/HB.png"></td>
+	  [$ if $xx==$xmax-1 $]
+	    <td><img src="map/SBB.png"></td>
+	  [$ else $]
+	    <td><img src="map/SB[+$map[($x+1)%$xmax][($y-1)%$ymax][0]+].png"></td>
+	  [$ endif $]
+        [$ else $]
+	  [$ if $xx==$xmax-1 $]
+	    <td><img src="map/S[+$map[$x][($y-1)%$ymax][0]+]B.png"></td>
+	  [$ else $]
+	    <td><img src="map/S[+$map[$x][($y-1)%$ymax][0].$map[($x+1)%$xmax][($y-1)%$ymax][0]+].png"></td>
+	  [$ endif $]
+        [$ endif $]
+      [$ endif $]
+    [$ endforeach $]
+    </tr><tr>
+    <td><img src="map/B[+$map[$xoff][($yy+$yoff)%$ymax][0]+]B.png"></td>
+    [$ foreach $xx (0..($xmax-1)) $]
+      [$ if not $xx % 2 $]
+	[- $x = ($xx +$xoff +1)%$xmax; $y = ($yy +$yoff -($xx/2))%$ymax; -]
+          <td><img src="map/S[+$map[($x-1)%$xmax][$y][0].$map[$x][$y][0]+].png"></td>
+        [$ if $map[$x][$y][4] eq 'X' $]
+          [$ if $map[$x][$y][1] eq 'B' $]
+            <th rowspan="2"><img src="map/CB.png"></th>
+	  [$ else $]
+            <th rowspan="2"><a href="field.epl?x=[+$x+]&y=[+$y+]" target="field"><img border="0" src="map/C[+ $map[$x][$y][1].$map[$x][$y][2].$map[$x][$y][3] +].png"></a></th>
+          [$ endif $]
+        [$ else $]
+          <th rowspan="2" background="map/C[+ $map[$x][$y][1].$map[$x][$y][2].$map[$x][$y][3] +].png"><table cellpadding="0" cellspacing="0" border="0">
+	  <tr><td><a href="field.epl?x=[+$x+]&y=[+$y+]" target="field"><img border="0" src="map/I[+ $map[$x][$y][4] +].png"></a></td><td><a href="field.epl?x=[+$x+]&y=[+$y+]" target="field"><img border="0" src="map/I[+ $map[$x][$y][5] +].png"></a></td></tr>
+	  <tr><td><a href="field.epl?x=[+$x+]&y=[+$y+]" target="field"><img border="0" src="map/I[+ $map[$x][$y][6] +].png"></a></td><td><a href="field.epl?x=[+$x+]&y=[+$y+]" target="field"><img border="0" src="map/I[+ $map[$x][$y][7] +].png"></a></td></tr></table></th>
+        [$ endif $]
+        [$ if $xx==$xmax-2 $]
+	  <td><img src="map/BB[+$map[$x][$y][0] +].png"></td>
+  	[$ else $]
+	  <td><img src="map/B[+$map[($x+1)%$xmax][($y-1)%$ymax][0].$map[$x][$y][0] +].png"></td>
+ 	[$ endif $]
+      [$ endif $]
+    [$ endforeach $]
+    </tr>
+  [$ endforeach $]
+  <tr>
+  <td><img src="map/SBB.png"></td>
+  [$ foreach $xx (0..($xmax-1)) $]
+    [$ if $xx % 2 $]
+      [- $x = ($xx + $xoff) % $xmax; $y = ($ymax +$yoff -($xx/2))% $ymax; -]
+      <td><img src="map/HB.png"></td>
+      <td><img src="map/B[+ $map[$x][$y][0] +]B.png"></td>
+      <td><img src="map/S[+ $map[$x][$y][0] +]B.png"></td>
+    [$ endif $]
+  [$ endforeach $]
+  </tr></table>
+
+[$ else $]
+
+  To view an Aymargeddon world-map, you must first <a href="login.epl" target="_top">login</a>,
+  because we need to know which game to display and for whom.
+
+[$ endif $]
+
+</body></html>

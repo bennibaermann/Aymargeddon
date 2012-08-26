@@ -1,0 +1,12 @@
+[-  use HTML::Embperl::Session;
+
+-] 
+
+<html><body>Hallo Spieler mit der Nummer 
+[+ 
+	$udat{-id}
+	
+ +]
+
+hier <a href="mapframe.html">zur Karte </a>
+</body></html>

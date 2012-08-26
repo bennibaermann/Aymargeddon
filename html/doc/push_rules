@@ -1,0 +1,6 @@
+# tth -t -e2 Regeln.tex
+# mv Regeln.tex ./+Regeln.tex
+mv Regeln.html ./+Regeln.html
+mv Regeln.pdf ./+Regeln.pdf
+scp ./+Regeln.html benni@aymargeddon.de:aymargeddon/current/doc/
+scp ./+Regeln.pdf benni@aymargeddon.de:aymargeddon/current/doc/

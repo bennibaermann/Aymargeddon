@@ -1,0 +1,45 @@
+<html>
+<head></head>
+<body>
+[-
+  use FROGS::DataBase;
+  $db = DataBase->new();
+-]
+
+[$ if exists $fdat{'lang'} $]
+
+[-
+ $udat{-lang} = $fdat{'lang'};
+ $db->set_language($udat{-lang});
+
+ #set language in Database in PLAYER.LANGUAGE
+ my $player = $udat{-id};
+ $db->update_hash('PLAYER',"PLAYER=$player",{'LANGUAGE' => $fdat{'lang'}});
+ $db->commit();
+
+ # redirect to original page
+ $http_headers_out{'Location'} = $udat{-current};
+
+-]
+
+[$ else $]
+
+[-
+  $db->set_language($udat{-lang});
+  Execute("menu.epl");
+-]
+
+<hr>
+<form method="get" action="language.epl">
+
+ [+ $db->loc('LANG_WELCOME') +]:<p>
+
+ <input type="radio" name="lang" value="EN">[+ $db->loc('LANG_ENGLISH') +]<p>
+ <input type="radio" name="lang" value="DE">[+ $db->loc('LANG_GERMAN') +]<p>
+ <input type="submit" value="[+ $db->loc('FORM_OK_BUTTON') +]">
+
+</form>
+
+[$ endif $]
+
+</body></html>

@@ -1,0 +1,221 @@
+[# get command and maybe some parameters #]
+
+[-
+  use Aymargeddon;
+  $db = DataBase->new();
+  $aym = Aymargeddon->new($udat{-game},$udat{-id},$db);
+  $db->set_language($udat{-lang});
+-]
+
+[$ if $fdat{'cmd'} $] [# show form to enter the required parameters #]
+
+[-
+#  my ($gname) = $db->read_game($udat{-game},'NAME');
+#  my $cname = $aym->charname($udat{-id});
+
+#  $out = "<strong>$gname</strong> $cname.<p>\n"
+  $out = '<form method="get" action="command.epl">';
+
+  my $cmd = $udat{-cmd} = $fdat{'cmd'};
+  $udat{-cmd_loc} = $fdat{'loc'} if $fdat{'loc'};
+
+  if($cmd eq 'SEND_MSG' and exists $fdat{'other'}){ # anybody, always
+    $udat{-cmd_args} = 'OTHER='.$fdat{'other'};
+    my $to = $aym->charname($fdat{'other'});
+    $out .= $db->loc('SEND_MESSAGE_TO',$to).
+      '<textarea name="message" cols="20" rows="20"></textarea>'
+  }elsif($cmd eq 'CH_STATUS' and exists $fdat{'other'}){ # anybody, always
+    $udat{-cmd_args} = 'OTHER='.$fdat{'other'};
+    $out .= $db->loc('CMD_CH_STATUS_MSG').' '.$aym->charname($fdat{'other'}).":<p>\n"
+         .'<input type="radio" name="status" value="ALLIED">'.$db->loc('STAT_ALLIED')."<p>\n"
+         .'<input type="radio" name="status" value="FRIEND">'.$db->loc('STAT_FRIEND')."<p>\n"
+         .'<input type="radio" name="status" value="NEUTRAL">'.$db->loc('STAT_NEUTRAL')."<p>\n"
+         .'<input type="radio" name="status" value="FOE">'.$db->loc('STAT_FOE')."<p>\n"
+         .'<input type="radio" name="status" value="BETRAY">'.$db->loc('STAT_BETRAY')."<p>\n";
+  }elsif($cmd eq 'DIE_ORDER'){ # earthling, always
+    $out .= $db->loc('CMD_DIE_ORDER_MSG').":<p>\n"
+         .'<input type="radio" name="dying" value="PKH">'.$db->loc('MOBILE_PRIEST_PL').', '.$db->loc('MOBILE_WARRIOR_PL').', '.$db->loc('MOBILE_HERO_PL')."<p>\n"
+         .'<input type="radio" name="dying" value="PHK">'.$db->loc('MOBILE_PRIEST_PL').', '.$db->loc('MOBILE_HERO_PL').', '.$db->loc('MOBILE_WARRIOR_PL')."<p>\n"
+         .'<input type="radio" name="dying" value="KPH">'.$db->loc('MOBILE_WARRIOR_PL').', '.$db->loc('MOBILE_PRIEST_PL').', '.$db->loc('MOBILE_HERO_PL')."<p>\n"
+         .'<input type="radio" name="dying" value="KHP">'.$db->loc('MOBILE_WARRIOR_PL').', '.$db->loc('MOBILE_HERO_PL').', '.$db->loc('MOBILE_PRIEST_PL')."<p>\n"
+         .'<input type="radio" name="dying" value="HPK">'.$db->loc('MOBILE_HERO_PL').', '.$db->loc('MOBILE_PRIEST_PL').', '.$db->loc('MOBILE_WARRIOR_PL')."<p>\n"
+         .'<input type="radio" name="dying" value="HKP">'.$db->loc('MOBILE_HERO_PL').', '.$db->loc('MOBILE_WARRIOR_PL').', '.$db->loc('MOBILE_PRIEST_PL')."<p>\n"
+  }elsif($cmd eq 'CH_LUCK'){ # god, always
+    $out .= $db->loc('CMD_CH_LUCK_MSG').":<p>\n"
+         . '<input type="text" name="bonus"><p>'."\n";
+    # TODO: inc/dec button
+  }elsif($cmd eq 'MOVE' and exists $fdat{'mob'} and exists $fdat{'loc'}){ # any mobile
+    $udat{-cmd_args} = 'MOBILE='.$fdat{'mob'};
+    my ($type, $count, $adoring, $movewith) =
+      $aym->get_mobile_info($fdat{'mob'}, 'TYPE, COUNT, ADORING, MOVE_WITH');
+    $out .= $db->loc('CMD_MOVE_MSG',$aym->mobile_extended_string($type,$count,$adoring)).":<p>\n"
+         .'<input type="text" name="dir">';
+    $out .= $db->loc('CMD_COUNT').':<input type="text" name="count">'."max. $count" if $count > 1;
+    $out .= "<p>\n";
+
+    # arks cant move with other units
+    if($type ne 'ARK'){
+      # MOVE_WITH
+      my $mob = $aym->mobiles_available($fdat{'loc'});
+      my $mobcount = $#{@$mob}+1;
+      my $transporters = 0;
+      if ($mobcount > 1){
+	foreach $i (0..$mobcount-1){
+	  my ($oid,$otype,$oown,$oado,$ocnt,$ostat,$omove) = @{$mob->[$i]};
+	  next if($oid == $fdat{'mob'} or $otype eq 'AVATAR' );
+	  next if $omove;
+	  if(! $transporters){
+	    $out .= $db->loc('MSG_MOVE_WITH').":<p>\n";
+	    $transporters = 1;
+	  }
+	  if($movewith == $oid){
+	    $out .= '<input type="radio" name="movewith" value="0">'.
+	      $db->loc('MSG_DONT_MOVE_WITH')."<p>\n";
+	  }else{
+	    $out .= '<input type="radio" name="movewith" value="'.$oid.'">'.
+	      $aym->mobile_extended_string($otype, $ocnt, $oado)."<p>\n";
+	  }
+	}
+      }
+    }
+    #}elsif($cmd eq 'CH_ADORING' and exists $fdat{'mob'}){ # hero
+    # $udat{-cmd_args} = 'MOBILE='.$fdat{'mob'};
+    # $out .= $db->loc('CMD_CH_ADORING_MSG').":<p>\n";
+    # my @gods = $aym->gods();
+    # for my $god (@gods){
+    #      $out .= '<input type="radio" name="god" value="'.$god.'">'.$aym->charname($god)."<p>\n";
+    #   }
+  }elsif($cmd eq 'CH_ACTION' and exists $fdat{'mob'}){ # avatar
+    $udat{-cmd_args} = 'MOBILE='.$fdat{'mob'};
+    $out .= $db->loc('CMD_CH_ACTION_MSG').":<p>\n"
+         . '<input type="radio" name="action" value="BLOCK">'.$db->loc('MOBILE_BLOCK')."<p>\n"
+         . '<input type="radio" name="action" value="HELP">'.$db->loc('MOBILE_HELP')."<p>\n"
+         . '<input type="radio" name="action" value="IGNORE">'.$db->loc('MOBILE_IGNORE')."<p>\n";
+  }elsif($cmd eq 'BLESS_PRIEST' and exists $fdat{'mob'}){ # warrior
+    $udat{-cmd_args} = 'MOBILE='.$fdat{'mob'};
+    $out .= $db->loc('CMD_BLESS_PRIEST_MSG').".<p>\n";
+  }elsif($cmd eq 'BLESS_HERO' and exists $fdat{'mob'}){ # warrior
+    $udat{-cmd_args} = 'MOBILE='.$fdat{'mob'};
+    $out .= $db->loc('CMD_BLESS_HERO_MSG').".<p>\n";
+    $out .= ':<input type="text" name="count"><p>'."\n";
+  }elsif($cmd eq 'BUILD_TEMPLE' and exists $fdat{'mob'}){
+    # priest or prophet at mountain (of the god they adore) or isle without temple
+    $udat{-cmd_args} = 'MOBILE='.$fdat{'mob'}; # needed to change its type to priest if it was a prophet
+    $out .= $db->loc('CMD_BUILD_TEMPLE_MSG').' '.$fdat{'loc'}.".<p>\n";
+  }elsif($cmd eq 'DESTROY'){ # avatar at mountain or isle with temple
+    $out .= $db->loc('CMD_DESTROY_MSG').' '.$fdat{'loc'}.".<p>\n";
+  }elsif($cmd eq 'MOVE_MTN'){ # earthling at a mountain with more priests of one god than luck+5
+    $out .= $db->loc('FIELD_MOUNTAIN')." $loc ".$db->loc('CMD_MOVE_MTN_MSG').":<p>\n";
+    # TODO: list target locations (where prophets adoring same god are)
+  }elsif($cmd eq 'INCARNATE'){ # god at his arrival temple (temple with most priests adoring him)
+    $out .= $db->loc('CMD_INCARNATE_MSG').":<p>\n"
+         .':<input type="text" name="count"><p>'."\n";
+  }elsif($cmd eq 'BUILD_ARK'){ # god at any coast field
+    $out .= $db->loc('CMD_BUILD_ARK_MSG').' '.$fdat{'loc'}.".<p>\n";
+  }elsif($cmd eq 'PLAGUE'){ # god at any field
+    $out .= $db->loc('CMD_PLAGUE_MSG').' '.$fdat{'loc'}.":<p>\n";
+    for my $plague (@{$::conf->{-PLAGUES}}){
+      $out .= '<input type="radio" name="type" value="'.$plague.'">'."$plague<p>\n"
+    }
+  }elsif($cmd eq 'FLOOD'){ # god at any coast field (without city)
+    $out .= $db->loc('CMD_FLOOD_MSG').' '.$fdat{'loc'}.".<p>\n";
+
+  }else{
+    delete $udat{-cmd};
+    delete $udat{-cmd_loc};
+    $out = $db->loc('CMD_ERROR_MSG')."<p>\n"; # unknown, illegal or incomplete command
+  }
+
+  if(exists $udat{-cmd}){
+    $out .= '<input type="submit" value="'.$db->loc('FORM_OK_BUTTON').'"></form>';
+    $udat{-back} = $ENV{'HTTP_REFERER'};
+  }
+  $out .= '<form method="get" action="'.$ENV{'HTTP_REFERER'}.'">'
+       .'<input type="submit" value="'.$db->loc('FORM_BACK_BUTTON').'"></form><p>';
+	
+  print OUT $out;
+-]
+
+[$ elsif exists $udat{-cmd} $] [# complete the command with the given form-data #]
+
+[-
+ my ($cmd) = $udat{-cmd}; delete $udat{-cmd};
+ my ($args) = $udat{-cmd_args}; delete $udat{-cmd_args} if exists $udat{-cmd_args};
+ my ($loc) = $udat{-cmd_loc}; delete $udat{-cmd_loc} if exists $udat{-cmd_loc};
+ my $failure = 0;
+
+ # global
+ if($cmd eq 'SEND_MSG'){
+   my $msg = $db->quote($fdat{'message'});
+
+   # uggly workaround necessary for Command::parse_args()
+   $msg =~ s/,/__COMMA__/g;
+   $msg =~ s/=/__EQUAL__/g;
+
+   $args .= ", MESSAGE=$msg"
+ }elsif($cmd eq 'CH_STATUS'){
+   $failure = 1 if not exists $fdat{'status'};
+   $args .= ', STATUS='.$fdat{'status'};
+ }elsif($cmd eq 'DIE_ORDER'){
+   $failure = 1 if not exists $fdat{'dying'};
+   $args = 'DYING='.$fdat{'dying'};
+ }elsif($cmd eq 'CH_LUCK'){
+   $failure = 1 if not exists $fdat{'bonus'};
+   $args = 'BONUS='.$fdat{'bonus'};
+
+   # mobile
+ }elsif($cmd eq 'MOVE'){
+   $failure = 1 if (not exists $fdat{'dir'} and not exists $fdat{'movewith'});
+   my $count = (exists $fdat{'count'}) ? $fdat{'count'} : 1;
+   if(exists $fdat{'movewith'}){
+     $cmd = 'MOVE_WITH';
+     $args .= ', COUNT='.$count.', TARGET='.$fdat{'movewith'};
+   }else{
+     $args .= ', COUNT='.$count.', DIR='.$fdat{'dir'};
+   }
+ #}elsif($cmd eq 'CH_ADORING'){
+   #$failure = 1 if not exists $fdat{'god'};
+   #$args .= ', GOD='.$fdat{'god'};
+ }elsif($cmd eq 'CH_ACTION'){
+   $failure = 1 if not exists $fdat{'action'};
+   $args .= ', ACTION='.$fdat{'action'};
+ }elsif($cmd eq 'BLESS_HERO'){
+    my $count = exists $fdat{'count'} ? $fdat{'count'} : 1;
+    $args .= ", COUNT=$count";
+    # local
+  }elsif($cmd eq 'MOVE_MTN'){
+    $failure = 1 if not exists $fdat{'target'};
+    $args = 'TARGET='.$fdat{'target'};
+  }elsif($cmd eq 'INCARNATE'){
+    my $count = (exists $fdat{'count'}) ? $fdat{'count'} : 1;
+    $args = 'COUNT='.$count;
+  }elsif($cmd eq 'PLAGUE'){
+    $failure = 1 if not exists $fdat{'type'};
+    $args = 'TYPE='.$fdat{'type'};
+  }# elsif($cmd eq 'DESTROY'){
+    
+
+  my $ub = $udat{-back};
+  delete $udat{-back};
+
+  if($failure)
+  {
+    $out = $db->loc('CMD_ERROR_MSG')."<p>\n"; # unknown, illegal or incomplete command
+    $out .= '<form method="get" action="'.$ub.'">'
+         .'<input type="submit" value="'.$db->loc('FORM_BACK_BUTTON').'"></form><p>';
+    print OUT $out;
+  }else{
+    $args = '' if not $args;
+    $aym->insert_command($cmd,$args,$loc) unless $failure;
+    $db->commit();
+
+    # redirect to field
+    $http_headers_out{'Location'} = $ub;
+  }
+-]
+
+[$ else $]
+
+   Hey, kein Befehl ?!?!
+
+[$ endif $]

@@ -1,0 +1,134 @@
+=head1 NAME B<FROGS>
+
+
+B<F>ramework for B<R>ealtime B<O>nline B<G>ames of B<S>trategy
+
+=head1 DESCRIPTION
+
+
+This is a Framework for programming Massive Multiplayer Browsergames
+(MMBG).
+
+The generell idea is to have a SQL-Database, which is accessed over
+DBI, some scripts to do the work at the server and some
+EmbPerl-Scripts to do the user interaction. The wide area of games is
+to different to give the scripts itself, so instead we choose to
+provide some modules which includes the generell function of a MMBG
+and you will program some scripts to do the game-specific
+part. Normally you need:
+
+=over 4
+
+=item create.pl
+
+A script, which generates a world in the database.
+
+=item scheduler.pl
+
+A script which do the commands and deliver the messages. It should run
+as a daemon.
+
+=item check.pl
+
+A script, which checks the logical integrity of the database of your
+game.
+
+=item *.epl
+
+A bunch of Templates for the user-interaction. For instance a
+login.epl to manage the user-authentification and a map.epl to draw a
+graphical map.
+
+=back
+
+As a start you can look at the scripts provided by the Aymargeddon
+project (www.aymargeddon.de), which is based upon FROGS. You should
+maybe use the *.epl-templates from it, because they do much generell
+work and some of them will maybe included in later versions of FROGS.
+
+FROGS consists of the following parts:
+
+=over 4
+
+=item B<FROGS::Map>
+
+An generell baseclass for maps. Includes a generell baseclass for
+locations.
+
+=item B<FROGS::HexTorus>
+
+A special Map derived from FROGS::Map. It is a Torus consisting of
+Hex-Fields.
+
+=item B<FROGS::Check>
+
+This provides generell checking ability for the underlying database.
+
+=item B<FROGS::DataBase>
+
+Here the structur of the Database is defined. You should normally not
+use direct DBI-access to the Database. Use this module instead
+whenever possible.
+
+=item B<FROGS::Config>
+
+You have to change this to configure your Game. See the comments in
+the file.
+
+=back
+
+Look in the perldoc of the parts if you want to know more.
+
+=head1 DATABASE
+
+You also need to provide a FROGS-conform database. Your game database
+can have more tables and fields than this, but the following
+tables/fields are a must have:
+
+=over 4
+
+=item MAP
+
+Fields: LOCATION, GAME
+
+=item COMMANDS
+
+Fields: COMMAND, GAME, PLAYER
+
+=item MESSAGES
+
+Fields: GAME, MESSAGE, PLAYER, FROM
+
+=item LOCALIZE
+
+=item ROLE
+
+=item PLAYER
+
+=back
+
+Look at the database definition in Aymargeddon to get a clue. For
+later versions we will provide a database definition of this minimal
+database to simplify things.
+
+=head1 VERSION
+
+This is Version 0.1 of the FROGS. 
+
+=head1 LICENSE
+
+FROGS is Free Software (GPL).
+
+=head1 AUTHOR
+
+FROGS was written by the Aymargeddon development team. Most work done by:
+
+	Benni Baermann (benni AT obda DOT de)
+
+	Dominikus Scherkl 
+
+	Jens Kurlanda 
+
+Contact us at ragnaroek AT informatik DOT uni-frankfurt DOT de.
+
+=cut

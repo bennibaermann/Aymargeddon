@@ -1,0 +1,2 @@
+mysql -u aymargeddon -p`cat ../+secrets` RAGNAROEK
+
