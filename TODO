@@ -1,3 +1,212 @@
+CRITICAL
+							    
+Dinge in dieser Rubrik sollten vor dem nächsten Spielstart erledigt sein.
+
+Bugs
+
+- Passwörter nicht mehr im Klartext in der Datenbank ablegen und
+schon gar nicht im Klartext in der URL stehen haben! Urgs. 
+
+Testen
+
+- mal nach SQL-Injection-Möglichkeiten checken. 
+    
+Features
+
+- komplett neuer HTML5-Canvas-jquery-Client.
+
+- Befehle Abrrechbar (mit Link hinter event), siehe
+(->Befehlseingabesystem)
+
+- Befehle im Vorraus abgebbar (mit link hinter event) siehe
+(->Befehlseingabesystem)
+
+- Produktion in Heimatstädten kommt mit WS 1/x
+(x=Besatzerkampfstärke) zu Ureinwohnern. -> Aufstand.
+
+Neue Menu-Struktur:
+
+- Home/News/Rules/Reference/Login/(Player)/(Map)/Language dabei zeigen
+alle bis auf die letzten vier Punkte auf das Wiki (Hauptseite/Aktuelle
+Ereignisse/Regeln/Kurzreferenz). Die englischen Seiten werden erstmal
+auch auf die deutschen gelenkt, so lange bis das englische Wiki da
+ist. Vor das Ganze kann man dann noch ein schickes grafisches Portal
+hängen. (ist das mit dem neuen Client noch relevant?)
+
+- weitere statistiken anzeigen (in player.epl?) (götter: #tempel,
+#priester; erdlinge: gesamtkampfstärke) Das ganze sollten zwei
+Tabellen sein. dort auch nachrichten an spieler verschicken.
+    
+- Spielende: tempel zerstören sollte nicht mehr möglich sein, sobald
+überall gebaut wird, nicht erst, wenn der vorletzte tempel fertig ist.
+
+- Neue Icons: Avatarbewegung, Flut, Arche in Bau. (noch relevant mit
+neuem Client?)
+    
+
+
+
+
+WICHTIG
+
+- die nachfolgenden Abschnitte formatieren ;)
+
+
+
+    Nachricht bei Ertrinken fehlt
+        BUG?: uninitialized value in BUILD_TEMPLE::first_phase()
+	    Mitbewegen nur noch bei Archen und umbenennen in
+einsteigen/aussteigen
+    BUG?: irgendwie kam es in 6_3 zu Fehlern. Beteiligte
+Randbedingungen: Kampf in der Heimatstadt, zwei weitere Spieler,
+Archenbesitzerwechsel, Tuberculosis, Umdrehen wg. FRIEND.
+    field-Frame übersichtlicher gestalten. nur wie? siehe Vorschlag
+Seitenframe
+    überfluten sollte alle Seuchen löschen.
+        In der Map sollte bei allen Bildern das TITLE-Attribut auf den
+Feldnamen (bzw. Koordinaten) gesetzt werden, damit der Benutzer mit
+der Maus sieht, wo das ist.
+    find_first_free() sollte nicht die erste freie nehmen, sondern die
+höchste um eins erhöhen (maximum beachten!) und nur, wenn oben nix
+mehr frei ist, von unten wieder anfangen. Erleichtert das debuggen!
+    MOVE second_phase() sollte im Log auch die Location zu der es hin
+geht vermerken, erleichtert das debuggen enorm.
+    Die Message bei Rückzügen sollte auch angeben wohin und nicht nur
+woher.
+    Aufgeben-Button mit Nachfrage. Wechsel in die Observer-Rolle. Für
+Erdlinge: Heimatstadt wird normal. Produktion und Beten wird gestoppt.
+Für Götter: Alle Avatare verschwinden. Kampfstärke für letzte Schlacht
+wird auf Null gesetzt. Mana weg.
+    Events, die nicht jeder sieht, sondern nur der Spieler, der sie
+ausgelöst hat. zB für PRAY
+    Trennung von Spielernachrichten und Servernachrichten.
+        Einzelne Messages löschbar
+	    BUG: Kampfmessages gehen nicht immer an die Beteiligten
+(wenn alle sterben und keine Einheit in der näher)
+    "reply" lokalisieren
+        Kurzreferenz sollte epl-generiert sein um die "echten" Zeiten
+anzeigen zu können
+    "Sterbereihenfolge" überall ändern in "Schlachtordnung"
+        BUG: Es scheint gelegentlich vorzukommen, dass %fdat bei
+Übergabe an command.epl verlorengeht. Wie reproduzieren ???
+Möglicherweise tritt das Problem nur beim Serverneustart auf.
+    Manakosten bei Götterbefehlen in command.epl mit anzeigen.
+        FROGS: Ein System für Benutzerabhängige Konfiguration
+	    Config aufspalten in FROGS und nicht-FROGS
+	        englisches Wiki
+		    Create: Alle Berge müssen flutbar sein
+(alternativ: Städte flutbar, siehe Maildiskussion).
+    PEACE darf nicht genullt werden bei kampfloser übername. Leider
+kann man dann nicht mehr so vorgehen wie jetzt und den PEACE-Wert im
+PRODUCE-Befehl speichern. Man braucht dann einen PEACE-Zähler in MAP.
+    Bei Glücksfaktor ändern die negativen Zahlen erwähnen.
+        BUG: "need to login" direkt nach dem neu registrieren im
+field.epl-frame (aber nicht in der map). geht auch beim ersten klick
+weg. hat mit udat{-loc} zu tun. wie genau, ist unklar.
+    Farben getrennt vom Allianzstatus setzbar.
+        Felder benennbar machen von Feldeigentümer. Name bleibt auch,
+wenn er das feld verlässt. (zunächst mal Anfangsnamen alle gleich
+(klick auf Namen zur Umbenennung), später Namen generieren mit einem
+ähnlichen System wie in Ragnaroek
+    Man sollte den "Inhalt" von sich bewegenden Archen schon sehen,
+wenn da eigene Leute mitfahren. Nicht für Alliierte.
+    BUG bei Götterkampfbericht: "Neue Helden unassigned position".
+Sprachenmix.
+    im Frontend PLAGUE und FLOOD nur erlauben, wenn ein Avatar da ist
+und DESTROY nur auf Inseln. neue funktion
+aymargeddon::avatar_available benutzen
+    BUG: Dequoten bei SEND_MSG.
+        zusätzliche Kategorien auf player.epl: closed games (da kommen
+spiele rein, in die man nicht mehr reinkommt, also weil sie voll sind,
+oder weil sie beendet sind), ohne link! Problem: was ist mit observern?
+    Volle Rollen nicht mehr anzeigen bei role_select.epl. Ausserdem
+den entsprechenden Fehler abfangen (bei Gleichzeitigkeit wichtig).
+    Automatische Versionsanzeige mittels tla 'tla log-ls|tail -1'
+(Problem: brauche dazu userrechte, lösung zB: cronjob, der das in eine
+lesbare datei schreibt, besser: ein script, dass automatisch nach dem
+update aufgerufen wird. ich glaube tla unterstützt sowas...)
+    Automatische Anzeige seit wann das Backend läuft/ob überhaupt.
+        Beim loggen auch die Duration in ZE angeben, nicht nur in sec.
+	    BUG?: probleme mit unify_mobiles() und MOVE_WITH. Leute
+moven mit, obwohl sie identisch sind. (wie reproduzieren ???)
+    Bei Spielende müssen alle Befehle eine entsprechende Fehlermeldung
+erzeugen. Besser: garnicht erst die Links anzeigen.
+    BUG: MOVE::second_phase() muss checken, ob das Feld inzwischen
+geflutet wurde... in enter_field()? Dann Umkehr?
+    EARTHLING_FIGHT: Avatare sollten nicht mitkämpfen, wenn neutral
+        last_login in PLAYER schreiben und anzeigen
+	    Voreingestelltes fliehen ohne kampf bei übermacht
+(einstellbar pro feld)
+    voreingestellter MOVE-Befehl für produzierte krieger.
+        Erdlingseinheiten zuteilbar in Garnison und mobile Einheiten.
+Mobile Einheiten helfen automatisch in Nachbarfeldern aus.
+    UNSCHOEN: HexTorus::neighbours() gibt doppelte zurück bei
+wrap-around
+    Sourcen einen eigenen 'Aymargeddon'-Namensraum geben. Nur dieses
+'Aymargeddon'-Verzeichnis muss sichtbar gemacht werden. Vereinfacht
+die Administration#Installation auf Debian und alle Updates, bei denen
+neue Source-Dateien hinzukommen. Problem: Was ist mit dem
+FROGS-Namensraum? 
+
+Checker
+
+    BUG: test A_in_B benutzt fälschlicherweise single_select()
+        test nach mobiles mit count = 0
+	    Test nach non-available units ohne befehle.
+	        Tests für MOVE_WITH
+		    tests für avatarkämpfe
+		        testen ob FIGHT_EARTHLING vorhanden und Event
+gesetzt wenn ATTACKER da.
+    neuer check-typ LOCATION: Funktion wird für jede Location aufgerufen
+        test summarize 
+	
+	sonstiges
+	
+	    mailingliste selber machen. 
+	    
+	    UNWICHTIG:
+	    
+	        Bei Ereignissen, die jetzt oder in der Vergangenheit
+stattfinden anstatt der leeren Zeit anzeigen: "so bald wie möglich".
+    BUG: death_count bei kämpfenden unbesetzten städten kann negativ
+werden, hat aber keine weiteren Auswirkungen.
+    UNSCHÖN: an einigen Stellen funktioniert das Programm nicht mehr,
+wenn alte Events oder alte Befehle nicht gelöscht werden (ist in der
+Config noch vorgesehen)
+    wirklich???: (getrennte Seiten für Statistik, Messages, (Events)
+(alle in player.epl nur mit unterschiedlichen Modi)
+    Mitte der Karte selber auswählen.
+        in player.epl gleich ein Spiel auswählen, wenn man das erste
+mal reinkommt.
+    role-seite
+        BUG: startfeld für observer manchmal nicht Aymargeddon
+(gleichzeitig login dysfunktional) wahrscheinlich in player.epl
+    defaults in command.epl
+        move in command.epl mehr zum klicken
+	    bei messages sollten überall clickable locations und
+clickable roles übergeben werden. Man kann das _nicht_ in
+Command::test() direkt implementieren, weil das aymargeddon-spezifisch
+ist. Man kann aber eigene Funktionen definieren, die einen Link zu
+einem Feld liefern (in Location) oder einen Link zu einer Role (in
+Aymargeddon).
+    field.epl schöner machen (grammatik kapseln)
+        neue messages/ereignisse seit dem letzten einloggen hervorheben
+	    multi-table select join/union zur performance-verbesserung
+	        UNSCHOEN: Messages werden in parse_args() falsch
+geparsed. deswegen wiederlicher Workaround bei SEND_MSG nötig
+    MOVE für admin-einheiten erlauben. könnte praktisch sein.
+        admin darf alle befehle ausführen (in nullzeit ohne mana).
+	    unschoen: DataBase::quote_condition()
+	        diverse Lokalisierungen sind haesslich (grammatik,
+GLOBAL, ...)
+    eigene seite mit manakonto für die götter (Soll und Haben...)
+        test auf numerische argumente (gibts bei DBI)
+	    message_to_field() ist ein Riesenaufwand, weil immer alle
+Sichtrechte gecheckt werden müssen. Wie lösen? So: Sichtrechte in die
+Datenbank eintragen und bei MOVE anpassen? dafür ist eigene Tabelle
+nötig. aber: message_to_field() wird eh nur noch selten benutzt, lohnt
+also der aufwand überhaupt? 
+
 TEST
 
 Diese Datei wird inzwischen im Wiki gepflegt:
