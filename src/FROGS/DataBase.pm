@@ -530,18 +530,20 @@ sub games_of_player{
 sub open_games{
   my ($self,$cond) = @_;
   my $games = $self->select_array('GAME','GAME');
-  # return $games;
 
   my @log;
   for my $game (@$games){
-    my $c = "GAME=$game";
-    $c .= "AND $cond" if $cond;
-
+      Util::log( Dumper($game)."\n",1);
+    my $c = "GAME=". $game->[0];
+    $c .= " AND $cond" if $cond;
+      Util::log($c."\n",1);
     my $unused = $self->select_array('MAP','LOCATION','',$c);
     
     print $unused;
 
-    push @log, $game if $#{@$unused} + 1;
+      Util::log(Dumper(@$unused),1);
+      
+    push @log, $game->[0] if @$unused + 1;
   }
   return \@log;
 }
