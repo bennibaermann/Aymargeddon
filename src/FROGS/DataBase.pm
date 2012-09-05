@@ -538,6 +538,8 @@ sub open_games{
     $c .= "AND $cond" if $cond;
 
     my $unused = $self->select_array('MAP','LOCATION','',$c);
+    
+    print $unused;
 
     push @log, $game if $#{@$unused} + 1;
   }
