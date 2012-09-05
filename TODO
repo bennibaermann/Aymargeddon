@@ -51,104 +51,88 @@ neuem Client?)
 
 WICHTIG
 
-- die nachfolgenden Abschnitte formatieren ;)
+- translate this TODO into english
 
-
-
-    Nachricht bei Ertrinken fehlt
-        BUG?: uninitialized value in BUILD_TEMPLE::first_phase()
-	    Mitbewegen nur noch bei Archen und umbenennen in
-einsteigen/aussteigen
-    BUG?: irgendwie kam es in 6_3 zu Fehlern. Beteiligte
-Randbedingungen: Kampf in der Heimatstadt, zwei weitere Spieler,
+- Farben getrennt vom Allianzstatus setzbar.
+- Nachricht bei Ertrinken fehlt
+- BUG?: uninitialized value in BUILD_TEMPLE::first_phase()
+- Mitbewegen nur noch bei Archen und umbenennen in einsteigen/aussteigen (was statt dessen?)
+- BUG?: irgendwie kam es in 6_3 zu Fehlern. Beteiligte Randbedingungen: Kampf in der Heimatstadt, zwei weitere Spieler,
 Archenbesitzerwechsel, Tuberculosis, Umdrehen wg. FRIEND.
-    field-Frame übersichtlicher gestalten. nur wie? siehe Vorschlag
-Seitenframe
-    überfluten sollte alle Seuchen löschen.
-        In der Map sollte bei allen Bildern das TITLE-Attribut auf den
-Feldnamen (bzw. Koordinaten) gesetzt werden, damit der Benutzer mit
-der Maus sieht, wo das ist.
-    find_first_free() sollte nicht die erste freie nehmen, sondern die
+- überfluten sollte alle Seuchen löschen.
+- find_first_free() sollte nicht die erste freie nehmen, sondern die
 höchste um eins erhöhen (maximum beachten!) und nur, wenn oben nix
 mehr frei ist, von unten wieder anfangen. Erleichtert das debuggen!
-    MOVE second_phase() sollte im Log auch die Location zu der es hin
+- MOVE second_phase() sollte im Log auch die Location zu der es hin
 geht vermerken, erleichtert das debuggen enorm.
-    Die Message bei Rückzügen sollte auch angeben wohin und nicht nur
+- Die Message bei Rückzügen sollte auch angeben wohin und nicht nur
 woher.
-    Aufgeben-Button mit Nachfrage. Wechsel in die Observer-Rolle. Für
+- Aufgeben-Button mit Nachfrage. Wechsel in die Observer-Rolle. Für
 Erdlinge: Heimatstadt wird normal. Produktion und Beten wird gestoppt.
 Für Götter: Alle Avatare verschwinden. Kampfstärke für letzte Schlacht
 wird auf Null gesetzt. Mana weg.
-    Events, die nicht jeder sieht, sondern nur der Spieler, der sie
+- Events, die nicht jeder sieht, sondern nur der Spieler, der sie
 ausgelöst hat. zB für PRAY
-    Trennung von Spielernachrichten und Servernachrichten.
-        Einzelne Messages löschbar
-	    BUG: Kampfmessages gehen nicht immer an die Beteiligten
+- Trennung von Spielernachrichten und Servernachrichten.
+- Einzelne Messages löschbar
+- BUG: Kampfmessages gehen nicht immer an die Beteiligten
 (wenn alle sterben und keine Einheit in der näher)
-    "reply" lokalisieren
-        Kurzreferenz sollte epl-generiert sein um die "echten" Zeiten
+- "reply" lokalisieren
+- Kurzreferenz sollte epl-generiert sein um die "echten" Zeiten
 anzeigen zu können
-    "Sterbereihenfolge" überall ändern in "Schlachtordnung"
-        BUG: Es scheint gelegentlich vorzukommen, dass %fdat bei
+- "Sterbereihenfolge" überall ändern in "Schlachtordnung"
+- BUG: Es scheint gelegentlich vorzukommen, dass %fdat bei
 Übergabe an command.epl verlorengeht. Wie reproduzieren ???
 Möglicherweise tritt das Problem nur beim Serverneustart auf.
-    Manakosten bei Götterbefehlen in command.epl mit anzeigen.
-        FROGS: Ein System für Benutzerabhängige Konfiguration
-	    Config aufspalten in FROGS und nicht-FROGS
-	        englisches Wiki
-		    Create: Alle Berge müssen flutbar sein
-(alternativ: Städte flutbar, siehe Maildiskussion).
-    PEACE darf nicht genullt werden bei kampfloser übername. Leider
+- Manakosten bei Götterbefehlen in command.epl mit anzeigen.
+- FROGS: Ein System für Benutzerabhängige Konfiguration
+- Config aufspalten in FROGS und nicht-FROGS
+- Wiki und englisches Wiki
+- Create: Alle Berge müssen flutbar sein
+- PEACE darf nicht genullt werden bei kampfloser übername. Leider
 kann man dann nicht mehr so vorgehen wie jetzt und den PEACE-Wert im
 PRODUCE-Befehl speichern. Man braucht dann einen PEACE-Zähler in MAP.
-    Bei Glücksfaktor ändern die negativen Zahlen erwähnen.
-        BUG: "need to login" direkt nach dem neu registrieren im
+- Bei Glücksfaktor ändern die negativen Zahlen erwähnen. (?)
+- BUG: "need to login" direkt nach dem neu registrieren im
 field.epl-frame (aber nicht in der map). geht auch beim ersten klick
 weg. hat mit udat{-loc} zu tun. wie genau, ist unklar.
-    Farben getrennt vom Allianzstatus setzbar.
-        Felder benennbar machen von Feldeigentümer. Name bleibt auch,
+- Felder benennbar machen von Feldeigentümer. Name bleibt auch,
 wenn er das feld verlässt. (zunächst mal Anfangsnamen alle gleich
 (klick auf Namen zur Umbenennung), später Namen generieren mit einem
 ähnlichen System wie in Ragnaroek
-    Man sollte den "Inhalt" von sich bewegenden Archen schon sehen,
+- Man sollte den "Inhalt" von sich bewegenden Archen schon sehen,
 wenn da eigene Leute mitfahren. Nicht für Alliierte.
-    BUG bei Götterkampfbericht: "Neue Helden unassigned position".
+- BUG bei Götterkampfbericht: "Neue Helden unassigned position".
 Sprachenmix.
-    im Frontend PLAGUE und FLOOD nur erlauben, wenn ein Avatar da ist
-und DESTROY nur auf Inseln. neue funktion
-aymargeddon::avatar_available benutzen
-    BUG: Dequoten bei SEND_MSG.
-        zusätzliche Kategorien auf player.epl: closed games (da kommen
+- im Frontend PLAGUE und FLOOD nur erlauben, wenn ein Avatar da ist
+und DESTROY nur auf Inseln. neue funktion aymargeddon::avatar_available benutzen
+- BUG: Dequoten bei SEND_MSG.
+- zusätzliche Kategorien auf player.epl: closed games (da kommen
 spiele rein, in die man nicht mehr reinkommt, also weil sie voll sind,
 oder weil sie beendet sind), ohne link! Problem: was ist mit observern?
-    Volle Rollen nicht mehr anzeigen bei role_select.epl. Ausserdem
-den entsprechenden Fehler abfangen (bei Gleichzeitigkeit wichtig).
-    Automatische Versionsanzeige mittels tla 'tla log-ls|tail -1'
-(Problem: brauche dazu userrechte, lösung zB: cronjob, der das in eine
-lesbare datei schreibt, besser: ein script, dass automatisch nach dem
-update aufgerufen wird. ich glaube tla unterstützt sowas...)
-    Automatische Anzeige seit wann das Backend läuft/ob überhaupt.
-        Beim loggen auch die Duration in ZE angeben, nicht nur in sec.
-	    BUG?: probleme mit unify_mobiles() und MOVE_WITH. Leute
+- Volle Rollen nicht mehr anzeigen bei role_select.epl. Ausserdem
+den entsprechenden Fehler abfangen (bei Gleichzeitigkeit wichtig). (?)
+- Automatische Anzeige seit wann das Backend läuft/ob überhaupt.
+- Beim loggen auch die Duration in ZE angeben, nicht nur in sec.
+- BUG?: probleme mit unify_mobiles() und MOVE_WITH. Leute
 moven mit, obwohl sie identisch sind. (wie reproduzieren ???)
-    Bei Spielende müssen alle Befehle eine entsprechende Fehlermeldung
+- Bei Spielende müssen alle Befehle eine entsprechende Fehlermeldung
 erzeugen. Besser: garnicht erst die Links anzeigen.
-    BUG: MOVE::second_phase() muss checken, ob das Feld inzwischen
+- BUG: MOVE::second_phase() muss checken, ob das Feld inzwischen
 geflutet wurde... in enter_field()? Dann Umkehr?
-    EARTHLING_FIGHT: Avatare sollten nicht mitkämpfen, wenn neutral
-        last_login in PLAYER schreiben und anzeigen
-	    Voreingestelltes fliehen ohne kampf bei übermacht
-(einstellbar pro feld)
-    voreingestellter MOVE-Befehl für produzierte krieger.
-        Erdlingseinheiten zuteilbar in Garnison und mobile Einheiten.
-Mobile Einheiten helfen automatisch in Nachbarfeldern aus.
-    UNSCHOEN: HexTorus::neighbours() gibt doppelte zurück bei
-wrap-around
-    Sourcen einen eigenen 'Aymargeddon'-Namensraum geben. Nur dieses
+- EARTHLING_FIGHT: Avatare sollten nicht mitkämpfen, wenn neutral
+- last_login in PLAYER schreiben und anzeigen
+- Voreingestelltes fliehen ohne kampf bei übermacht (einstellbar pro feld)
+- voreingestellter MOVE-Befehl für produzierte krieger.
+- Erdlingseinheiten zuteilbar in Garnison und mobile Einheiten. Mobile Einheiten helfen automatisch in Nachbarfeldern aus.
+- UNSCHOEN: HexTorus::neighbours() gibt doppelte zurück bei wrap-around
+- Sourcen einen eigenen 'Aymargeddon'-Namensraum geben. Nur dieses
 'Aymargeddon'-Verzeichnis muss sichtbar gemacht werden. Vereinfacht
 die Administration#Installation auf Debian und alle Updates, bei denen
 neue Source-Dateien hinzukommen. Problem: Was ist mit dem
 FROGS-Namensraum? 
+
+#### ab hier neu formatieren ###
 
 Checker
 
