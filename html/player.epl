@@ -87,7 +87,7 @@
     for $og (@$open_games){
       push @real_open_games, $og unless exists $such{$og->[0]};
     }
-
+    Util::log("real open games: ". Dumper(\@real_open_games), 2);
     ($rn) = $db->read_player($id, 'REALNAME') unless exists $udat{-game};
   -]
 
@@ -110,7 +110,7 @@
   <hr>
   <p>[+ $db->loc('PLAYER_OPENGAMES') +]:<p>
   [$ foreach $og (@real_open_games) $]
-    [- $og=$og->[0]; ($og_name) = $db->read_game($og,'NAME'); -]
+    [- ($og_name) = $db->read_game($og,'NAME'); -]
     <a href="player.epl?game=[+$og+]">[+$og_name+]</a><p>
   [$ endforeach $]
   [$ if $#{@real_open_games} < 0 $]
@@ -140,7 +140,7 @@
       $messages = $aym->read_messages();
      $now = $db->now();
      -]
-    <strong>[+ $db->loc('PLAYER_MESSAGES_HEADING') +]</strong><p>
+   <strong>[+ $db->loc('PLAYER_MESSAGES_HEADING') +]</strong><p>
     <a href="player.epl?delete_all_messages=1&time=[+$now+]">
    [+ $db->loc('PLAYER_DELETE_MESSAGES')+]</a><p>
     [$ foreach $msg (@$messages) $]

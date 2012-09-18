@@ -9,6 +9,12 @@ Bugs
 - Passwörter nicht mehr im Klartext in der Datenbank ablegen und
 schon gar nicht im Klartext in der URL stehen haben! Urgs. 
 
+- $::conf->{-EPL_DEBUG} funktioniert nicht. Es wird -DEBUG verwendet,
+auch wenn man in einem epl-script ist.
+
+- Umlaute in der DB müssen nach utf8 konvertiert werden. Siehe:
+http://en.gentoo-wiki.com/wiki/TIP_Convert_latin1_to_UTF-8_in_MySQL
+
 Testen
 
 - mal nach SQL-Injection-Möglichkeiten checken. 
