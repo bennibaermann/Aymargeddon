@@ -1,8 +1,30 @@
+# with this script you can delete the whole database but still use
+# LOCALIZE and PLAYER tables.
+# 
+# to init an empty database you have to do an
+#  ./do.sql < LOCALIZE_INIT.sql
+# first.
+
+echo "dumping LOCALIZE.sql ..."
+
 mysqldump -u aymargeddon -p`cat ../+secrets` -c --add-drop-table RAGNAROEK LOCALIZE \
           > LOCALIZE.sql
+	  
+echo "dumping +PLAYER.sql ..."
+	  
 mysqldump -u aymargeddon -p`cat ../+secrets` -c --add-drop-table RAGNAROEK PLAYER \
           > ./+PLAYER.sql	  
 	  
+echo "reading RAGNAROEK.sql ..."
+	  
 ./do_sql < RAGNAROEK.sql
+
+echo "reading LOCALIZE.sql ..."
+
 ./do_sql < LOCALIZE.sql
+
+echo "reading +PLAYER.sql ..."
+
 ./do_sql < ./+PLAYER.sql
+
+echo "ready."

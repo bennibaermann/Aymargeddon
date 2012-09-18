@@ -15,7 +15,7 @@ CREATE TABLE ALLIANCE (
   OTHER smallint(5) NOT NULL default '0',
   STATUS enum('NEUTRAL','ALLIED','FRIEND','FOE','BETRAY') NOT NULL default 'NEUTRAL',
   PRIMARY KEY  (GAME,PLAYER,OTHER)
-) TYPE=InnoDB COMMENT='friend or foe?';
+) COMMENT='friend or foe?';
 
 --
 -- Table structure for table `COMMAND`
@@ -36,7 +36,7 @@ CREATE TABLE COMMAND (
   DONE datetime default NULL,
   PRIMARY KEY  (ID),
   KEY EXEC (EXEC)
-) TYPE=InnoDB COMMENT='here the commands of players are stored';
+) COMMENT='here the commands of players are stored';
 
 --
 -- Table structure for table `EARTHLING`
@@ -49,7 +49,7 @@ CREATE TABLE EARTHLING (
   DYING enum('PKH','PHK','HPK','HKP','KPH','KHP') NOT NULL default 'KHP',
   HERO smallint(6) NOT NULL default '0',
   PRIMARY KEY  (GAME,PLAYER)
-) TYPE=InnoDB COMMENT='info special for each earthling';
+) COMMENT='info special for each earthling';
 
 --
 -- Table structure for table `EVENT`
@@ -68,7 +68,7 @@ CREATE TABLE EVENT (
   COMMAND_ID mediumint(9) NOT NULL default '0',
   TIME datetime NOT NULL default '0000-00-00 00:00:00',
   PRIMARY KEY  (ID)
-) TYPE=InnoDB;
+);
 
 --
 -- Table structure for table `GAME`
@@ -86,7 +86,7 @@ CREATE TABLE GAME (
   START_MANA smallint(5) unsigned NOT NULL default '20',
   RUNNING enum('Y','N') NOT NULL default 'Y',
   PRIMARY KEY  (GAME)
-) TYPE=InnoDB COMMENT='here some generell global information is stored';
+) COMMENT='here some generell global information is stored';
 
 --
 -- Table structure for table `GOD`
@@ -101,7 +101,7 @@ CREATE TABLE GOD (
   DEATH_AVATAR smallint(5) unsigned NOT NULL default '0',
   ARRIVAL char(7) NOT NULL default '',
   PRIMARY KEY  (GAME,PLAYER)
-) TYPE=InnoDB COMMENT='here some god-related stuff is stored';
+) COMMENT='here some god-related stuff is stored';
 
 --
 -- Table structure for table `LOCALIZE`
@@ -113,7 +113,7 @@ CREATE TABLE LOCALIZE (
   LANGUAGE enum('DE','EN') NOT NULL default 'DE',
   TEXT text NOT NULL,
   PRIMARY KEY  (TAG,LANGUAGE)
-) TYPE=InnoDB;
+);
 
 --
 -- Table structure for table `MAP`
@@ -128,13 +128,13 @@ CREATE TABLE MAP (
   TERRAIN enum('PLAIN','WATER','CITY','MOUNTAIN','ISLE','POLE','AYMARGEDDON') NOT NULL default 'PLAIN',
   TEMPLE enum('Y','N') NOT NULL default 'N',
   PLAGUE set('PESTILENTIA','INFLUENZA','TUBERCULOSIS') default NULL,
-  LAST_PRODUCE timestamp(14) NOT NULL,
+  LAST_PRODUCE timestamp NOT NULL,
   ATTACKER smallint(5) unsigned default '0',
   GOD_ATTACKER smallint(5) unsigned default '0',
   NAME varchar(20) NOT NULL default '',
   FLUXLINE set('N','S','SW','NW','SE','NE') NOT NULL default '',
   PRIMARY KEY  (GAME,LOCATION)
-) TYPE=InnoDB COMMENT='This is the main map of the world';
+) COMMENT='This is the main map of the world';
 
 --
 -- Table structure for table `MESSAGE`
@@ -157,7 +157,7 @@ CREATE TABLE MESSAGE (
   ARG4 varchar(25) NOT NULL default '',
   PRIMARY KEY  (ID),
   KEY TIME (TIME)
-) TYPE=InnoDB COMMENT='here messages to the players are stored';
+) COMMENT='here messages to the players are stored';
 
 --
 -- Table structure for table `MOBILE`
@@ -177,7 +177,7 @@ CREATE TABLE MOBILE (
   COMMAND_ID mediumint(9) NOT NULL default '0',
   MOVE_WITH mediumint(6) unsigned default '0',
   PRIMARY KEY  (ID)
-) TYPE=InnoDB COMMENT='Here all mobile objects are stored';
+) COMMENT='Here all mobile objects are stored';
 
 --
 -- Table structure for table `PLAYER`
@@ -203,7 +203,7 @@ CREATE TABLE PLAYER (
   UNIQUE KEY PLAYER (PLAYER),
   UNIQUE KEY LOGIN (LOGIN),
   UNIQUE KEY EMAIL (EMAIL)
-) TYPE=InnoDB COMMENT='information for players, which are not related to a game';
+) COMMENT='information for players, which are not related to a game';
 
 --
 -- Table structure for table `ROLE`
@@ -219,5 +219,5 @@ CREATE TABLE ROLE (
   DESCRIPTION text,
   PICTURE blob,
   PRIMARY KEY  (GAME,PLAYER)
-) TYPE=InnoDB COMMENT='which player plays which role?';
+) COMMENT='which player plays which role?';
 

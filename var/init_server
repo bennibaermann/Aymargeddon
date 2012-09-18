@@ -1,0 +1,4 @@
+echo "init LOCALIZE ..."
+./do_sql < LOCALIZE_INIT.sql
+echo "done."
+./from_scratch
