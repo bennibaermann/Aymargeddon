@@ -5,6 +5,8 @@
   $db = DataBase->new();
   $aym = Aymargeddon->new($udat{-game},$udat{-id},$db);
   $db->set_language($udat{-lang});
+
+  $escmode = 0;
 -]
 
 [$ if $fdat{'cmd'} $] [# show form to enter the required parameters #]

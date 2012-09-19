@@ -1,10 +1,10 @@
-noch ein test
-
 CRITICAL
+========
 							    
 Dinge in dieser Rubrik sollten vor dem nächsten Spielstart erledigt sein.
 
 Bugs
+----
 
 - Passwörter nicht mehr im Klartext in der Datenbank ablegen und
 schon gar nicht im Klartext in der URL stehen haben! Urgs. 
@@ -15,11 +15,16 @@ auch wenn man in einem epl-script ist.
 - Umlaute in der DB müssen nach utf8 konvertiert werden. Siehe:
 http://en.gentoo-wiki.com/wiki/TIP_Convert_latin1_to_UTF-8_in_MySQL
 
+- Mobiles können vereinzeln. Genaue Umstände unklar. Möglicherweise hat es was mit länger nicht laufendem scheduler zu tun?
+Aufgetreten ist es durch Produktion in einer Heimatstadt nach Bewegung.
+
 Testen
+------
 
 - mal nach SQL-Injection-Möglichkeiten checken. 
     
 Features
+--------
 
 - komplett neuer HTML5-Canvas-jquery-Client.
 
@@ -33,6 +38,7 @@ Features
 (x=Besatzerkampfstärke) zu Ureinwohnern. -> Aufstand.
 
 Neue Menu-Struktur:
+-------------------
 
 - Home/News/Rules/Reference/Login/(Player)/(Map)/Language dabei zeigen
 alle bis auf die letzten vier Punkte auf das Wiki (Hauptseite/Aktuelle
@@ -56,6 +62,9 @@ neuem Client?)
 
 
 WICHTIG
+=======
+
+Dinge in dieser Rubrik sollten spätestens im Laufe des nächsten Testspiels angegangen werden.
 
 - translate this TODO into english
 

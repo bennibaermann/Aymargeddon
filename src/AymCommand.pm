@@ -234,7 +234,8 @@ sub move_with{
   # all mobiles which already move with this now move with the target
   if($target != 0){
     my $mob = $self->{-context}->mobiles_available($mobile->{'LOCATION'});
-    my $mobcount = $#{@$mob}+1;
+    # my $mobcount = $#{@$mob}+1;
+    my $mobcount = @$mob;
     for my $i (0..$mobcount-1){
       my ($oid,$otype,$oown,$oado,$ocnt,$ostat,$omove) = @{$mob->[$i]};
       next if($omove != $id);
