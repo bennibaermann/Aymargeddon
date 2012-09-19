@@ -12,6 +12,8 @@
  use FROGS::HexTorus;
  use Aymargeddon;
 
+ $escmode = 0;
+
  my $game = $udat{-game};
  my $user = $udat{-id};
  my $loc = $udat{-loc};
