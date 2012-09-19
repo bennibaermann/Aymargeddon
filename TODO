@@ -59,6 +59,7 @@ WICHTIG
 
 - translate this TODO into english
 
+- Error: Tag 'ROLE_UNDEFINED' not defined for language 'DE' (player.epl, wenn keine rolle gewählt)
 - Farben getrennt vom Allianzstatus setzbar.
 - Nachricht bei Ertrinken fehlt
 - BUG?: uninitialized value in BUILD_TEMPLE::first_phase()
@@ -157,6 +158,8 @@ gesetzt wenn ATTACKER da.
 	    mailingliste selber machen. 
 	    
 	    UNWICHTIG:
+
+- In player.epl wird die Rollenauswahl angezeigt, wenn man das Spiel in dem der Client sich befidet ($udat->{-game}) auf dem server gelöscht hat. 
 	    
 	        Bei Ereignissen, die jetzt oder in der Vergangenheit
 stattfinden anstatt der leeren Zeit anzeigen: "so bald wie möglich".
