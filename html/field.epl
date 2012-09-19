@@ -92,7 +92,7 @@
    ###################
 
    $mob = $aym->mobiles_available($loc);
-   $mobcount = $#{@$mob}+1;
+   $mobcount = @$mob;
 
    if ($mobcount) {
      $out .= $db->loc('ADJ_HERE').' ';
