@@ -7,7 +7,7 @@
   $udat{-current} = 'player.epl';
 	
   use Aymargeddon;
- use Data::Dumper;
+  # use Data::Dumper;
   $db = DataBase->new();
   $id = 0;
   if($udat{-id}){
@@ -87,7 +87,7 @@
     for $og (@$open_games){
       push @real_open_games, $og unless exists $such{$og->[0]};
     }
-    Util::log("real open games: ". Dumper(\@real_open_games), 2);
+    # Util::log("real open games: ". Dumper(\@real_open_games), 2);
     ($rn) = $db->read_player($id, 'REALNAME') unless exists $udat{-game};
   -]
 
