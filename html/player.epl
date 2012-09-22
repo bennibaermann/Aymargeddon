@@ -27,7 +27,7 @@
   ($udat{-lang}) = $db->read_player($id,'LANGUAGE');
  }
 
-  $escmode = 0;
+ $escmode = 0;
 
  # TODO: klappt nich :-(
  # $out = '<body style="font-size:10pt" bgcolor="'.$conf->{-COLOR}->{-EMPTY}.'">';

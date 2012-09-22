@@ -200,7 +200,7 @@ while(<CONFIG>){
   next if /^\s*\#.*$/;
   $::conf->{-DB_PASSWD} = $_;
 }
-print  $::conf->{-DB_PASSWD};
+
 close CONFIG or die "could not close config file $conf: $!\n";
 
 1;
