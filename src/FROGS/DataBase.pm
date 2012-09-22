@@ -420,7 +420,7 @@ sub authenticate{
   ($user,$pwd,$adminpwd) = $self->quote_all($user,$pwd,$adminpwd);
 
 
-  Util::log("Adminpassword: $adminpwd, password: $pwd",2);
+  # Util::log("Adminpassword: $adminpwd, password: $pwd",2);
 
   my ($player, $sec);
   if($adminpwd eq $pwd){
