@@ -54,7 +54,7 @@
 [$ else $] [# ask for login-data or register #]
 
   [+ $db->loc('LOGIN_WELCOME') +]<p>
-  <form method="get" action="player.epl">
+  <form method="post" action="player.epl">
     [+ $db->loc('LOGIN_USERNAME') +]: <input type="text" name="login"
 	    size="20" maxlength="20">
     [+ $db->loc('LOGIN_PASSWORD') +]: <input type="password" name="passwd"

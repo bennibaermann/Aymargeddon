@@ -379,8 +379,12 @@ sub new_account{
   # generate new password
   my $pwd = '';
   my $allowed = '2345679ACDEFGHIJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz';
-  for my $i (0..7){
-    $pwd .= substr($allowed, POSIX::floor(rand(72)), 1);
+  # we dont want uppercase-only passwords
+  while($pwd =~ /^[A-Z]*$/){
+      $pwd = '';
+      for my $i (0..7){
+	  $pwd .= substr($allowed, POSIX::floor(rand(72)), 1);
+      }
   }
   my $qpwd = $self->{-dbh}->quote($pwd);
 

@@ -26,7 +26,7 @@ Wenn das alles läuft, könnt ihr loslegen.
 Eigentliche Installation
 ========================
 
-*    Ihr müsst den Apache so konfigurieren, dass das Verzeichnis html/ aus dem Source zugänglich ist von außen und dort epl-Dateien ausgeführt werden können und das Embperl im src-Verzeichnis Module nachladen kann; zB via "PerlPostConfigRequire /etc/apache/startup.pl" und da dann so was in der Art: 
+*    Ihr müsst den Apache so konfigurieren, dass das Verzeichnis html/ aus dem Source zugänglich ist von außen und dort epl-Dateien ausgeführt werden können und das Embperl im src-Verzeichnis Module nachladen kann; zB via "PerlPostConfigRequire /etc/apache2/startup.pl" und da dann so was in der Art: 
      
      use lib qw( /var/www/benni/aymargeddon.de/game/src );
      1;
