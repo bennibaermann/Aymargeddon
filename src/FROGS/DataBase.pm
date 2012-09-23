@@ -402,6 +402,11 @@ sub new_account{
            . $self->loc('REGISTER_MAIL_TEXT', $name, $login, $pwd)."\n";
 
   # print $mail;
+# aus man mail:
+#           env MAILRC=/dev/null from=scriptreply@domain smtp=host \
+#                smtp-auth-user=login smtp-auth-password=secret \
+#               smtp-auth=login mailx -n -s "subject" \
+#              -a attachment_file recipient@domain <content_file
 
   open(SENDMAIL, "|mail $email") or Util::log("Can't fork for sendmail: $!",0);
   print SENDMAIL $mail;
