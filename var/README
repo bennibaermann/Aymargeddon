@@ -8,11 +8,18 @@ The script backup generates a backup in ./+RAGNAROEK_BACKUP.sql
 The script from_scratch generates a complete empty database but with
 the old PLAYER and LOCALIZE tables.
 
-The script do_sql executes his first command with mysql
+The script init_server deletes PLAYER to and uses LOCALIZE_INIT
+instead of LOCALIZE. this should only be uses if you start a new server or
+want to get rid of your players. (TODO: does not work properly)
+
+The script do_sql executes his standard input with mysql in the
+database RAGNAROEK with the appropriate user and password.
 
 in my.cnf is my configuration file for mysql to work with
-InnoDB tabletype. make shure InnoDB tabletype works for you. mysql
+InnoDB tabletype. make shure InnoDB tabletype works for you. old
+versions of mysql
 sets default tabletype to MyISAM if it does not work without
 complaining! But FROGS and Aymargeddon wont work without the
-transaction-capability from InnoDB
+transaction-capability from InnoDB. This should not be used for newer
+versions of Mysql.
 

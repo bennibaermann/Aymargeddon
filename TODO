@@ -6,8 +6,7 @@ Dinge in dieser Rubrik sollten vor dem nächsten Spielstart erledigt sein.
 Bugs
 ----
 
-- Passwörter nicht mehr im Klartext in der Datenbank ablegen und
-schon gar nicht im Klartext in der URL stehen haben! Urgs. 
+- Passwörter nicht mehr im Klartext in der URL stehen haben! Urgs. 
 
 - $::conf->{-EPL_DEBUG} funktioniert nicht. Es wird -DEBUG verwendet,
 auch wenn man in einem epl-script ist.
@@ -168,6 +167,9 @@ gesetzt wenn ATTACKER da.
 	    
 	    UNWICHTIG:
 
+- Der Link zur Mailingliste in der Registrierungsmail sollte in die
+Config und von dort eingelesen werden.
+
 - In player.epl wird die Rollenauswahl angezeigt, wenn man das Spiel in dem der Client sich befidet ($udat->{-game}) auf dem server gelöscht hat. 
 	    
 	        Bei Ereignissen, die jetzt oder in der Vergangenheit
@@ -211,8 +213,3 @@ Datenbank eintragen und bei MOVE anpassen? dafür ist eigene Tabelle
 nötig. aber: message_to_field() wird eh nur noch selten benutzt, lohnt
 also der aufwand überhaupt? 
 
-TEST
-
-Diese Datei wird inzwischen im Wiki gepflegt:
-
-http://www.aymargeddon.de/wiki/index.php/TODO

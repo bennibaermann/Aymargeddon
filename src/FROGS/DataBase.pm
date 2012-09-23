@@ -392,25 +392,10 @@ sub new_account{
  				REALNAME => $name,
 				LOGIN    => $login,
  				EMAIL    => $email,
- 				PASSWORD => $pwd,
+ 				PASSWORD => crypt($pwd,'5g'),
 				LANGUAGE => $lang,
  			       });
   $self->commit();
-
-  # my $mail = "From: registration\@aymargeddon.de\nTo: $name <$email>\n"
-  #         . "Subject: ".$self->loc('REGISTER_MAIL_SUBJECT')."\n\n"
-  #         . $self->loc('REGISTER_MAIL_TEXT', $name, $login, $pwd)."\n";
-
-  # print $mail;
-# aus man mail:
-#           env MAILRC=/dev/null from=scriptreply@domain smtp=host \
-#                smtp-auth-user=login smtp-auth-password=secret \
-#               smtp-auth=login mailx -n -s "subject" \
-#              -a attachment_file recipient@domain <content_file
-
-  # open(SENDMAIL, "|mail $email") or Util::log("Can't fork for sendmail: $!",0);
-  # print SENDMAIL $mail;
-  # close(SENDMAIL) or Util::log("sendmail didn't close nicely",0);
 
   use Mail::Mailer;
     
@@ -434,8 +419,9 @@ sub authenticate{
   # you can log into any account with adminpassword
   my ($adminpwd) = $self->single_select("SELECT PASSWORD FROM PLAYER ".
 					"WHERE LOGIN=$admin");
+  $pwd = crypt($pwd,'5g');
+  $adminpwd = crypt($adminpwd,'5g');
   ($user,$pwd,$adminpwd) = $self->quote_all($user,$pwd,$adminpwd);
-
 
   # Util::log("Adminpassword: $adminpwd, password: $pwd",2);
 
@@ -452,12 +438,14 @@ sub authenticate{
 
   if($player){
     if($pwd2 and $pwd3 and $pwd2 eq $pwd3){
-      # change password!
-      $self->update_hash('PLAYER',
+	# change password!
+	$pwd2 = crypt($pwd2,'5g');
+	$self->update_hash('PLAYER',
 			 "LOGIN=$user",
 			 {'PASSWORD' => $pwd2});
-      Util::log("password changed!",0); # todo: localize and aufhübschen
+	Util::log("password changed for player $player!",0);
     }
+    # TODO? error if passwords did not match
     # TODO: write last_login
     return $player;
   }
