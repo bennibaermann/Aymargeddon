@@ -397,16 +397,28 @@ sub new_account{
  			       });
   $self->commit();
 
-  my $mail = "From: registration\@aymargeddon.de\nTo: $name <$email>\n"
-           . "Subject: ".$self->loc('REGISTER_MAIL_SUBJECT')."\n\n"
-           . $self->loc('REGISTER_MAIL_TEXT', $name, $login, $pwd)."\n";
+  # my $mail = "From: registration\@aymargeddon.de\nTo: $name <$email>\n"
+  #         . "Subject: ".$self->loc('REGISTER_MAIL_SUBJECT')."\n\n"
+  #         . $self->loc('REGISTER_MAIL_TEXT', $name, $login, $pwd)."\n";
 
   # print $mail;
 
-  open(SENDMAIL, "|mail $email") or Util::log("Can't fork for sendmail: $!",0);
-  print SENDMAIL $mail;
-  close(SENDMAIL) or Util::log("sendmail didn't close nicely",0);
+  # open(SENDMAIL, "|mail $email") or Util::log("Can't fork for sendmail: $!",0);
+  # print SENDMAIL $mail;
+  # close(SENDMAIL) or Util::log("sendmail didn't close nicely",0);
 
+  use Mail::Mailer;
+    
+  my $mailer = Mail::Mailer->new();
+    
+  $mailer->open({   From => 'benni@aymargeddon.de',
+		    To => "$name <$email>",
+		    Subject => $self->loc('REGISTER_MAIL_SUBJECT'),
+		})
+      or Util::log("can't send registration mail to $email: $!\n");
+  print $mailer $self->loc('REGISTER_MAIL_TEXT', $name, $login, $pwd);
+  $mailer->close();
+        
   return $pwd;
 }
 
