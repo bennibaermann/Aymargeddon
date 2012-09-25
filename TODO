@@ -6,13 +6,8 @@ Dinge in dieser Rubrik sollten vor dem nächsten Spielstart erledigt sein.
 Bugs
 ----
 
-- Passwörter nicht mehr im Klartext in der URL stehen haben! Urgs. 
-
 - $::conf->{-EPL_DEBUG} funktioniert nicht. Es wird -DEBUG verwendet,
 auch wenn man in einem epl-script ist.
-
-- Umlaute in der DB müssen nach utf8 konvertiert werden. Siehe:
-http://en.gentoo-wiki.com/wiki/TIP_Convert_latin1_to_UTF-8_in_MySQL
 
 - Mobiles können vereinzeln. Genaue Umstände unklar. Möglicherweise hat es was mit länger nicht laufendem scheduler zu tun?
 Aufgetreten ist es durch Produktion in einer Heimatstadt nach Bewegung.
@@ -150,41 +145,50 @@ FROGS-Namensraum?
 #### ab hier neu formatieren ###
 
 Checker
+-------
 
-    BUG: test A_in_B benutzt fälschlicherweise single_select()
-        test nach mobiles mit count = 0
-	    Test nach non-available units ohne befehle.
-	        Tests für MOVE_WITH
-		    tests für avatarkämpfe
-		        testen ob FIGHT_EARTHLING vorhanden und Event
-gesetzt wenn ATTACKER da.
-    neuer check-typ LOCATION: Funktion wird für jede Location aufgerufen
-        test summarize 
+- BUG: test A_in_B benutzt fälschlicherweise single_select()
+- test nach mobiles mit count = 0
+- Test nach non-available units ohne befehle.
+- Tests für MOVE_WITH
+- tests für avatarkämpfe
+- testen ob FIGHT_EARTHLING vorhanden und Event gesetzt wenn ATTACKER da.
+- neuer check-typ LOCATION: Funktion wird für jede Location aufgerufen
+- test summarize 
 	
-	sonstiges
-	
-	    mailingliste selber machen. 
+sonstiges
+---------
+
+- Alte Adressen und Adressen aus pledgebank sammeln und in neue Mailingliste einpflegen und Leute einladen
 	    
-	    UNWICHTIG:
+UNWICHTIG:
+==========
 
 - Der Link zur Mailingliste in der Registrierungsmail sollte in die
 Config und von dort eingelesen werden.
 
 - In player.epl wird die Rollenauswahl angezeigt, wenn man das Spiel in dem der Client sich befidet ($udat->{-game}) auf dem server gelöscht hat. 
 	    
-	        Bei Ereignissen, die jetzt oder in der Vergangenheit
-stattfinden anstatt der leeren Zeit anzeigen: "so bald wie möglich".
-    BUG: death_count bei kämpfenden unbesetzten städten kann negativ
-werden, hat aber keine weiteren Auswirkungen.
-    UNSCHÖN: an einigen Stellen funktioniert das Programm nicht mehr,
+- Bei Ereignissen, die jetzt oder in der Vergangenheit stattfinden anstatt der leeren Zeit anzeigen: "so bald wie möglich".
+
+- BUG: death_count bei kämpfenden unbesetzten städten kann negativ werden, hat aber keine weiteren Auswirkungen.
+
+- UNSCHÖN: an einigen Stellen funktioniert das Programm nicht mehr,
 wenn alte Events oder alte Befehle nicht gelöscht werden (ist in der
-Config noch vorgesehen)
-    wirklich???: (getrennte Seiten für Statistik, Messages, (Events)
-(alle in player.epl nur mit unterschiedlichen Modi)
-    Mitte der Karte selber auswählen.
-        in player.epl gleich ein Spiel auswählen, wenn man das erste
-mal reinkommt.
-    role-seite
+Config noch vorgesehen) hä??? was ist damit gemeint?
+ 
+- wirklich???: (getrennte Seiten für Statistik, Messages, (Events)
+(alle in player.epl nur mit unterschiedlichen Modi) => vielleicht als Tabs mit jquery machen
+
+- Mitte der Karte selber auswählbar machen.
+
+- in player.epl gleich ein Spiel auswählen, wenn man das erste mal reinkommt.
+
+- role-seite (?)
+
+***************************ab hier unformatiert*****************************
+
+
         BUG: startfeld für observer manchmal nicht Aymargeddon
 (gleichzeitig login dysfunktional) wahrscheinlich in player.epl
     defaults in command.epl

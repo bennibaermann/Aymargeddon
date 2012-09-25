@@ -1,23 +1,24 @@
 ##########################################################################
 #
-#   Copyright (c) 2003 Aymargeddon Development Team
+#   Copyright (c) 2003-2012 Aymargeddon Development Team
 #
-#   This file is part of
-#   "FROGS" = Framework for Realtime Online Games of Strategy
+#   This file is part of "Last days of Aymargeddon" - a massive multi player
+#   onine game of strategy	
+#   
+#        This program is free software: you can redistribute it and/or modify
+#	 it under the terms of the GNU Affero General Public License as
+#        published by the Free Software Foundation, either version 3 of the
+#	 License, or (at your option) any later version.
+#    
+#        This program is distributed in the hope that it will be useful,
+#	 but WITHOUT ANY WARRANTY; without even the implied warranty of
+#	 MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 #
-#   FROGS is free software; you can redistribute it and/or modify it
-#   under the terms of the GNU General Public License as published by the Free
-#   Software Foundation; either version 2 of the License, or (at your option)
-#   any later version.
-#
-#   FROGS is distributed in the hope that it will be useful, but WITHOUT
-#   ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
-#   FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for
-#   more details.
-#   You should have received a copy of the GNU General Public License along
-#   with this program; if not, write to the Free Software Foundation, Inc., 675
-#   Mass Ave, Cambridge, MA 02139, USA.
-#
+#    See the GNU Affero General Public License for more details.
+#    
+#    You should have received a copy of the GNU Affero General Public License
+#    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+#    
 ###########################################################################
 #
 
@@ -379,7 +380,7 @@ sub new_account{
   # generate new password
   my $pwd = '';
   my $allowed = '2345679ACDEFGHIJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz';
-  # we dont want uppercase-only passwords
+  # we dont want uppercase-only passwords, which would lead to LOCALIZE-Problems
   while($pwd =~ /^[A-Z]*$/){
       $pwd = '';
       for my $i (0..7){
