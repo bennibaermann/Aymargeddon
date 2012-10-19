@@ -33,7 +33,7 @@
 
 [- 
   my $lang = 'DE'; # TODO: use DEFAULT_LANGUAGE from config
-  # TODO BUG: default-language looks to be allways EN here...
+  # TODO BUG: default-language seems to be allways EN here...
   $lang = $udat{-lang} if exists $udat{-lang};
   
   $new_passwd = $db->new_account($fdat{'newlogin'},

@@ -38,7 +38,7 @@ use Data::Dumper;
 @Aymargeddon::ISA = qw(Game);
 
 sub new{
-  my ($class,$game,$user,$db,$lang) = @_;
+  my ($class,$game,$user,$db,$lang) = @_; #TODO: $lang not used here?
 
   my $self = Game->new($game,$user,$db);
 
@@ -49,6 +49,7 @@ sub get_map{
   my $self = shift;
 
   unless (exists $self->{-map}){
+      # TODO: HOME dupplication correct?
     $self->{-map} = $self->read_map("TERRAIN,HOME,OCCUPANT,TEMPLE,PLAGUE,HOME");
   }
   return $self->{-map};

@@ -1,0 +1,4 @@
+#!/bin/sh
+
+grep $1 src/*.pl src/*.pm src/FROGS/*.pm html/*.epl
+

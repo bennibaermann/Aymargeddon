@@ -183,6 +183,31 @@ sub done {
   # TODO?: send messages
 }
 
+# returns a hash with all data wich is affected from the command
+sub affected{
+    my $self = shift;
+    
+    my $aff = $self->{-affected};
+    for my $field (@{$aff->{-fields}}){
+	#TODO? build field data    	
+    }
+    
+    return $aff;
+}
+
+# returns a JSON-Object with all new infos which should displayd from client
+sub first_phase_ajax{
+    my $self = shift;
+    
+    my $ret = $self->first_phase();
+    #TODO: which part of the logic in execute() is needed here?
+    
+    my $aff = $self->affected();
+    use JSON;
+    return encode($aff);
+    
+}
+
 sub setDuration {
 # sets the duration of the command in units. Sheduler will schedule
 # the Phase 2 then for gametime+units*pace(game).
