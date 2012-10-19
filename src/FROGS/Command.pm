@@ -3,7 +3,7 @@
 #   Copyright (c) 2003-2012 Aymargeddon Development Team
 #
 #   This file is part of "Last days of Aymargeddon" - a massive multi player
-#   onine game of strategy	
+#   online game of strategy	
 #   
 #        This program is free software: you can redistribute it and/or modify
 #	 it under the terms of the GNU Affero General Public License as

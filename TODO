@@ -12,6 +12,9 @@ auch wenn man in einem epl-script ist.
 - Mobiles können vereinzeln. Genaue Umstände unklar. Möglicherweise hat es was mit länger nicht laufendem scheduler zu tun?
 Aufgetreten ist es durch Produktion in einer Heimatstadt nach Bewegung.
 
+- Registrieren klappt erst, nachdem eine Sprache ausgewählt wurde, weil 
+"LANGUAGE cannot be null".
+
 Testen
 ------
 

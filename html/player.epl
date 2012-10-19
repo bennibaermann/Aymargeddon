@@ -1,4 +1,3 @@
-[- use FROGS::Config qw($conf); -]
 <html>
 <head><link rel="stylesheet" type="text/css" href="aymargeddon.css">
 <title>Aymargeddon</title></head>
@@ -29,7 +28,7 @@
 
  $escmode = 0;
 
- # TODO: klappt nich :-(
+ # TODO: klappt nich weil $::conf nicht funktioniert im Embperl :-(
  # $out = '<body style="font-size:10pt" bgcolor="'.$conf->{-COLOR}->{-EMPTY}.'">';
  $out = '<body style="line-height:12pt;font-size:10pt">';
 -]

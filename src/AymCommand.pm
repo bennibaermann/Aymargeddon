@@ -1896,10 +1896,16 @@ sub first_phase{
   # calculate duration
   $self->setDuration($::conf->{-DURATION}->{-BUILD_ARK});
 
-  $self->event($self->{-location},
-	       'EVENT_BUILD_ARK');
+  my $loc = $self->{-location};
+  
+  $self->event($loc,'EVENT_BUILD_ARK');
 
   $self->use_mana();
+  
+  $self->{-affected} = {
+      -fields => [$loc],
+      -mana => $self->{-player},
+  };
 
   return $self->{-duration};
 }
