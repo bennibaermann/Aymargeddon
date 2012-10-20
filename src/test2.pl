@@ -2,6 +2,8 @@ use strict;
 use FROGS::DataBase;
 use Data::Dumper;
 use Aymargeddon;
+use AymCommand;
+use FROGS::Command;
 
 $| = 1;
 
@@ -13,11 +15,26 @@ $::conf->{-DEBUG} = 2;
 
 my $db =  new DataBase();
 
-$db->update_hash('MOBILE',
-		 "LOCATION=0_1",
-		 {'COUNT' => 'COUNT + 1'},'noquote');
+my $dbhash = {
+    "PLAYER" => 5,
+    "GAME" => 1,
+    "ID" => 2,
+    "LOCATION" => "2_0",
+};
 
-$db->commit();
+my $command = BUILD_ARK->new($dbhash,$db);
+
+print $command->first_phase_ajax()."\n";
+
+
+
+
+
+#$db->update_hash('MOBILE',
+#		 "LOCATION=0_1",
+#		 {'COUNT' => 'COUNT + 1'},'noquote');
+
+#$db->commit();
 
 # print $db->relative("2004-05-13 03:40:37") ."\n";
 

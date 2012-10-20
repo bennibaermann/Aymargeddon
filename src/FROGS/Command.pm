@@ -204,7 +204,7 @@ sub first_phase_ajax{
     
     my $aff = $self->affected();
     use JSON;
-    return encode($aff);
+    return encode_json($aff);
     
 }
 
