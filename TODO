@@ -189,6 +189,10 @@ Config noch vorgesehen) hä??? was ist damit gemeint?
 
 - role-seite (?)
 
+- if apache mod deflate is activated we get this multiple times per
+request: "Zlib error -2 flushing zlib output buffer ((null)), referer:
+http://localhost/aym/index.epl"
+
 ***************************ab hier unformatiert*****************************
 
 
@@ -219,4 +223,3 @@ Sichtrechte gecheckt werden müssen. Wie lösen? So: Sichtrechte in die
 Datenbank eintragen und bei MOVE anpassen? dafür ist eigene Tabelle
 nötig. aber: message_to_field() wird eh nur noch selten benutzt, lohnt
 also der aufwand überhaupt? 
-

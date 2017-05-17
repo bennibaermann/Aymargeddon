@@ -49,7 +49,7 @@ Eigentliche Installation
 
 *    Ihr müsst im Verzeichnis var/ den Befehl ./do_sql < RAGNAROEK.sql sowie ./do_sql < LOCALIZE.sql eingeben. (oder evntl.: ./init_server)
 
-*    Ihr müsst im Verzeichnis src/ den Befehl create.pl <spielfeldgröße> ausführen. Dort dann den Namen des Spiels sowie die Spielgeschwindigkeit eingeben.
+*    Ihr müsst im Verzeichnis src/ den Befehl create.pl <# erdlinge> ausführen. Dort dann den Namen des Spiels sowie die Spielgeschwindigkeit eingeben.
 
 *    Ihr müsst im Verzeichnis src/FROGS/ den Befehl ./start_scheduler ausführen. 
 
