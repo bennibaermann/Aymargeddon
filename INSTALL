@@ -26,6 +26,9 @@ apt-get install libembperl-perl
 
 *    MySQL als DBMS 
 
+*    Eine Möglichkeit Mails zu versenden. Welche Möglichkeiten
+funktionieren steht in der Doku zu Mail::Mailer.
+
 Wenn das alles läuft, könnt ihr loslegen.
 
 Eigentliche Installation
