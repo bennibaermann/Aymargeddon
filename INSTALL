@@ -8,7 +8,7 @@ Ihr benötigt:
 
 *    Einen Rechner mit Linux als Betriebssystem (möglicherweise läuft es auch auf anderen Systemen, aber das hat bisher noch niemand probiert)
 *    den Sourcecode (zu beziehen über "git clone http://aymargeddon.de/aymargeddon.git")
-*    einen Apache2-Webserver
+*    einen Apache2-Webserver im mpm_prefork modus
 *    mod_perl dafür 
 *    Embedded Perl auf diesem Server. Unter Debian squeeze tut es ein: 
 
