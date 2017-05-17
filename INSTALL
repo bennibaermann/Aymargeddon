@@ -16,12 +16,13 @@ apt-get install libembperl-perl
 
 *    folgende Perl-Module müssen vorhanden sein: 
 
+     DBI::MySQL
      Date::Calc
      Mail::Mailer
      Data::Dumper
      JSON
      
-     gibts alle auch als Debian-Pakete.
+     gibts alle auch als Debian-Pakete (oder bei CPAN).
 
 *    MySQL als DBMS 
 
