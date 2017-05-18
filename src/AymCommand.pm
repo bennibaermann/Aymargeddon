@@ -1719,9 +1719,9 @@ sub second_phase{
 	->read_mobile_condition('ID',
 				"TYPE=PRIEST AND AVAILABLE=Y AND ADORING=$home",$loc);
       if(!@$mobiles){
-	Util::log("No priests, no new priests!",1);
-	$self->do_it_again();
-	return 0;
+      	  Util::log("No priests, no new priests!",1);
+      	  $self->do_it_again();
+      	  return 0;
       }
     }
 

@@ -193,6 +193,8 @@ Config noch vorgesehen) hä??? was ist damit gemeint?
 request: "Zlib error -2 flushing zlib output buffer ((null)), referer:
 http://localhost/aym/index.epl"
 
+- workaround for mysql 5.7 (see INSTALL) should not be necessary
+
 ***************************ab hier unformatiert*****************************
 
 

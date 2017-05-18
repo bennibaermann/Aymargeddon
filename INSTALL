@@ -7,7 +7,7 @@ Vorraussetzungen
 Ihr benötigt:
 
 *    Einen Rechner mit Linux als Betriebssystem (möglicherweise läuft es auch auf anderen Systemen, aber das hat bisher noch niemand probiert)
-*    den Sourcecode (zu beziehen über "git clone http://aymargeddon.de/aymargeddon.git")
+*    den Sourcecode (zu beziehen über "git clone http://github.com/bennibaermann/Aymargeddon.git")
 *    einen Apache2-Webserver im mpm_prefork modus
 *    mod_perl dafür 
 *    Embedded Perl auf diesem Server. Unter Debian squeeze tut es ein: 
@@ -24,7 +24,17 @@ apt-get install libembperl-perl
      
      gibts alle auch als Debian-Pakete (oder bei CPAN).
 
-*    MySQL als DBMS 
+*    MySQL als DBMS
+	
+	Leider wird momentan für mysql 5.7 ein Workaround benötigt. 
+	Bitte in /etc/mysql/mysql.conf.d/mysqld.conf (oder wo immer euer conf ist) 
+	eintragen:
+
+	[mysqld]
+	# new default mode. needed for aymargeddon
+	# deleted NO_ZERO_IN_DATE,NO_ZERO_DATE,STRICT_TRANS_TABLES
+	sql_mode = "ONLY_FULL_GROUP_BY,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION"
+
 
 *    Eine Möglichkeit Mails zu versenden. Welche Möglichkeiten
 funktionieren steht in der Doku zu Mail::Mailer.
