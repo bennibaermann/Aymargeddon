@@ -15,6 +15,12 @@ Aufgetreten ist es durch Produktion in einer Heimatstadt nach Bewegung.
 - Registrieren klappt erst, nachdem eine Sprache ausgewählt wurde, weil 
 "LANGUAGE cannot be null".
 
+- Language switch does not work.
+
+- sometimes move does not work (command does not go into database after submit,
+no error, nothing in log(1) ) - maybe it is a problem which occurs only if
+single mobs move, because there is no number" field than?
+
 Testen
 ------
 
@@ -23,7 +29,7 @@ Testen
 Features
 --------
 
-- komplett neuer HTML5-Canvas-jquery-Client.
+- komplett neuer HTML5-Canvas/SVG-jquery-Client.
 
 - Befehle Abrrechbar (mit Link hinter event), siehe
 (->Befehlseingabesystem)

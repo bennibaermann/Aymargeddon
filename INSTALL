@@ -6,11 +6,17 @@ Vorraussetzungen
 
 Ihr benötigt:
 
-*    Einen Rechner mit Linux als Betriebssystem (möglicherweise läuft es auch auf anderen Systemen, aber das hat bisher noch niemand probiert)
-*    den Sourcecode (zu beziehen über "git clone http://github.com/bennibaermann/Aymargeddon.git")
-*    einen Apache2-Webserver im mpm_prefork modus
-*    mod_perl dafür 
-*    Embedded Perl auf diesem Server. Unter Debian squeeze tut es ein: 
+* Einen Rechner mit Linux als Betriebssystem (möglicherweise läuft es auch auf
+anderen Systemen, aber das hat bisher noch niemand probiert) 
+
+* einen Apache2-Webserver im mpm_prefork modus. Momentan gibt es Probleme mit
+dem deflate-Modul. Workaround: deaktivieren (also zB löschen in /etc/apache2/mods-enabled).
+
+* mod_perl dafür 
+
+* git
+
+* Embedded Perl auf diesem Server. Unter Debian squeeze tut es ein:
 
 apt-get install libembperl-perl
 
@@ -44,24 +50,42 @@ Wenn das alles läuft, könnt ihr loslegen.
 Eigentliche Installation
 ========================
 
-*    Ihr müsst den Apache so konfigurieren, dass das Verzeichnis html/ aus dem Source zugänglich ist von außen und dort epl-Dateien ausgeführt werden können und das Embperl im src-Verzeichnis Module nachladen kann; zB via "PerlPostConfigRequire /etc/apache2/startup.pl" und da dann so was in der Art: 
+* ihr müsst den Sourcecode beziehen über "git clone
+http://github.com/bennibaermann/Aymargeddon.git" 
+
+* Ihr müsst den Apache so konfigurieren, dass das Verzeichnis html/ aus dem
+Source zugänglich ist von außen und dort epl-Dateien ausgeführt werden können
+und das Embperl im src-Verzeichnis Module nachladen kann; zB via
+"PerlPostConfigRequire /etc/apache2/startup.pl" und da dann so was in der Art:
      
-     use lib qw( /var/www/benni/aymargeddon.de/game/src );
+     use lib qw( /path/to/aymargeddon.de/game/src );
      1;
 
-*    Ihr müsst die Datei src/FROGS/Config.pm an eure Gegebenheiten anpassen. Dabei erstmal nur den oberen Abschnitt anfassen.
+alternativ geht auch so was wie
 
-*    Ihr müsst eine Datenbank RAGNAROEK in MySQL anlegen.
+	PerlSwitches -I/path/to/aymargeddon/current/src
+	
+in z.B. /etc/apache2/mods-enabled/zemperl.conf
+     
+* Ihr müsst die Datei src/FROGS/Config.pm an eure Gegebenheiten anpassen. Dabei
+erstmal nur den oberen Abschnitt anfassen.
 
-*    Ihr müsst einen DB-user "aymargeddon" in MySQL anlegen, der alle Rechte auf dieser DB hat (oder alternativ den Benutzernamen zusätzlich zu Config.pm in ein paar nicht-Perl-scripten ändern)
+* Ihr müsst eine Datenbank RAGNAROEK in MySQL anlegen.
 
-*    Ihr müsst eine lesegeschützte Datei an dem Ort anlegen, der in der Config beschrieben ist. In dieser Datei liegt das 	  Datenbankpasswort. 
+* Ihr müsst einen DB-user "aymargeddon" in MySQL anlegen, der alle Rechte auf
+dieser DB hat (oder alternativ den Benutzernamen zusätzlich zu Config.pm in ein
+paar nicht-Perl-scripten ändern)
 
-*    Ihr müsst im Verzeichnis var/ den Befehl ./do_sql < RAGNAROEK.sql sowie ./do_sql < LOCALIZE.sql eingeben. (oder evntl.: ./init_server)
+* Ihr müsst eine lesegeschützte Datei an dem Ort anlegen, der in der Config
+beschrieben ist. In dieser Datei liegt das Datenbankpasswort.
 
-*    Ihr müsst im Verzeichnis src/ den Befehl create.pl <# erdlinge> ausführen. Dort dann den Namen des Spiels sowie die Spielgeschwindigkeit eingeben.
+* Ihr müsst im Verzeichnis var/ den Befehl ./do_sql < RAGNAROEK.sql sowie
+./do_sql < LOCALIZE.sql eingeben. (oder evntl.: ./init_server)
 
-*    Ihr müsst im Verzeichnis src/FROGS/ den Befehl ./start_scheduler ausführen. 
+* Ihr müsst im Verzeichnis src/ den Befehl create.pl <# erdlinge> ausführen.
+Dort dann den Namen des Spiels sowie die Spielgeschwindigkeit eingeben.
+
+* Ihr müsst im Verzeichnis src/FROGS/ den Befehl ./start_scheduler ausführen.
 
 Jetzt kanns losgehen.
 
@@ -69,6 +93,8 @@ Jetzt kanns losgehen.
 Maintainance
 ============
 
-*    Das start_scheduler-script schreibt die logs in die Datei src/FROGS/++out. In der Standardkonfiguration wird noch eine Datei src/FROGS/+out mit sehr detailierten logs erzeugt. 
+* Das start_scheduler-script schreibt die logs in die Datei src/FROGS/+out. In
+der Standardkonfiguration wird noch eine Datei src/FROGS/++out mit sehr
+detailierten logs erzeugt.
 
-*    Mit dem Script backup in var kann man Backups der Datenbank dumpen.
+* Mit dem Script backup in var kann man Backups der Datenbank dumpen.
